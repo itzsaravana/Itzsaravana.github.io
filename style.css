@@ -1,19 +1,81 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #fefefe;
-  color: #222;
+/* === Global Reset === */
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
+/* === Scroll Behavior === */
+html {
+  scroll-padding-top: 80px;
+  scroll-behavior: smooth;
+}
+
+/* === Body Styling === */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fefefe;
+  color: #222;
+  padding-top: 80px;
+}
+
+/* === Header === */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
+
+.navbar {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.logo {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #007acc;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.nav-links a:hover {
+  color: #007acc;
+}
+
+/* === Main Content === */
 .container {
   max-width: 700px;
-  margin: 50px auto;
+  margin: 0 auto;
   padding: 20px;
 }
 
 h1 {
   font-size: 2.2em;
+  margin-bottom: 10px;
+}
+
+h2 {
+  margin-top: 40px;
+  font-size: 1.5em;
 }
 
 .highlight {
@@ -23,19 +85,21 @@ h1 {
 .role {
   font-size: 1.2em;
   color: #555;
+  margin-bottom: 20px;
 }
 
 section {
-  margin-top: 30px;
+  margin-top: 40px;
 }
 
 ul {
   list-style-type: none;
   padding-left: 0;
+  margin-top: 10px;
 }
 
 ul li {
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 a {
@@ -45,4 +109,31 @@ a {
 
 a:hover {
   text-decoration: underline;
+}
+
+/* === Responsive for Tablets & Mobiles === */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+    margin-top: 10px;
+    gap: 10px;
+  }
+
+  .container {
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 1.8em;
+  }
+
+  h2 {
+    font-size: 1.3em;
+  }
 }
