@@ -1,0 +1,105 @@
+/* === Global Reset === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.6;
+  background-color: #fefefe;
+  color: #222;
+  padding: 20px;
+}
+
+/* === Fixed Dev Box === */
+.fixed-dev-box {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 200px;
+  background-color: #ffffff;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
+
+.fixed-dev-box h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #007acc;
+}
+
+.fixed-dev-box ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.fixed-dev-box li {
+  margin-bottom: 10px;
+}
+
+.fixed-dev-box a {
+  text-decoration: none;
+  color: #333;
+}
+
+.fixed-dev-box a:hover {
+  text-decoration: underline;
+  color: #007acc;
+}
+
+/* === Main Content === */
+.main-content {
+  margin-left: 240px; /* make space for fixed box */
+  max-width: 800px;
+  padding: 10px 20px;
+}
+
+.highlight {
+  color: #007acc;
+}
+
+.role {
+  font-size: 1.2em;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+section {
+  margin-bottom: 80px;
+}
+
+h1, h2 {
+  margin-bottom: 15px;
+}
+
+/* === Links === */
+a {
+  color: #007acc;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* === Responsive: collapse on small screens === */
+@media (max-width: 768px) {
+  .fixed-dev-box {
+    position: static;
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 4px;
+  }
+
+  .main-content {
+    margin-left: 0;
+  }
+}
