@@ -6,11 +6,11 @@
 <title>Saravana's Blog Post</title>
 <style>
   *{box-sizing:border-box}
-  html,body{height:100%;margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial;color:#111;background:#f6f6f6}
+  html,body{height:100%;margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial;color:#111;background:#f6f6f6;-webkit-font-smoothing:antialiased}
   button{font-family:inherit}
   a{color:inherit}
 
-  /* topbar height variable so reader can account for it */
+  /* topbar height variable (updated at runtime) */
   :root { --topbar-h:64px; }
 
   /* Topbar */
@@ -19,30 +19,42 @@
     top: 0;
     z-index: 1400;
     display:flex; align-items:center; justify-content:space-between;
-    gap:16px; padding:10px 16px; background:#fff; border-bottom:1px solid #eee;
+    gap:12px; padding:8px 16px; background:#fff; border-bottom:1px solid #eee;
     box-shadow:0 6px 18px rgba(10,10,10,0.03);
-    height: var(--topbar-h);
+    height: auto;
+    min-height: var(--topbar-h);
   }
-  .about-mini{display:flex;gap:12px;align-items:center;cursor:pointer}
-  .avatar{width:44px;height:44px;border-radius:999px;overflow:hidden;background:#ddd;box-shadow:0 4px 12px rgba(0,0,0,0.06)}
-  .avatar img{width:100%;height:100%;object-fit:cover}
-  .about-text{display:flex;flex-direction:column;line-height:1}
-  .about-text .name{font-weight:700;font-size:14px}
-  .about-text .role{color:#666;font-size:12px}
-  .top-actions{display:flex;gap:12px;align-items:center}
-  .search-input{padding:8px 10px;border-radius:10px;border:1px solid #e6e6e6;width:320px;transition:width .12s}
-  .search-input:focus{width:420px;outline:none;box-shadow:0 6px 18px rgba(11,116,222,0.06)}
-  @media(max-width:880px){.search-input{width:160px}.search-input:focus{width:260px}}
+  .topbar-inner { display:flex; gap:12px; align-items:center; width:100%; justify-content:space-between; }
 
-  /* About panel */
-  .about-panel{position:absolute;top:calc(var(--topbar-h) + 8px);left:16px;z-index:1450;min-width:320px;background:#fff;border-radius:10px;box-shadow:0 20px 60px rgba(10,10,10,0.12);padding:16px;display:none}
+  .about-mini{display:flex;gap:12px;align-items:center;cursor:pointer}
+  .avatar{width:44px;height:44px;border-radius:999px;overflow:hidden;background:#ddd;box-shadow:0 4px 12px rgba(0,0,0,0.06);flex:0 0 44px}
+  .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+  .about-text{display:flex;flex-direction:column;line-height:1;min-width:0}
+  .about-text .name{font-weight:700;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .about-text .role{color:#666;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .top-actions{display:flex;gap:12px;align-items:center;flex:1;justify-content:flex-end}
+
+  /* responsive search: flexible and grows/shrinks proportionally */
+  .search-wrap{display:flex;align-items:center;flex:0 1 60%;max-width:640px;min-width:120px}
+  .search-input{width:100%;padding:8px 10px;border-radius:10px;border:1px solid #e6e6e6;transition:box-shadow .12s}
+  .search-input:focus{outline:none;box-shadow:0 6px 18px rgba(11,116,222,0.06)}
+
+  @media(max-width:880px){
+    .about-text{display:none} /* conserve space on small screens */
+    .search-wrap{flex:1 1 auto;max-width:420px}
+    .search-input{font-size:14px}
+  }
+
+  /* About panel - positioned under about-mini, but constrained to viewport */
+  .about-panel{position:absolute;top:calc(var(--topbar-h) + 8px);left:16px;z-index:1450;min-width:260px;max-width:360px;background:#fff;border-radius:10px;box-shadow:0 20px 60px rgba(10,10,10,0.12);padding:14px;display:none}
   .about-panel.open{display:block}
-  .about-panel h3{margin:0 0 8px}
-  .about-panel p{margin:6px 0;color:#333;line-height:1.5;font-size:14px}
+  .about-panel h3{margin:0 0 8px;font-size:16px}
+  .about-panel p{margin:6px 0;color:#333;line-height:1.4;font-size:14px}
   @media(max-width:880px){.about-panel{left:8px;right:8px;min-width:auto}}
 
   /* Container */
   .container{display:grid;grid-template-columns:280px 1fr;gap:24px;max-width:1200px;margin:20px auto;padding:0 16px 60px;align-items:start}
+  @media(max-width:1100px){.container{max-width:980px}}
   @media(max-width:880px){.container{grid-template-columns:1fr;padding:0 12px 60px}}
 
   /* Sidebar */
@@ -59,27 +71,37 @@
   .controls h2{margin:0;font-size:20px}
   .meta-note{color:#6b6b6b;font-size:13px}
 
-  /* Articles */
-  .articles{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px}
-  .card{background:#fff;border-radius:12px;padding:14px;box-shadow:0 6px 18px rgba(20,20,20,0.04);display:flex;gap:12px;min-height:120px;align-items:flex-start}
-  .thumb{width:120px;height:80px;flex:0 0 120px;border-radius:8px;overflow:hidden;position:relative;background:#ddd}
-  .thumb .placeholder{position:absolute;inset:0;background-size:cover;background-position:center;filter:blur(8px) saturate(120%);transform:scale(1.05);transition:opacity 360ms;z-index:0}
+  /* Articles grid: responsive and proportional */
+  .articles{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+  .card{background:#fff;border-radius:12px;padding:14px;box-shadow:0 6px 18px rgba(20,20,20,0.04);display:flex;gap:12px;min-height:120px;align-items:flex-start;transition:transform .12s}
+  .card:hover{transform:translateY(-4px)}
+  /* thumb proportion: on wide screens thumbnail takes ~36% */
+  .thumb{width:36%;height:120px;flex:0 0 36%;border-radius:8px;overflow:hidden;position:relative;background:#ddd;display:block}
+  .thumb .placeholder{position:absolute;inset:0;background-size:cover;background-position:center;filter:blur(8px) saturate(120%);transform:scale(1.03);transition:opacity 360ms;z-index:0}
   .thumb img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity 360ms}
   .thumb img.loaded{opacity:1}
   .thumb .placeholder.hidden{opacity:0}
   .card-body{flex:1;display:flex;flex-direction:column;gap:8px;min-width:0}
-  .card h3{margin:0;font-size:17px;cursor:pointer}
+  .card h3{margin:0;font-size:17px;cursor:pointer;word-break:break-word}
   .meta{color:#6b6b6b;font-size:13px}
-  .excerpt{margin:0;color:#333;line-height:1.45}
+  .excerpt{margin:0;color:#333;line-height:1.45;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical}
   .tag{font-size:12px;color:#6b6b6b;background:#fafafa;padding:6px 8px;border-radius:6px;display:inline-block}
   .card .actions{margin-top:auto;display:flex;gap:12px;justify-content:flex-end}
   .btn{padding:8px 14px;border-radius:999px;border:none;cursor:pointer;font-weight:600;background:#111;color:#fff}
   .btn.ghost{background:transparent;border:1px solid #e6e6e6;color:#111;padding:6px 12px}
 
-  /* Reader overlay: ensure top spacing to not collide with topbar */
+  /* Mobile: stack thumb above content and adjust sizes */
+  @media(max-width:880px){
+    .sidebar{display:none}
+    .card{flex-direction:column}
+    .thumb{width:100%;height:180px;flex:0 0 auto}
+    .reader-hero{height:220px}
+    .reader-article{max-height:calc(100vh - (var(--topbar-h) + 40px))}
+  }
+
+  /* reader overlay */
   .reader{position:fixed;inset:0;display:none;z-index:1200;background:rgba(0,0,0,0.35);align-items:flex-start;justify-content:center;padding-top:calc(var(--topbar-h) + 16px)}
   .reader.open{display:flex}
-  /* Close button pinned below topbar and above about panel */
   .reader-close{position:fixed;top:calc(var(--topbar-h) + 12px);right:18px;z-index:1600;background:#fff;border-radius:999px;border:1px solid rgba(0,0,0,0.08);padding:8px 10px;cursor:pointer;font-weight:600;box-shadow:0 8px 20px rgba(0,0,0,0.12)}
   .reader-article{width:min(900px,96%);max-height:calc(100vh - (var(--topbar-h) + 56px));overflow:auto;background:#fff;border-radius:10px;box-shadow:0 20px 60px rgba(10,10,10,0.3);position:relative;z-index:1550}
 
@@ -106,48 +128,43 @@
   /* toast */
   .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:32px;z-index:1800;background:rgba(0,0,0,0.85);color:#fff;padding:8px 14px;border-radius:8px;font-size:14px;opacity:0;transition:opacity .2s}
   .toast.show{opacity:1}
-
-  @media(max-width:880px){
-    .sidebar{display:none}
-    .card{flex-direction:column}
-    .thumb{width:100%;height:180px;flex:0 0 auto}
-    .reader-hero{height:220px}
-    .reader-article{max-height:calc(100vh - (var(--topbar-h) + 40px))}
-  }
 </style>
 </head>
 <body>
 
   <!-- Topbar -->
-  <header class="topbar" role="banner">
-    <div style="position:relative;">
-      <div class="about-mini" id="aboutToggle" tabindex="0" aria-expanded="false" title="Click for About">
-        <span class="avatar" aria-hidden="true">
-          <img id="avatarImg" src="https://avatars.githubusercontent.com/u/26116706?v=4?q=80&w=800&auto=format&fit=crop&crop=faces" alt="Profile avatar">
-        </span>
-        <div class="about-text">
-          <span class="name">Saravana Kumar</span>
-          <span class="role">Software engineer · ML practitioner</span>
+  <header class="topbar" role="banner" id="topbar">
+    <div class="topbar-inner">
+      <div style="position:relative;display:flex;align-items:center;gap:12px;">
+        <div class="about-mini" id="aboutToggle" tabindex="0" aria-expanded="false" title="Click for About">
+          <span class="avatar" aria-hidden="true">
+            <img id="avatarImg" src="https://avatars.githubusercontent.com/u/26116706?v=4?q=80&w=800&auto=format&fit=crop&crop=faces" alt="Profile avatar">
+          </span>
+          <div class="about-text">
+            <span class="name">Saravana Kumar</span>
+            <span class="role">Software engineer · ML practitioner</span>
+          </div>
+        </div>
+
+        <div class="about-panel" id="aboutPanel" aria-hidden="true">
+          <h3>About Me</h3>
+          <p><strong>Name:</strong> Saravana Kumar</p>
+          <p><strong>Bio:</strong> I'm a software engineer and ML practitioner focusing on production-ready RAG systems, churn models, LLM, and developer tooling.</p>
+          <h4>Career</h4>
+          <ol style="margin:6px 0 0;padding-left:18px">
+            <li>Frontend & Backend engineering</li>
+            <li>AI/ML engineering & RAG</li>
+            <li>Platform engineering (Docker, AWS)</li>
+            <li>Current — Agentic AI tooling & LLM integrations</li>
+          </ol>
         </div>
       </div>
 
-      <div class="about-panel" id="aboutPanel" aria-hidden="true">
-        <h3>About Me</h3>
-        <p><strong>Name:</strong> Saravana Kumar</p>
-        <p><strong>Bio:</strong> I'm a software engineer and ML practitioner focusing on production-ready RAG systems, churn models, LLM, and developer tooling.</p>
-        <h4>Career</h4>
-        <ol>
-          <li>Frontend & Backend engineering</li>
-          <li>AI/ML engineering & RAG</li>
-          <li>Platform engineering (Docker, AWS)</li>
-          <li>Current — Agentic AI tooling & LLM integrations</li>
-        </ol>
-
+      <div class="top-actions" role="search" aria-label="Site search">
+        <div class="search-wrap" style="min-width:140px;">
+          <input id="topSearch" class="search-input" type="search" placeholder="Search posts, tags, content" aria-label="Search posts">
+        </div>
       </div>
-    </div>
-
-    <div class="top-actions" role="search">
-      <input id="topSearch" class="search-input" type="search" placeholder="Search posts, tags, content" aria-label="Search posts">
     </div>
   </header>
 
@@ -239,6 +256,7 @@ const aboutToggle = document.getElementById('aboutToggle');
 const aboutPanel = document.getElementById('aboutPanel');
 const readerTop = document.getElementById('readerTop');
 const toast = document.getElementById('toast');
+const topbar = document.getElementById('topbar');
 
 /* utils */
 function escapeHtml(s){ return String(s||'').replace(/[&<>"']/g, ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch])); }
@@ -266,7 +284,7 @@ const imgIo = new IntersectionObserver((entries, obs) => {
   });
 }, { root:null, rootMargin:'200px', threshold:0.01 });
 
-/* render */
+/* render helpers */
 function createTocItem(post){
   const li = document.createElement('li');
   const btn = document.createElement('button');
@@ -284,12 +302,12 @@ function createArticleCard(post){
   const body = document.createElement('div'); body.className='card-body';
   const h3 = document.createElement('h3'); h3.textContent = post.title; h3.onclick = ()=> openReader(post.id);
   const meta = document.createElement('div'); meta.className='meta'; meta.textContent = `${post.author} · ${new Date(post.date).toLocaleDateString()} · ${estimateReadTime(post.content)}`;
-  const tagWrap = document.createElement('div'); tagWrap.style.display='flex'; tagWrap.style.gap='8px';
+  const tagWrap = document.createElement('div'); tagWrap.style.display='flex'; tagWrap.style.gap='8px'; tagWrap.style.flexWrap='wrap';
   (post.tags||[]).forEach(t=>{ const s=document.createElement('span'); s.className='tag'; s.textContent=t; tagWrap.appendChild(s); });
   const excerpt = document.createElement('p'); excerpt.className='excerpt'; excerpt.textContent = post.excerpt;
   const actions = document.createElement('div'); actions.className='actions';
   const share = document.createElement('button'); share.className='btn ghost'; share.textContent='Share';
-  share.onclick = ()=> copyToClipboard(location.href.split('#')[0] + '#' + post.id);
+  share.onclick = ()=> copyToClipboard((location.href.split('#')[0] || window.location.href.split('#')[0]) + '#' + post.id);
   const readBtn = document.createElement('button'); readBtn.className='btn'; readBtn.textContent='Read'; readBtn.onclick = ()=> openReader(post.id);
   actions.appendChild(share); actions.appendChild(readBtn);
   body.appendChild(h3); body.appendChild(meta); body.appendChild(tagWrap); body.appendChild(excerpt); body.appendChild(actions);
@@ -297,14 +315,39 @@ function createArticleCard(post){
   imgIo.observe(img);
   return card;
 }
+
+/* render */
 function renderAll(list = posts){
   tocEl.innerHTML = ''; articlesEl.innerHTML = '';
   list.forEach(p => { tocEl.appendChild(createTocItem(p)); articlesEl.appendChild(createArticleCard(p)); });
 }
 
+/* About panel toggle */
+function toggleAbout(force){
+  const open = aboutPanel.classList.contains('open');
+  const shouldOpen = typeof force === 'boolean' ? force : !open;
+  if (shouldOpen) {
+    // position about panel directly under the about-mini element if possible
+    aboutPanel.classList.add('open'); aboutToggle.setAttribute('aria-expanded','true'); aboutPanel.setAttribute('aria-hidden','false');
+    // ensure about panel visible within viewport (simple clamp)
+    requestAnimationFrame(()=> {
+      const rect = aboutPanel.getBoundingClientRect();
+      if (rect.right > window.innerWidth - 8) aboutPanel.style.left = (window.innerWidth - rect.width - 12) + 'px';
+    });
+  } else {
+    aboutPanel.classList.remove('open'); aboutToggle.setAttribute('aria-expanded','false'); aboutPanel.setAttribute('aria-hidden','true');
+    aboutPanel.style.left = ''; // reset
+  }
+}
+aboutToggle.addEventListener('click', ()=> toggleAbout());
+aboutToggle.addEventListener('keydown', (e)=> { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleAbout(); } });
+// close about if click outside
+document.addEventListener('click', (e)=> {
+  if (!aboutPanel.contains(e.target) && !aboutToggle.contains(e.target)) toggleAbout(false);
+});
+
 /* open/close reader: CLOSE ABOUT PANEL when opening to prevent blocking */
 function openReader(id){
-  // ensure about closed
   toggleAbout(false);
 
   const post = posts.find(p=>p.id===id); if(!post) return;
@@ -357,8 +400,8 @@ function openReader(id){
   readerArticle.addEventListener('scroll', onReaderScroll);
   onReaderScroll();
 
-  // deep-link
-  history.replaceState(null,'','#'+id);
+  // deep-link in URL hash
+  try { history.replaceState(null,'','#'+id); } catch(e){}
 }
 
 function closeReader(){
@@ -370,6 +413,8 @@ function closeReader(){
     readerArticle.innerHTML = '';
     readerArticle.removeEventListener('scroll', onReaderScroll);
     readerTop.classList.remove('show');
+    // remove hash without adding history entry
+    try { history.replaceState(null,'',location.pathname + location.search); } catch(e){}
   }, 240);
 }
 readerClose.addEventListener('click', closeReader);
@@ -383,41 +428,79 @@ function onReaderScroll(){
 }
 readerTop.addEventListener('click', ()=> readerArticle.scrollTo({ top:0, behavior:'smooth' }));
 
-/* Search */
-function applySearch(){ const q = String(topSearch.value||'').trim().toLowerCase(); if(!q) { renderAll(); return; } const filtered = posts.filter(p => p.title.toLowerCase().includes(q) || (p.tags||[]).join(' ').toLowerCase().includes(q) || stripHtml(p.content).toLowerCase().includes(q)); renderAll(filtered); }
-topSearch.addEventListener('input', applySearch);
-topSearch.addEventListener('keydown', (e)=>{ if (e.key === 'Enter'){ e.preventDefault(); applySearch(); } });
-
-/* About panel toggle */
-function toggleAbout(force){
-  const open = aboutPanel.classList.contains('open');
-  const shouldOpen = typeof force === 'boolean' ? force : !open;
-  if (shouldOpen) {
-    aboutPanel.classList.add('open'); aboutToggle.setAttribute('aria-expanded','true'); aboutPanel.setAttribute('aria-hidden','false');
-  } else {
-    aboutPanel.classList.remove('open'); aboutToggle.setAttribute('aria-expanded','false'); aboutPanel.setAttribute('aria-hidden','true');
+/* Search (improved): debounce + robust matching across title, tags, excerpt, content */
+let searchTimer = null;
+function normalize(s){ return String(s||'').toLowerCase().replace(/\s+/g,' ').trim(); }
+function applySearch(){ const q = normalize(topSearch.value); if(!q) { renderAll(); return; }
+  const filtered = posts.filter(p => {
+    const hay = [
+      normalize(p.title),
+      normalize((p.tags||[]).join(' ')),
+      normalize(p.excerpt),
+      normalize(stripHtml(p.content))
+    ].join(' ');
+    return hay.indexOf(q) !== -1;
+  });
+  renderAll(filtered);
+  // if there are no results, show hint
+  if (filtered.length === 0) {
+    articlesEl.innerHTML = '<div style="grid-column:1/-1;background:#fff;border-radius:10px;padding:18px;box-shadow:0 6px 18px rgba(20,20,20,0.04);text-align:center;color:#666">No results — try different keywords.</div>';
+    tocEl.innerHTML = '';
   }
 }
-aboutToggle.addEventListener('click', ()=> toggleAbout());
-aboutToggle.addEventListener('keydown', (e)=> { if (e.key === 'Enter' || e.key === ' ') toggleAbout(); });
-// close about if click outside
-document.addEventListener('click', (e)=> {
-  if (!aboutPanel.contains(e.target) && !aboutToggle.contains(e.target)) toggleAbout(false);
+
+/* debounce input for better UX on mobile */
+topSearch.addEventListener('input', (e)=> {
+  if (searchTimer) clearTimeout(searchTimer);
+  searchTimer = setTimeout(()=> { applySearch(); }, 180);
 });
+topSearch.addEventListener('keydown', (e)=>{ if (e.key === 'Enter'){ e.preventDefault(); if (searchTimer) clearTimeout(searchTimer); applySearch(); } });
 
 /* Share/clipboard + toast */
 function copyToClipboard(text){
-  navigator.clipboard?.writeText(text).then(()=> showToast('Link copied to clipboard')).catch(()=>{
-    const ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select();
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(()=> showToast('Link copied to clipboard')).catch(fallbackCopy);
+  } else fallbackCopy();
+
+  function fallbackCopy(){
+    const ta = document.createElement('textarea'); ta.value = text; ta.style.position='fixed'; ta.style.left='-9999px';
+    document.body.appendChild(ta); ta.select();
     try { document.execCommand('copy'); showToast('Link copied'); } catch(e){ alert('Copy failed'); }
     ta.remove();
-  });
+  }
 }
 let toastTimer = null;
 function showToast(msg, ms=2000){ toast.textContent = msg; toast.classList.add('show'); if (toastTimer) clearTimeout(toastTimer); toastTimer = setTimeout(()=> toast.classList.remove('show'), ms); }
 
-/* render on load; deep-link open */
-window.addEventListener('load', ()=> { renderAll(); if (location.hash){ const id = location.hash.slice(1); if (posts.some(p=>p.id===id)) openReader(id); } });
+/* update CSS variable for topbar height so overlays line up on all devices/zooms */
+function updateTopbarHeight(){
+  // measure topbar and set CSS variable
+  const h = topbar.getBoundingClientRect().height || 64;
+  document.documentElement.style.setProperty('--topbar-h', Math.max(48, Math.round(h)) + 'px');
+}
+window.addEventListener('resize', ()=> updateTopbarHeight());
+window.addEventListener('orientationchange', ()=> setTimeout(updateTopbarHeight, 120));
+window.addEventListener('load', ()=> {
+  updateTopbarHeight();
+  renderAll();
+  // deep-link open (from hash)
+  if (location.hash){
+    const id = location.hash.slice(1);
+    if (posts.some(p=>p.id===id)) openReader(id);
+  }
+});
+
+/* ensure we re-evaluate images when cards are re-rendered (renderAll uses imgIo.observe already) */
+
+/* initial focus handling for keyboard users */
+document.addEventListener('DOMContentLoaded', ()=> {
+  // a small accessible improvement: focus the search input on slash key
+  document.addEventListener('keydown', (e)=> {
+    if (e.key === '/' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
+      e.preventDefault(); topSearch.focus(); topSearch.select();
+    }
+  });
+});
 </script>
 </body>
 </html>
