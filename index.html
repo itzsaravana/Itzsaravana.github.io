@@ -1,154 +1,186 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Medium-like Blog — Top navbar About + avatar + more posts</title>
-  <style>
-    /* Reset & base */
-    *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial;color:#111;background:#f6f6f6;-webkit-font-smoothing:antialiased}
-    body.no-scroll{overflow:hidden;height:100%}
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Medium-like Blog — Final</title>
+<style>
+  /* ---- Reset & base ---- */
+  * { box-sizing: border-box; }
+  html,body { height:100%; margin:0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial; color:#111; background:#f6f6f6; -webkit-font-smoothing:antialiased; }
+  a { color:inherit; }
+  button { font-family: inherit; }
 
-    /* Top navbar (sticky) */
-    .topbar {
-      position:sticky;
-      top:0;
-      z-index:1400;
-      background:#fff;
-      border-bottom:1px solid #eee;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-      padding:10px 16px;
-      box-shadow:0 6px 18px rgba(10,10,10,0.03);
-    }
-    .about-mini { display:flex; gap:12px; align-items:center; }
-    .avatar {
-      width:44px; height:44px; border-radius:999px; overflow:hidden; flex:0 0 44px; background:#ddd; display:inline-block;
-      box-shadow:0 4px 12px rgba(0,0,0,0.06);
-    }
-    .avatar img{width:100%;height:100%;object-fit:cover;display:block}
-    .about-text { display:flex; flex-direction:column; line-height:1; }
-    .about-text .name { font-weight:700; font-size:14px; }
-    .about-text .role { color:#666; font-size:12px; }
+  /* ---- Topbar (sticky) ---- */
+  .topbar {
+    position: sticky; top: 0; z-index: 1400;
+    display:flex; align-items:center; justify-content:space-between;
+    gap:16px; padding:10px 16px; background:#fff; border-bottom:1px solid #eee;
+    box-shadow: 0 6px 18px rgba(10,10,10,0.03);
+  }
+  .about-mini { display:flex; gap:12px; align-items:center; cursor:pointer; }
+  .avatar { width:44px; height:44px; border-radius:999px; overflow:hidden; background:#ddd; box-shadow: 0 4px 12px rgba(0,0,0,0.06); flex:0 0 44px; }
+  .avatar img { width:100%; height:100%; object-fit:cover; display:block; }
+  .about-text { display:flex; flex-direction:column; line-height:1; }
+  .about-text .name { font-weight:700; font-size:14px; }
+  .about-text .role { color:#666; font-size:12px; }
 
-    /* small nav actions (search) */
-    .top-actions { display:flex; gap:12px; align-items:center; }
-    .search-input {
-      padding:8px 10px; border-radius:10px; border:1px solid #e6e6e6; width:260px;
-    }
-    @media (max-width:880px){ .search-input{width:160px} }
+  .top-actions { display:flex; gap:12px; align-items:center; }
+  .search-input { padding:8px 10px; border-radius:10px; border:1px solid #e6e6e6; width:320px; transition: width .12s ease; }
+  .search-input:focus { width:420px; outline: none; box-shadow: 0 6px 18px rgba(11,116,222,0.06); }
+  @media (max-width:880px) { .search-input{ width:160px } .search-input:focus{ width:260px } }
 
-    /* App layout beneath navbar */
-    .container {
-      display:grid;
-      grid-template-columns:280px 1fr;
-      gap:24px;
-      max-width:1200px;
-      margin:20px auto;
-      padding:0 16px 60px;
-      align-items:start;
-    }
+  /* ---- Topbar About dropdown ---- */
+  .about-panel {
+    position: absolute; top: 64px; left: 16px; z-index: 1450; min-width: 320px;
+    background:#fff; border-radius:10px; box-shadow: 0 20px 60px rgba(10,10,10,0.12); padding:16px;
+    display:none;
+  }
+  .about-panel.open { display:block; }
+  .about-panel h3 { margin:0 0 8px 0; }
+  .about-panel p { margin:6px 0; color:#333; line-height:1.5; font-size:14px; }
 
-    /* Sidebar */
-    .sidebar{position:sticky;top:84px;background:#fff;border-radius:10px;padding:18px;box-shadow:0 6px 18px rgba(20,20,20,0.06);height:calc(100vh - 104px);overflow:auto}
-    .site-title{margin:0 0 12px;font-weight:700;font-size:18px}
-    .toc{list-style:none;padding:0;margin:0}
-    .toc li + li{margin-top:8px}
-    .toc button{display:block;width:100%;text-align:left;background:transparent;border:none;padding:8px 10px;border-radius:8px;cursor:pointer;font-size:15px}
-    .toc button:hover,.toc button:focus{background:#f0f0f0;outline:none}
+  /* ---- Container layout ---- */
+  .container {
+    display:grid; grid-template-columns: 280px 1fr; gap:24px;
+    max-width:1200px; margin:20px auto; padding:0 16px 60px; align-items:start;
+  }
 
-    /* Main */
-    main{min-height:60vh}
-    .controls{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:18px;flex-wrap:wrap}
-    .controls h2{margin:0;font-size:20px}
-    .meta-note{color:#6b6b6b;font-size:13px}
+  /* ---- Sidebar (TOC) ---- */
+  .sidebar { position: sticky; top: 84px; background:#fff; border-radius:10px; padding:18px;
+    box-shadow: 0 6px 18px rgba(20,20,20,0.06); height: calc(100vh - 104px); overflow:auto; }
+  .site-title { margin:0 0 12px; font-weight:700; font-size:18px; }
+  .toc { list-style:none; padding:0; margin:0; }
+  .toc li + li { margin-top:8px; }
+  .toc button { display:block; width:100%; text-align:left; background:transparent; border:none; padding:8px 10px; border-radius:8px; cursor:pointer; font-size:15px; }
+  .toc button:hover, .toc button:focus { background:#f0f0f0; outline:none; }
 
-    /* Articles grid & card */
-    .articles{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px}
-    .card{background:#fff;border-radius:12px;padding:14px;box-shadow:0 6px 18px rgba(20,20,20,0.04);display:flex;gap:12px;min-height:120px;align-items:flex-start}
-    .thumb{width:120px;height:80px;flex:0 0 120px;border-radius:8px;overflow:hidden;position:relative;background:#ddd}
-    .thumb .placeholder{position:absolute;inset:0;background-size:cover;background-position:center;filter:blur(8px) saturate(120%);transform:scale(1.05);transition:opacity:360ms ease;z-index:0}
-    .thumb img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity 360ms ease}
-    .thumb img.loaded{opacity:1}
-    .thumb .placeholder.hidden{opacity:0}
+  /* ---- Main & AboutTop removed (About in topbar) ---- */
+  main { min-height:60vh; }
 
-    .card-body{flex:1;display:flex;flex-direction:column;gap:8px;min-width:0}
-    .card h3{margin:0;font-size:17px;cursor:pointer}
-    .meta{color:#6b6b6b;font-size:13px}
-    .excerpt{margin:0;color:#333;line-height:1.45}
-    .tag{font-size:12px;color:#6b6b6b;background:#fafafa;padding:6px 8px;border-radius:6px;display:inline-block}
+  .controls { display:flex; justify-content:space-between; gap:12px; align-items:center; margin-bottom:18px; flex-wrap:wrap; }
+  .controls h2 { margin:0; font-size:20px; }
+  .meta-note { color:#6b6b6b; font-size:13px; }
 
-    .card .actions{margin-top:auto;display:flex;gap:12px;justify-content:flex-end}
-    .btn{padding:8px 14px;border-radius:999px;border:none;cursor:pointer;font-weight:600;background:#111;color:#fff}
-    .btn.ghost{background:transparent;border:1px solid #e6e6e6;color:#111;padding:6px 12px}
+  /* ---- Articles (cards) ---- */
+  .articles { display:grid; grid-template-columns: repeat(auto-fit, minmax(320px,1fr)); gap:18px; }
+  .card { background:#fff; border-radius:12px; padding:14px; box-shadow:0 6px 18px rgba(20,20,20,0.04); display:flex; gap:12px; min-height:120px; align-items:flex-start; }
+  .thumb { width:120px; height:80px; flex:0 0 120px; border-radius:8px; overflow:hidden; position:relative; background:#ddd; }
+  .thumb .placeholder { position:absolute; inset:0; background-size:cover; background-position:center; filter: blur(8px) saturate(120%); transform:scale(1.05); transition:opacity 360ms ease; z-index:0; }
+  .thumb img { position:relative; z-index:1; width:100%; height:100%; object-fit:cover; display:block; opacity:0; transition:opacity 360ms ease; }
+  .thumb img.loaded { opacity:1; }
+  .thumb .placeholder.hidden { opacity:0; }
 
-    /* Reader overlay (unchanged) */
-    .reader{position:fixed;inset:0;display:none;z-index:1200;background:rgba(0,0,0,0.35);align-items:flex-start;justify-content:center;padding-top:28px}
-    .reader.open{display:flex}
-    .reader-close{position:fixed;top:18px;right:18px;z-index:1500;background:#fff;border-radius:999px;border:1px solid rgba(0,0,0,0.08);padding:8px 10px;cursor:pointer;font-weight:600;box-shadow:0 8px 20px rgba(0,0,0,0.12)}
-    .reader-article{width:min(900px,96%);max-height:calc(100vh - 80px);overflow:auto;background:#fff;border-radius:10px;box-shadow:0 20px 60px rgba(10,10,10,0.3);position:relative;z-index:1450}
+  .card-body { flex:1; display:flex; flex-direction:column; gap:8px; min-width:0; }
+  .card h3 { margin:0; font-size:17px; cursor:pointer; }
+  .meta { color:#6b6b6b; font-size:13px; }
+  .excerpt { margin:0; color:#333; line-height:1.45; }
+  .tag { font-size:12px; color:#6b6b6b; background:#fafafa; padding:6px 8px; border-radius:6px; display:inline-block; }
 
-    .reader-hero{width:100%;height:320px;overflow:hidden;position:relative;background:#eee;border-top-left-radius:10px;border-top-right-radius:10px}
-    .reader-hero .placeholder{position:absolute;inset:0;background-size:cover;background-position:center;filter:blur(10px) saturate(120%);transform:scale(1.05);transition:opacity 420ms ease;z-index:0}
-    .reader-hero img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity 420ms ease}
-    .reader-hero img.loaded{opacity:1}
-    .reader-hero .placeholder.hidden{opacity:0}
+  .card .actions { margin-top:auto; display:flex; gap:12px; justify-content:flex-end; }
+  .btn { padding:8px 14px; border-radius:999px; border:none; cursor:pointer; font-weight:600; background:#111; color:#fff; }
+  .btn.ghost { background:transparent; border:1px solid #e6e6e6; color:#111; padding:6px 12px; }
 
-    .reader-content{padding:28px 36px}
-    .reader-article h1{margin-top:0;font-size:34px;line-height:1.1}
-    .reader-meta{color:#6b6b6b;margin-bottom:12px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
-    .reader-meta .meta-author{font-weight:600;color:#111}
-    .reader-article p{line-height:1.7;font-size:18px;color:#222;margin-top:1em}
+  /* ---- Reader overlay ---- */
+  .reader { position:fixed; inset:0; display:none; z-index:1200; background:rgba(0,0,0,0.35); align-items:flex-start; justify-content:center; padding-top:28px; }
+  .reader.open { display:flex; }
+  .reader-close { position:fixed; top:18px; right:18px; z-index:1500; background:#fff; border-radius:999px; border:1px solid rgba(0,0,0,0.08); padding:8px 10px; cursor:pointer; font-weight:600; box-shadow:0 8px 20px rgba(0,0,0,0.12); }
+  .reader-article { width:min(900px,96%); max-height:calc(100vh - 80px); overflow:auto; background:#fff; border-radius:10px; box-shadow:0 20px 60px rgba(10,10,10,0.3); position:relative; z-index:1450; }
 
-    .inpost-img{width:100%;display:block;margin:18px 0;border-radius:8px;position:relative;overflow:hidden;background:#eee}
-    .inpost-img .placeholder{position:absolute;inset:0;background-size:cover;background-position:center;filter:blur(8px) saturate(120%);transform:scale(1.03);transition:opacity 360ms ease;z-index:0}
-    .inpost-img img{position:relative;z-index:1;width:100%;height:auto;display:block;opacity:0;transition:opacity 360ms ease}
-    .inpost-img img.loaded{opacity:1}
-    .inpost-img .placeholder.hidden{opacity:0}
+  .reader-hero { width:100%; height:320px; overflow:hidden; position:relative; background:#eee; border-top-left-radius:10px; border-top-right-radius:10px; }
+  .reader-hero .placeholder { position:absolute; inset:0; background-size:cover; background-position:center; filter: blur(10px) saturate(120%); transform:scale(1.05); transition:opacity 420ms ease; z-index:0; }
+  .reader-hero img { position:relative; z-index:1; width:100%; height:100%; object-fit:cover; display:block; opacity:0; transition:opacity 420ms ease; }
+  .reader-hero img.loaded { opacity:1; }
+  .reader-hero .placeholder.hidden { opacity:0; }
 
-    /* Responsive */
-    @media (max-width:880px){
-      .container{grid-template-columns:1fr;padding:0 12px 60px}
-      .sidebar{position:static;height:auto;display:none;margin-bottom:12px}
-      .card{flex-direction:column}
-      .thumb{width:100%;height:180px;flex:0 0 auto}
-      .reader-hero{height:220px}
-      .reader-article{max-height:calc(100vh - 60px)}
-    }
-  </style>
+  .reader-content { padding:28px 36px; }
+  .reader-article h1 { margin-top:0; font-size:34px; line-height:1.1; }
+  .reader-meta { color:#6b6b6b; margin-bottom:12px; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .reader-meta .meta-author { font-weight:600; color:#111; }
+  .reader-meta .meta-date, .reader-meta .meta-readtime { color:#6b6b6b; font-size:14px; }
+
+  .reader-article p { line-height:1.7; font-size:18px; color:#222; margin-top:1em; }
+
+  .inpost-img { width:100%; display:block; margin:18px 0; border-radius:8px; position:relative; overflow:hidden; background:#eee; }
+  .inpost-img .placeholder { position:absolute; inset:0; background-size:cover; background-position:center; filter: blur(8px) saturate(120%); transform:scale(1.03); transition:opacity 360ms ease; z-index:0; }
+  .inpost-img img { position:relative; z-index:1; width:100%; height:auto; display:block; opacity:0; transition:opacity 360ms ease; }
+  .inpost-img img.loaded { opacity:1; }
+  .inpost-img .placeholder.hidden { opacity:0; }
+
+  /* ---- Back-to-top in reader ---- */
+  .reader-top {
+    position: fixed; right: 20px; bottom: 28px; z-index: 1510;
+    background: #111; color: #fff; border-radius: 999px; padding:10px 12px; cursor:pointer; font-weight:600; display:none;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+  }
+  .reader-top.show { display:block; }
+
+  /* ---- Toast (clipboard) ---- */
+  .toast {
+    position: fixed; left: 50%; transform: translateX(-50%); bottom: 32px; z-index: 1600;
+    background: rgba(0,0,0,0.85); color:#fff; padding:8px 14px; border-radius:8px; font-size:14px; opacity:0; transition:opacity .2s ease;
+  }
+  .toast.show { opacity:1; }
+
+  /* ---- Responsive adjustments ---- */
+  @media (max-width:880px) {
+    .container { grid-template-columns: 1fr; padding:0 12px 60px; }
+    .sidebar { position: static; height: auto; display: none; margin-bottom: 12px; }
+    .card { flex-direction: column; }
+    .thumb { width:100%; height:180px; flex:0 0 auto; }
+    .reader-hero { height:220px; }
+    .reader-article { max-height: calc(100vh - 60px); }
+    .about-panel { left: 8px; right:8px; min-width: auto; }
+  }
+  /* small utility */
+  .hidden { display:none!important; }
+  .sr-only { position:absolute; left:-10000px; top:auto; width:1px; height:1px; overflow:hidden; }
+</style>
 </head>
 <body>
+  <!-- Topbar -->
+  <header class="topbar" role="banner">
+    <div style="position:relative;">
+      <div class="about-mini" id="aboutToggle" aria-expanded="false" tabindex="0">
+        <span class="avatar" aria-hidden="true">
+          <img id="avatarImg" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop&crop=faces" alt="Profile avatar">
+        </span>
+        <div class="about-text">
+          <span class="name">Saravana Kumar</span>
+          <span class="role">Software engineer · ML practitioner</span>
+        </div>
+      </div>
 
-  <!-- Topbar with About mini + search -->
-  <header class="topbar" role="banner" aria-label="Top navigation">
-    <div class="about-mini" title="About me">
-      <span class="avatar" aria-hidden="true">
-        <!-- replace avatar src with your picture -->
-        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop&crop=faces" alt="Profile avatar">
-      </span>
-      <div class="about-text">
-        <span class="name">Saravana Kumar</span>
-        <span class="role">Software engineer · ML practitioner</span>
+      <!-- About dropdown -->
+      <div class="about-panel" id="aboutPanel" role="dialog" aria-hidden="true">
+        <h3>About Me</h3>
+        <p><strong>Name:</strong> Saravana Kumar</p>
+        <p><strong>Bio:</strong> I'm a software engineer and ML practitioner focusing on production-ready RAG systems, local LLM setups, and developer tooling. I enjoy building simple, robust systems and teaching others.</p>
+        <h4>Career path</h4>
+        <ol>
+          <li>Frontend & Backend software engineering</li>
+          <li>Data science / ML engineering — churn models & RAG</li>
+          <li>Platform engineering — Docker, AWS (ECS/Fargate)</li>
+          <li>Current — building AI-enabled tooling and LLM integrations</li>
+        </ol>
+        <p><strong>Contact:</strong> add-email@example.com</p>
       </div>
     </div>
 
     <div class="top-actions" role="search">
-      <input id="topSearch" class="search-input" type="search" placeholder="Search posts or tags" aria-label="Search posts">
+      <input id="topSearch" class="search-input" type="search" placeholder="Search posts, tags, or content" aria-label="Search posts">
     </div>
   </header>
 
   <!-- Main container -->
   <div class="container" role="main">
-    <!-- Sidebar with TOC -->
+    <!-- Sidebar / TOC -->
     <aside class="sidebar" id="sidebar" aria-label="Table of contents">
       <h2 class="site-title">My Medium-like Blog</h2>
       <p style="margin:0 0 12px;color:#5b5b5b;font-size:13px">Click a title or Read to open the article.</p>
-      <hr style="border:none;height:1px;background:#f0f0f0;margin:12px 0">
+      <hr style="border:none;height:1px;background:#f0f0f0;margin:12px 0;">
       <strong style="display:block;margin-bottom:8px">Table of contents</strong>
-      <ul class="toc" id="toc"></ul>
+      <ul class="toc" id="toc" role="list"></ul>
     </aside>
 
     <!-- Main column -->
@@ -156,7 +188,7 @@
       <div class="controls">
         <div>
           <h2>Latest stories</h2>
-          <div class="meta-note">Curated picks just for you</div>
+          <div class="meta-note">Curated picks</div>
         </div>
       </div>
 
@@ -170,30 +202,315 @@
     <article class="reader-article" id="readerArticle" tabindex="0" aria-live="polite"></article>
   </div>
 
-  <script>
-    /* ---------------------------
-       Posts (added more sample posts)
-       Replace images/placeholders with your own URLs
-       --------------------------- */
-    const posts = [
-      {
-        id: 'post-1',
-        title: 'Designing for Focus: How to Build Reader-Friendly UIs',
-        author: 'Saravana Kumar',
-        date: '2025-09-09',
-        tags: ['design','ux','readability'],
-        image: 'https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=1600&auto=format&fit=crop&crop=entropy',
-        placeholder: 'https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=10&w=40&auto=format&fit=crop&crop=entropy',
-        excerpt: 'Readers crave focus. Typography, layout and micro-interactions matter.',
-        content: `
-          <p>Readers crave focus. To design a reader-friendly UI, start with typography: use a comfortable measure (line length), slightly larger font sizes for body copy, and increased line-height.</p>
-          <div class="inpost-img" data-placeholder="https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=10&w=80&auto=format&fit=crop&crop=entropy">
-            <img data-src="https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=1200&auto=format&fit=crop&crop=entropy" alt="typography example">
-          </div>
-          <p>Next, structure content: clear headings, short paragraphs, and callouts help scanability.</p>
-        `
-      },
-      {
-        id: 'post-2',
-        title: 'Building a Local Dev RAG Stack with Chroma and Ollama',
-        author: 'Saravana Kumar',
+  <!-- back to top in reader -->
+  <button class="reader-top" id="readerTop" title="Back to top">Top</button>
+
+  <!-- toast -->
+  <div class="toast" id="toast" role="status" aria-live="polite">Copied link</div>
+
+<script>
+/* ============================
+   Sample posts (replace images/placeholders)
+   ============================ */
+const posts = [
+  {
+    id: 'post-1',
+    title: 'Designing for Focus: How to Build Reader-Friendly UIs',
+    author: 'Saravana Kumar',
+    date: '2025-09-09',
+    tags: ['design','ux','readability'],
+    image: 'https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=1600&auto=format&fit=crop&crop=entropy',
+    placeholder: 'https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=10&w=40&auto=format&fit=crop&crop=entropy',
+    excerpt: 'Readers crave focus. Typography, layout and micro-interactions matter.',
+    content: `
+      <p>Readers crave focus. To design a reader-friendly UI, start with typography: use a comfortable measure (line length), slightly larger font sizes for body copy, and increased line-height.</p>
+      <div class="inpost-img" data-placeholder="https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=10&w=80&auto=format&fit=crop&crop=entropy">
+        <img data-src="https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=1200&auto=format&fit=crop&crop=entropy" alt="typography example">
+      </div>
+      <p>Next, structure content: clear headings, short paragraphs, and callouts help scanability.</p>
+    `
+  },
+  {
+    id: 'post-2',
+    title: 'Building a Local Dev RAG Stack with Chroma and Ollama',
+    author: 'Saravana Kumar',
+    date: '2025-08-30',
+    tags: ['llm','rag','devops'],
+    image: 'https://images.unsplash.com/photo-1548095115-45697e3c1f6a?q=80&w=1600&auto=format&fit=crop&crop=entropy',
+    placeholder: 'https://images.unsplash.com/photo-1548095115-45697e3c1f6a?q=10&w=40&auto=format&fit=crop&crop=entropy',
+    excerpt: 'A practical local RAG stack guide.',
+    content: `
+      <p>Key parts: document preprocessing, chunking, vector storage, and your LLM.</p>
+      <div class="inpost-img" data-placeholder="https://images.unsplash.com/photo-1548095115-45697e3c1f6a?q=10&w=80&auto=format&fit=crop&crop=entropy">
+        <img data-src="https://images.unsplash.com/photo-1548095115-45697e3c1f6a?q=80&w=1200&auto=format&fit=crop&crop=entropy" alt="local rag diagram">
+      </div>
+      <p>Keep a clean pipeline and cache embeddings to avoid repeated compute.</p>
+    `
+  },
+  {
+    id: 'post-3',
+    title: 'Thumbnail Selection Techniques to Improve Click-Through',
+    author: 'Priya Menon',
+    date: '2025-07-21',
+    tags: ['ml','video','engagement'],
+    image: 'https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?q=80&w=1600&auto=format&fit=crop&crop=entropy',
+    placeholder: 'https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?q=10&w=40&auto=format&fit=crop&crop=entropy',
+    excerpt: 'Choosing thumbnails is both art and science.',
+    content: `
+      <p>Thumbnails are often the first impression. Common heuristics: faces, high-contrast frames, and action frames perform well.</p>
+      <p>Use A/B testing to validate — what worked for one audience may not work for another.</p>
+    `
+  },
+  {
+    id: 'post-4',
+    title: 'Practical Monitoring for Production ML Systems',
+    author: 'Anita Rao',
+    date: '2025-06-10',
+    tags: ['ml','monitoring','mle'],
+    image: 'https://images.unsplash.com/photo-1557800636-894a64c1696f?q=80&w=1600&auto=format&fit=crop&crop=entropy',
+    placeholder: 'https://images.unsplash.com/photo-1557800636-894a64c1696f?q=10&w=40&auto=format&fit=crop&crop=entropy',
+    excerpt: 'What to monitor in ML systems and how to set up reliable alerts.',
+    content: `<p>Monitor both model and data: input distribution drifts, prediction distribution shifts, and downstream KPI changes. Use thresholds, aggregation windows, and fallbacks to handle anomalies gracefully.</p>`
+  }
+];
+
+/* ============================
+   DOM refs & utilities
+   ============================ */
+const tocEl = document.getElementById('toc');
+const articlesEl = document.getElementById('articles');
+const reader = document.getElementById('reader');
+const readerArticle = document.getElementById('readerArticle');
+const readerClose = document.getElementById('readerClose');
+const topSearch = document.getElementById('topSearch');
+const aboutToggle = document.getElementById('aboutToggle');
+const aboutPanel = document.getElementById('aboutPanel');
+const readerTop = document.getElementById('readerTop');
+const toast = document.getElementById('toast');
+
+function escapeHtml(s){ return String(s||'').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch])); }
+function escapeAttr(s){ return String(s||'').replace(/["']/g, ch => ch === '"' ? '&quot;' : '&#39;'); }
+function stripHtml(html){ return String(html||'').replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim(); }
+function estimateReadTime(text){ const words = stripHtml(text).split(/\s+/).filter(Boolean).length; return `${Math.max(1, Math.round(words/200))} min read`; }
+
+/* ============================
+   Image lazy loader (IntersectionObserver)
+   ============================ */
+const imgIoOptions = { root: null, rootMargin: '200px', threshold: 0.01 };
+const imgObserver = new IntersectionObserver((entries, obs) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    const img = entry.target;
+    const src = img.dataset.src;
+    if (!src) { obs.unobserve(img); return; }
+    img.src = src;
+    img.loading = img.loading || 'lazy';
+    img.decoding = img.decoding || 'async';
+    img.onload = () => {
+      img.classList.add('loaded');
+      // hide placeholder (thumb or wrapper)
+      const ph = img.closest('.thumb')?.querySelector('.placeholder') || img.parentElement.querySelector('.placeholder');
+      if (ph) ph.classList.add('hidden');
+      delete img.dataset.src;
+    };
+    obs.unobserve(img);
+  });
+}, imgIoOptions);
+
+/* ============================
+   Render posts & TOC
+   ============================ */
+function createTocItem(post) {
+  const li = document.createElement('li');
+  const btn = document.createElement('button');
+  btn.textContent = post.title;
+  btn.onclick = () => openReader(post.id);
+  li.appendChild(btn);
+  return li;
+}
+function createArticleCard(post) {
+  const card = document.createElement('article'); card.className = 'card'; card.id = post.id;
+  const thumb = document.createElement('div'); thumb.className = 'thumb';
+  const ph = document.createElement('div'); ph.className = 'placeholder'; ph.style.backgroundImage = `url("${escapeAttr(post.placeholder||'')}")`;
+  const img = document.createElement('img'); img.alt = post.title + ' thumbnail'; img.setAttribute('data-src', post.image || '');
+  thumb.appendChild(ph); thumb.appendChild(img);
+
+  const body = document.createElement('div'); body.className = 'card-body';
+  const h3 = document.createElement('h3'); h3.textContent = post.title; h3.onclick = () => openReader(post.id);
+  const meta = document.createElement('div'); meta.className = 'meta'; meta.textContent = `${post.author} · ${new Date(post.date).toLocaleDateString()} · ${estimateReadTime(post.content)}`;
+  const tagWrap = document.createElement('div'); tagWrap.style.display='flex'; tagWrap.style.gap='8px';
+  (post.tags||[]).forEach(t => { const s=document.createElement('span'); s.className='tag'; s.textContent = t; tagWrap.appendChild(s); });
+
+  const excerpt = document.createElement('p'); excerpt.className = 'excerpt'; excerpt.textContent = post.excerpt;
+  const actions = document.createElement('div'); actions.className = 'actions';
+  const share = document.createElement('button'); share.className = 'btn ghost'; share.textContent = 'Share';
+  share.onclick = () => { copyToClipboard(location.href.split('#')[0] + '#' + post.id); };
+
+  const readBtn = document.createElement('button'); readBtn.className = 'btn'; readBtn.textContent = 'Read';
+  readBtn.onclick = () => openReader(post.id);
+
+  actions.appendChild(share); actions.appendChild(readBtn);
+
+  body.appendChild(h3); body.appendChild(meta); body.appendChild(tagWrap); body.appendChild(excerpt); body.appendChild(actions);
+  card.appendChild(thumb); card.appendChild(body);
+
+  imgObserver.observe(img);
+  return card;
+}
+function renderAll(list = posts) {
+  tocEl.innerHTML = ''; articlesEl.innerHTML = '';
+  list.forEach(p => { tocEl.appendChild(createTocItem(p)); articlesEl.appendChild(createArticleCard(p)); });
+}
+
+/* ============================
+   Reader open / close
+   ============================ */
+function openReader(id) {
+  const post = posts.find(p => p.id === id); if (!post) return;
+  readerArticle.innerHTML = `
+    <div class="reader-hero" aria-hidden="true">
+      <div class="placeholder" style="background-image:url('${escapeAttr(post.placeholder||'')}')"></div>
+      <img data-src="${escapeAttr(post.image||'')}" alt="${escapeAttr(post.title)} — header image">
+    </div>
+    <div class="reader-content">
+      <header>
+        <h1>${escapeHtml(post.title)}</h1>
+        <div class="reader-meta">
+          <div class="meta-author">${escapeHtml(post.author)}</div>
+          <div class="meta-date">${new Date(post.date).toLocaleDateString()}</div>
+          <div class="meta-readtime">${estimateReadTime(post.content)}</div>
+          <div class="meta-tags">${(post.tags||[]).map(t=>`<span class="tag">${escapeHtml(t)}</span>`).join(' ')}</div>
+        </div>
+      </header>
+      <section class="post-body">${post.content}</section>
+    </div>
+  `;
+  // lock background scroll
+  document.body.style.overflow = 'hidden';
+  reader.classList.add('open'); reader.setAttribute('aria-hidden','false');
+  setTimeout(()=> readerArticle.focus(), 80);
+
+  // eager load hero
+  const heroImg = readerArticle.querySelector('.reader-hero img');
+  const heroPh = readerArticle.querySelector('.reader-hero .placeholder');
+  if (heroImg && heroImg.dataset.src) {
+    heroImg.src = heroImg.dataset.src;
+    heroImg.loading = 'lazy'; heroImg.decoding = 'async';
+    heroImg.onload = () => { heroImg.classList.add('loaded'); if (heroPh) heroPh.classList.add('hidden'); delete heroImg.dataset.src; };
+  }
+
+  // handle inline inpost images
+  const inpostWrappers = readerArticle.querySelectorAll('.inpost-img');
+  inpostWrappers.forEach(w => {
+    const phUrl = w.dataset.placeholder || '';
+    if (phUrl && !w.querySelector('.placeholder')) {
+      const el = document.createElement('div'); el.className = 'placeholder'; el.style.backgroundImage = `url('${escapeAttr(phUrl)}')`;
+      w.insertBefore(el, w.firstChild);
+    }
+    const img = w.querySelector('img');
+    if (img && img.dataset.src) imgObserver.observe(img);
+  });
+
+  // observe any other data-src imgs inside post
+  const postImgs = readerArticle.querySelectorAll('.post-body img[data-src]');
+  postImgs.forEach(i => imgObserver.observe(i));
+
+  // show reader-top when scrolled down
+  readerArticle.addEventListener('scroll', handleReaderScroll);
+  handleReaderScroll(); // initial check
+
+  // deep-link
+  history.replaceState(null, '', '#' + id);
+}
+function closeReader() {
+  reader.classList.remove('open'); reader.setAttribute('aria-hidden','true');
+  document.body.style.overflow = '';
+  // cleanup
+  setTimeout(()=> {
+    const imgs = readerArticle.querySelectorAll('img');
+    imgs.forEach(i => { try { imgObserver.unobserve(i); } catch(e) {} });
+    readerArticle.innerHTML = '';
+    readerArticle.removeEventListener('scroll', handleReaderScroll);
+    readerTop.classList.remove('show');
+  }, 300);
+}
+readerClose.addEventListener('click', closeReader);
+reader.addEventListener('click', (e) => { if (e.target === reader) closeReader(); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeReader(); });
+
+/* ============================
+   Reader scroll handler (show top btn)
+   ============================ */
+function handleReaderScroll() {
+  if (!readerArticle) return;
+  const scrolled = readerArticle.scrollTop > 300;
+  if (scrolled) readerTop.classList.add('show'); else readerTop.classList.remove('show');
+}
+readerTop.addEventListener('click', () => { readerArticle.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+/* ============================
+   Search
+   ============================ */
+function applySearchFilter() {
+  const q = String(topSearch.value || '').trim().toLowerCase();
+  if (!q) { renderAll(); return; }
+  const filtered = posts.filter(p => p.title.toLowerCase().includes(q) || (p.tags||[]).join(' ').toLowerCase().includes(q) || stripHtml(p.content).toLowerCase().includes(q));
+  renderAll(filtered);
+}
+topSearch.addEventListener('input', applySearchFilter);
+topSearch.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); applySearchFilter(); } });
+
+/* ============================
+   About panel toggle (topbar)
+   ============================ */
+function toggleAboutPanel(open) {
+  if (open) {
+    aboutPanel.classList.add('open');
+    aboutToggle.setAttribute('aria-expanded', 'true');
+    aboutPanel.setAttribute('aria-hidden', 'false');
+  } else {
+    aboutPanel.classList.remove('open');
+    aboutToggle.setAttribute('aria-expanded', 'false');
+    aboutPanel.setAttribute('aria-hidden', 'true');
+  }
+}
+aboutToggle.addEventListener('click', () => toggleAboutPanel(!aboutPanel.classList.contains('open')));
+aboutToggle.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') toggleAboutPanel(!aboutPanel.classList.contains('open')); });
+// close about if click outside
+document.addEventListener('click', (e) => {
+  if (!aboutPanel.contains(e.target) && !aboutToggle.contains(e.target)) toggleAboutPanel(false);
+});
+
+/* ============================
+   Share / clipboard + toast
+   ============================ */
+function copyToClipboard(text) {
+  navigator.clipboard?.writeText(text).then(() => {
+    showToast('Post link copied to clipboard');
+  }).catch(()=> {
+    // fallback
+    const ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); showToast('Post link copied to clipboard'); } catch(e){ alert('Copy failed — use your browser'); }
+    ta.remove();
+  });
+}
+let toastTimer = null;
+function showToast(msg, ms = 2000) {
+  toast.textContent = msg; toast.classList.add('show');
+  if (toastTimer) clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=> { toast.classList.remove('show'); }, ms);
+}
+
+/* ============================
+   Deep-link open on load
+   ============================ */
+window.addEventListener('load', () => {
+  renderAll();
+  if (location.hash) {
+    const id = location.hash.slice(1);
+    if (posts.some(p => p.id === id)) openReader(id);
+  }
+});
+</script>
+</body>
+</html>
