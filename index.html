@@ -3,152 +3,124 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Medium-like Blog — lazy images + blur-up</title>
+  <title>Medium-like Blog — fixed reader + inline images</title>
   <style>
     * { box-sizing: border-box; }
     html,body { height: 100%; margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial; color:#111; background:#f6f6f6; }
-
-    .app {
-      display: grid;
-      grid-template-columns: 280px 1fr;
-      gap: 24px;
-      max-width: 1200px;
-      margin: 28px auto;
-      align-items: start;
-      padding: 0 16px;
-    }
+    .app { display: grid; grid-template-columns: 280px 1fr; gap: 24px; max-width: 1200px; margin: 28px auto; align-items: start; padding: 0 16px; }
 
     /* Sidebar */
-    .sidebar {
-      position: sticky;
-      top: 24px;
-      align-self: start;
-      background: #fff;
-      border-radius: 10px;
-      padding: 18px;
-      box-shadow: 0 6px 18px rgba(20,20,20,0.06);
-      height: calc(100vh - 60px);
-      overflow: auto;
-    }
-    .site-title { font-weight: 700; letter-spacing: -0.02em; margin: 0 0 12px; font-size: 18px; }
-    .sidebar p { margin: 0 0 14px; color: #5b5b5b; font-size: 13px; }
+    .sidebar { position: sticky; top: 24px; align-self: start; background: #fff; border-radius: 10px; padding: 18px; box-shadow: 0 6px 18px rgba(20,20,20,0.06); height: calc(100vh - 60px); overflow: auto; }
+    .site-title { font-weight: 700; margin: 0 0 12px; font-size: 18px; }
     .toc { list-style: none; padding: 0; margin: 8px 0 0; }
-    .toc li + li { margin-top: 8px; }
-    .toc button {
-      display: block; width: 100%; text-align: left; background: transparent; border: none; padding: 8px 10px;
-      border-radius: 8px; cursor: pointer; color: #1a1a1a; font-size: 15px;
-    }
-    .toc button:hover, .toc button:focus { background: #f0f0f0; outline: none; }
+    .toc button { display: block; width:100%; text-align:left; border:none; background:transparent; padding:8px 10px; border-radius:8px; cursor:pointer; font-size:15px; }
+    .toc button:hover { background:#f0f0f0; }
 
     /* Main */
     main { min-height: 60vh; }
-
     .controls { display:flex; justify-content: space-between; align-items: center; margin-bottom: 18px; }
-    .controls h2 { margin: 0; font-size: 20px; }
     .search input { padding: 8px 10px; border-radius: 8px; border: 1px solid #e6e6e6; width: 220px; }
 
-    /* Article list: card with thumbnail */
+    /* Article list */
     .articles { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 18px; }
-    .card {
-      background: #fff; border-radius: 12px; padding: 14px; box-shadow: 0 6px 18px rgba(20,20,20,0.04);
-      display: flex; gap: 12px; min-height: 120px; align-items: flex-start;
-    }
-
-    /* blur-up wrapper for thumbnails */
-    .thumb {
-      width: 120px; height: 80px; flex: 0 0 120px; border-radius: 8px; overflow: hidden; background:#ddd;
-      display:flex; align-items:center; justify-content:center; position: relative;
-    }
-    .thumb .placeholder {
-      position:absolute; inset:0; background-size:cover; background-position:center; filter: blur(8px) saturate(120%);
-      transform: scale(1.05);
-      transition: opacity 400ms ease;
-    }
-    .thumb img {
-      width: 100%; height: 100%; object-fit: cover; display:block; opacity: 0; transition: opacity 420ms ease;
-    }
-    .thumb img.loaded { opacity: 1; }
-    .thumb .placeholder.hidden { opacity: 0; }
+    .card { background: #fff; border-radius: 12px; padding: 14px; box-shadow: 0 6px 18px rgba(20,20,20,0.04); display: flex; gap: 12px; min-height: 120px; align-items: flex-start; }
+    .thumb { width:120px; height:80px; flex: 0 0 120px; border-radius:8px; overflow:hidden; position:relative; background:#ddd; }
+    .thumb .placeholder { position:absolute; inset:0; background-size:cover; background-position:center; filter: blur(8px) saturate(120%); transform:scale(1.05); transition: opacity 360ms ease; }
+    .thumb img { width:100%; height:100%; object-fit:cover; display:block; opacity:0; transition: opacity 360ms ease; }
+    .thumb img.loaded { opacity:1; }
+    .thumb .placeholder.hidden { opacity:0; }
 
     .card-body { flex:1; display:flex; flex-direction:column; gap:8px; min-width:0; }
-    .card h3 { margin: 0; font-size: 17px; cursor:pointer; }
-    .meta { color: #6b6b6b; font-size: 13px; }
-    .excerpt { color: #333; line-height: 1.45; margin:0; }
+    .card h3 { margin:0; font-size:17px; cursor:pointer; }
+    .meta { color:#6b6b6b; font-size:13px; }
+    .excerpt { margin:0; color:#333; line-height:1.45; }
 
-    .card .actions { margin-top:auto; display:flex; justify-content: space-between; align-items:center; gap:12px; }
-    .btn { padding: 8px 14px; border-radius: 999px; border: none; cursor: pointer; font-weight: 600; background: #111; color: #fff; }
-    .btn.ghost { background: transparent; color: #111; border: 1px solid #e6e6e6; font-weight: 600; padding: 6px 12px; }
+    .actions { margin-top:auto; display:flex; gap:12px; justify-content:flex-end; }
+    .btn { padding:8px 14px; border-radius:999px; border:none; cursor:pointer; font-weight:600; background:#111; color:#fff; }
+    .btn.ghost { background:transparent; border:1px solid #e6e6e6; color:#111; padding:6px 12px; }
 
-    /* Reader overlay */
+    /* Reader overlay (fixed close button + top alignment so close is visible) */
     .reader {
-      position: fixed; inset: 0; display: none; align-items: center; justify-content: center;
-      z-index: 1000; backdrop-filter: blur(4px); background: rgba(0,0,0,0.35);
+      position: fixed; inset: 0; display: none; z-index: 1000;
+      background: rgba(0,0,0,0.35); /* backdrop */
+      /* place reader near top so close button shows immediately */
+      align-items: flex-start; justify-content: center;
+      padding-top: 28px;
     }
     .reader.open { display:flex; }
+
+    /* close button pinned to viewport and above content */
+    .reader-close {
+      position: fixed;
+      top: 18px;
+      right: 18px;
+      z-index: 1205; /* very high so always on top */
+      background: #fff;
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,0.08);
+      padding: 8px 10px;
+      cursor:pointer;
+      font-weight:600;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+
     .reader-article {
-      width: min(900px, 96%); max-height: 92vh; overflow: auto; padding: 0 0 36px 0;
-      background: #fff; border-radius: 10px; box-shadow: 0 20px 60px rgba(10,10,10,0.3);
+      width: min(900px, 96%);
+      max-height: calc(100vh - 80px);
+      overflow: auto; /* enable internal scrolling */
+      background:#fff; border-radius:10px; box-shadow: 0 20px 60px rgba(10,10,10,0.3);
+      position: relative; z-index: 1200; /* below close but above backdrop */
     }
-    /* Header image (hero) with blur-up */
-    .reader-hero { width:100%; height: 320px; border-top-left-radius:10px; border-top-right-radius:10px; overflow:hidden; background:#eee; position: relative; }
-    .reader-hero .placeholder {
-      position:absolute; inset:0; background-size:cover; background-position:center; filter: blur(10px) saturate(120%); transform: scale(1.05);
-      transition: opacity 420ms ease;
-    }
+
+    /* hero with blur-up */
+    .reader-hero { width:100%; height:320px; overflow:hidden; position:relative; background:#eee; border-top-left-radius:10px; border-top-right-radius:10px; }
+    .reader-hero .placeholder { position:absolute; inset:0; background-size:cover; background-position:center; filter: blur(10px) saturate(120%); transform:scale(1.05); transition: opacity 420ms ease; }
     .reader-hero img { width:100%; height:100%; object-fit:cover; display:block; opacity:0; transition: opacity 420ms ease; }
-    .reader-hero img.loaded { opacity: 1; }
-    .reader-hero .placeholder.hidden { opacity: 0; }
+    .reader-hero img.loaded { opacity:1; }
+    .reader-hero .placeholder.hidden { opacity:0; }
 
     .reader-content { padding: 28px 36px; }
-    .reader-article h1 { margin-top: 0; font-size: 34px; line-height:1.1; }
-    .reader-article .reader-meta { color: #6b6b6b; margin-bottom: 18px; }
-    .reader-article p { line-height: 1.7; font-size: 18px; color: #222; margin-top:1em; }
+    .reader-article h1 { margin-top:0; font-size:34px; line-height:1.1; }
+    .reader-meta { color:#6b6b6b; margin-bottom:18px; }
+    .reader-article p { line-height:1.7; font-size:18px; color:#222; margin-top:1em; }
 
-    .reader-close {
-      position: absolute; top: 20px; right: 20px; background: #fff; border-radius: 999px; border: 1px solid rgba(0,0,0,0.08);
-      padding: 8px 10px; cursor:pointer; font-weight:600; box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    /* inline image styles (content images) */
+    .inpost-img {
+      width:100%; max-width:100%; height:auto; display:block; margin: 18px 0; border-radius:8px; overflow:hidden; position:relative;
     }
+    .inpost-img img { width:100%; height:auto; display:block; opacity:0; transition:opacity 360ms ease; }
+    .inpost-img img.loaded { opacity:1; }
+    .inpost-img .placeholder { position:absolute; inset:0; background-size:cover; background-position:center; filter: blur(8px) saturate(120%); transform:scale(1.03); transition:opacity 360ms ease; }
 
     @media (max-width:880px) {
-      .app { grid-template-columns: 1fr; }
-      .sidebar { position: static; height: auto; display: none; margin-bottom: 12px; }
-      .sidebar.open { display:block; }
+      .app { grid-template-columns: 1fr; padding: 12px; }
+      .sidebar { position: static; height:auto; display:none; margin-bottom:12px; }
       .card { flex-direction: column; }
-      .thumb { width:100%; height:180px; flex: 0 0 auto; }
-      .reader-hero { height: 220px; }
+      .thumb { width:100%; height:180px; flex:0 0 auto; }
+      .reader-hero { height:220px; }
+      .reader-article { max-height: calc(100vh - 60px); }
     }
-
-    a { color: inherit; text-decoration: none; }
-    .tag { font-size: 12px; color: #6b6b6b; background: #fafafa; padding: 6px 8px; border-radius: 6px; }
   </style>
 </head>
 <body>
 
   <div class="app" id="app">
-    <!-- Sidebar -->
     <aside class="sidebar" id="sidebar" aria-label="Table of contents">
       <div>
         <h1 class="site-title">My Medium-like Blog</h1>
-        <p>Recent posts &amp; navigation. Click any title to open that article.</p>
+        <p>Click a title or read button to open reader.</p>
       </div>
       <ul class="toc" id="toc"></ul>
     </aside>
 
-    <!-- Main -->
     <main>
       <div class="controls">
         <div>
           <h2>Latest stories</h2>
           <div style="margin-top:6px; color:#6b6b6b; font-size:13px;">Curated picks just for you</div>
         </div>
-
         <div style="display:flex; gap:12px; align-items:center;">
-          <div style="display:none;" class="mobile-toggle">
-            <button class="btn ghost" id="toggleSidebar">Menu</button>
-          </div>
-          <div class="search">
-            <input id="search" type="search" placeholder="Search posts... (title or tag)" aria-label="Search posts" />
-          </div>
+          <input id="search" placeholder="Search posts..." style="padding:8px;border-radius:8px;border:1px solid #e6e6e6" />
         </div>
       </div>
 
@@ -160,12 +132,12 @@
   <div class="reader" id="reader" aria-hidden="true" role="dialog" aria-modal="true">
     <button class="reader-close" id="readerClose" aria-label="Close reader (Esc)">✕</button>
     <article class="reader-article" id="readerArticle" tabindex="0">
-      <!-- hero + content injected by JS -->
+      <!-- inserted by JS -->
     </article>
   </div>
 
   <script>
-    /* Sample posts with image and placeholder (tiny blurred) */
+    /* sample posts: added inline images (data-placeholder, data-src inside content) */
     const posts = [
       {
         id: 'post-1',
@@ -174,14 +146,17 @@
         date: '2025-09-09',
         tags: ['design','ux','readability'],
         image: 'https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=1600&auto=format&fit=crop&crop=entropy',
-        // placeholder should be a tiny blurred version — replace with your low-res url/data-uri
         placeholder: 'https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=10&w=40&auto=format&fit=crop&crop=entropy',
-        excerpt: `Readers crave focus. In this piece we cover typography choices, layout strategies, and small UX details that dramatically improve reading comprehension and time on page.`,
-        content: `<p>Readers crave focus. To design a reader-friendly UI, start with typography: use a comfortable measure (line length), slightly larger font sizes for body copy, and increased line-height. Avoid high-contrast pure black on pure white; a soft dark gray reduces eye strain.</p>
-          <p>Next, structure content: clear headings, short paragraphs, and callouts help scanability. Consider implementing a "read mode" that removes distractions (navigation, ads, sidebars) to help readers immerse themselves.</p>
-          <h3>Micro-interactions matter</h3>
-          <p>Small animations, like smooth scrolling or subtle hover states, make the interface feel alive and polished. But keep them fast and unobtrusive — nothing should break the reading flow.</p>
-          <p>Finally, validate changes with metrics: reading time, completion rate, and scroll depth.</p>`
+        excerpt: `Readers crave focus. Typography, layout and micro-interactions matter.`,
+        /* content includes an inline image block — note: data-src/data-placeholder will be recognized */
+        content: `
+          <p>Readers crave focus. To design a reader-friendly UI, start with typography: use a comfortable measure (line length), slightly larger font sizes for body copy, and increased line-height.</p>
+          <div class="inpost-img" data-placeholder="https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=10&w=80&auto=format&fit=crop&crop=entropy">
+            <img data-src="https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=1200&auto=format&fit=crop&crop=entropy" alt="typography example">
+          </div>
+          <p>Next, structure content: clear headings, short paragraphs, and callouts help scanability.</p>
+          <p>Small animations, like smooth scrolling or subtle hover states, make the interface feel alive and polished.</p>
+        `
       },
       {
         id: 'post-2',
@@ -191,251 +166,195 @@
         tags: ['llm','rag','devops'],
         image: 'https://images.unsplash.com/photo-1548095115-45697e3c1f6a?q=80&w=1600&auto=format&fit=crop&crop=entropy',
         placeholder: 'https://images.unsplash.com/photo-1548095115-45697e3c1f6a?q=10&w=40&auto=format&fit=crop&crop=entropy',
-        excerpt: `This guide explains how to wire up a local Retrieval-Augmented Generation stack: document ingestion, vector db with Chroma, and local LLM hosting with Ollama.`,
-        content: `<p>Setting up a local RAG system can accelerate experimentation. The key parts are: document preprocessing, chunking strategy (semantic-aware chunk size), vector storage (Chroma / FAISS), and the LLM (Ollama or local LLaMA variants).</p>
-          <p>Keep a clean ingestion pipeline: parse documents, normalize whitespace, and preserve context windows. Use embedding batching and cache results to avoid repeated compute.</p>
-          <h3>Practical tips</h3>
-          <p>Use small batches and monitor memory usage. Separate ingestion and query-time components so you can re-index without downtime.</p>`
-      },
-      {
-        id: 'post-3',
-        title: 'Thumbnail Selection Techniques to Improve Click-Through',
-        author: 'Priya Menon',
-        date: '2025-07-21',
-        tags: ['ml','video','engagement'],
-        image: 'https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?q=80&w=1600&auto=format&fit=crop&crop=entropy',
-        placeholder: 'https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?q=10&w=40&auto=format&fit=crop&crop=entropy',
-        excerpt: `Choosing thumbnails is both art and science. We'll go over heuristics and ML approaches to pick frames that increase click-through rates.`,
-        content: `<p>Thumbnails are often the first impression. Common heuristics: faces, high-contrast frames, and action frames perform well. ML pipelines can evaluate candidate frames by predicted CTR using historical labels.</p>
-          <p>Use A/B testing to validate — what worked for one audience may not work for another. Also watch for platform-specific constraints (aspect ratio, cropping).</p>`
+        excerpt: `A practical local RAG stack guide.`,
+        content: `
+          <p>Key parts: document preprocessing, chunking, vector storage, and your LLM.</p>
+          <div class="inpost-img" data-placeholder="https://images.unsplash.com/photo-1548095115-45697e3c1f6a?q=10&w=80&auto=format&fit=crop&crop=entropy">
+            <img data-src="https://images.unsplash.com/photo-1548095115-45697e3c1f6a?q=80&w=1200&auto=format&fit=crop&crop=entropy" alt="local rag diagram">
+          </div>
+          <p>Keep a clean pipeline and cache embeddings to avoid repeated compute.</p>
+        `
       }
     ];
 
-    /* UI elements */
+    /* DOM refs */
     const tocEl = document.getElementById('toc');
     const articlesEl = document.getElementById('articles');
     const reader = document.getElementById('reader');
     const readerArticle = document.getElementById('readerArticle');
     const readerClose = document.getElementById('readerClose');
     const searchInput = document.getElementById('search');
-    const sidebar = document.getElementById('sidebar');
 
-    /* IntersectionObserver for lazy-loading images (thumbnails and images in DOM) */
-    const ioOptions = { root: null, rootMargin: '200px', threshold: 0.01 };
+    /* IntersectionObserver for images (thumbnails + content images + reader hero if handled lazily) */
+    const imgIoOptions = { root: null, rootMargin: '200px', threshold: 0.01 };
     const imgObserver = new IntersectionObserver((entries, obs) => {
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;
         const el = entry.target;
-        // el is the <img> element with data-src
         const src = el.dataset.src;
         if (src) {
-          // set native attributes
           el.src = src;
           el.loading = 'lazy';
           el.decoding = 'async';
-          // when loaded, add .loaded and hide placeholder sibling
           el.onload = () => {
             el.classList.add('loaded');
-            const ph = el.parentElement.querySelector('.placeholder');
+            // hide placeholder (might be sibling)
+            const ph = el.closest('.thumb')?.querySelector('.placeholder') || el.parentElement.querySelector('.placeholder');
             if (ph) ph.classList.add('hidden');
-            // remove data-src to avoid reprocessing
             delete el.dataset.src;
           };
-          // stop observing
           obs.unobserve(el);
         }
       });
-    }, ioOptions);
+    }, imgIoOptions);
 
+    /* helper: create TOC item */
     function createTocItem(post) {
       const li = document.createElement('li');
       const btn = document.createElement('button');
       btn.textContent = post.title;
-      btn.title = 'Open "' + post.title + '"';
       btn.onclick = () => openReader(post.id);
-      btn.onkeydown = (e) => { if(e.key === 'Enter') openReader(post.id); };
       li.appendChild(btn);
       return li;
     }
 
+    /* create article card with thumb (placeholder + lazy img) */
     function createArticleCard(post) {
       const card = document.createElement('article');
       card.className = 'card';
       card.id = post.id;
 
-      // thumb wrapper with placeholder and lazy img
       const thumb = document.createElement('div');
       thumb.className = 'thumb';
-
-      const placeholder = document.createElement('div');
-      placeholder.className = 'placeholder';
-      placeholder.style.backgroundImage = `url("${escapeHtmlAttr(post.placeholder || '')}")`;
-      thumb.appendChild(placeholder);
-
+      const ph = document.createElement('div');
+      ph.className = 'placeholder';
+      ph.style.backgroundImage = `url("${escapeAttr(post.placeholder || '')}")`;
+      thumb.appendChild(ph);
       const img = document.createElement('img');
-      img.alt = post.title + ' — thumbnail';
+      img.alt = post.title + ' thumbnail';
       img.setAttribute('data-src', post.image || '');
-      img.loading = 'lazy';
-      img.decoding = 'async';
-      // will be observed for lazy load
       thumb.appendChild(img);
 
-      // body
-      const body = document.createElement('div');
-      body.className = 'card-body';
+      const body = document.createElement('div'); body.className = 'card-body';
+      const h3 = document.createElement('h3'); h3.textContent = post.title; h3.onclick = () => openReader(post.id);
+      const meta = document.createElement('div'); meta.className = 'meta'; meta.textContent = `${post.author} · ${new Date(post.date).toLocaleDateString()}`;
+      const excerpt = document.createElement('p'); excerpt.className = 'excerpt'; excerpt.textContent = post.excerpt;
 
-      const h3 = document.createElement('h3');
-      h3.textContent = post.title;
+      const tagWrap = document.createElement('div'); tagWrap.style.display='flex'; tagWrap.style.gap='8px';
+      (post.tags||[]).forEach(t => { const s=document.createElement('span'); s.className='tag'; s.textContent=t; tagWrap.appendChild(s); });
 
-      const meta = document.createElement('div');
-      meta.className = 'meta';
-      meta.textContent = `${post.author} · ${new Date(post.date).toLocaleDateString()}`;
+      const actions = document.createElement('div'); actions.className='actions';
+      const readBtn = document.createElement('button'); readBtn.className='btn'; readBtn.textContent='Read'; readBtn.onclick = () => openReader(post.id);
+      const share = document.createElement('button'); share.className='btn ghost'; share.textContent='Share'; share.onclick = () => navigator.clipboard?.writeText(location.href + '#' + post.id).then(()=> alert('Link copied'));
+      actions.appendChild(share); actions.appendChild(readBtn);
 
-      const tagWrap = document.createElement('div');
-      tagWrap.style.display = 'flex';
-      tagWrap.style.gap = '8px';
-      post.tags.forEach(t => {
-        const span = document.createElement('span');
-        span.className = 'tag';
-        span.textContent = t;
-        tagWrap.appendChild(span);
-      });
+      body.appendChild(h3); body.appendChild(meta); body.appendChild(tagWrap); body.appendChild(excerpt); body.appendChild(actions);
+      card.appendChild(thumb); card.appendChild(body);
 
-      const excerpt = document.createElement('p');
-      excerpt.className = 'excerpt';
-      excerpt.textContent = post.excerpt;
-
-      const actions = document.createElement('div');
-      actions.className = 'actions';
-
-      const readBtn = document.createElement('button');
-      readBtn.className = 'btn';
-      readBtn.textContent = 'Read';
-      readBtn.onclick = () => openReader(post.id);
-
-      const more = document.createElement('button');
-      more.className = 'btn ghost';
-      more.textContent = 'Share';
-      more.onclick = () => navigator.clipboard?.writeText(location.href + '#' + post.id).then(()=> alert('Post link copied to clipboard'));
-
-      actions.appendChild(more);
-      actions.appendChild(readBtn);
-
-      h3.onclick = () => openReader(post.id);
-
-      body.appendChild(h3);
-      body.appendChild(meta);
-      body.appendChild(tagWrap);
-      body.appendChild(excerpt);
-      body.appendChild(actions);
-
-      card.appendChild(thumb);
-      card.appendChild(body);
-
-      // observe image for lazy load
+      // observe image
       imgObserver.observe(img);
 
       return card;
     }
 
-    function renderAll(postsToRender = posts) {
-      tocEl.innerHTML = '';
-      articlesEl.innerHTML = '';
-      postsToRender.forEach(p => {
-        tocEl.appendChild(createTocItem(p));
-        articlesEl.appendChild(createArticleCard(p));
-      });
+    function renderAll(list = posts) {
+      tocEl.innerHTML = ''; articlesEl.innerHTML = '';
+      list.forEach(p => { tocEl.appendChild(createTocItem(p)); articlesEl.appendChild(createArticleCard(p)); });
     }
 
-    /* Open reader: we must ensure hero image loads immediately (not just on intersection) */
+    /* Open reader — ensure hero loads immediately and inline images inside content are hooked to observer */
     function openReader(id) {
-      const post = posts.find(p => p.id === id);
-      if (!post) return;
-
-      // build reader hero + content with placeholder + data-src
+      const post = posts.find(p => p.id === id); if (!post) return;
       readerArticle.innerHTML = `
         <div class="reader-hero" aria-hidden="true">
-          <div class="placeholder" style="background-image: url('${escapeHtmlAttr(post.placeholder || '')}');"></div>
-          <img data-src="${escapeHtmlAttr(post.image || '')}" alt="${escapeHtmlAttr(post.title)} — header image" />
+          <div class="placeholder" style="background-image: url('${escapeAttr(post.placeholder||'')}')"></div>
+          <img data-src="${escapeAttr(post.image||'')}" alt="${escapeAttr(post.title)} hero">
         </div>
         <div class="reader-content">
           <header>
             <h1>${escapeHtml(post.title)}</h1>
             <div class="reader-meta">${escapeHtml(post.author)} · ${new Date(post.date).toLocaleDateString()}</div>
           </header>
-          <section>${post.content}</section>
+          <section class="post-body">${post.content}</section>
         </div>
       `;
-
-      reader.classList.add('open');
-      reader.setAttribute('aria-hidden','false');
-
-      // focus for keyboard
+      reader.classList.add('open'); reader.setAttribute('aria-hidden','false');
+      // focus for keyboard scrolling
       setTimeout(()=> readerArticle.focus(), 80);
 
-      // since reader is visible, eagerly load hero image (don't wait for intersection)
+      // eagerly load hero image (not waiting for intersection)
       const heroImg = readerArticle.querySelector('.reader-hero img');
-      const heroPlaceholder = readerArticle.querySelector('.reader-hero .placeholder');
-      if (heroImg) {
-        const src = heroImg.dataset.src;
-        if (src) {
-          // load image right away
-          heroImg.src = src;
-          heroImg.loading = 'lazy';
-          heroImg.decoding = 'async';
-          heroImg.onload = () => {
-            heroImg.classList.add('loaded');
-            if (heroPlaceholder) heroPlaceholder.classList.add('hidden');
-            delete heroImg.dataset.src;
-          };
-        }
+      const heroPh = readerArticle.querySelector('.reader-hero .placeholder');
+      if (heroImg && heroImg.dataset.src) {
+        heroImg.src = heroImg.dataset.src;
+        heroImg.loading = 'lazy';
+        heroImg.decoding = 'async';
+        heroImg.onload = () => { heroImg.classList.add('loaded'); if (heroPh) heroPh.classList.add('hidden'); delete heroImg.dataset.src; };
       }
 
-      // push hash for deep-linking
-      history.replaceState(null, '', '#' + id);
+      // Hook all inpost images (they are <div class="inpost-img" data-placeholder> <img data-src=...> )
+      const inpostWrappers = readerArticle.querySelectorAll('.inpost-img');
+      inpostWrappers.forEach(w => {
+        const phUrl = w.dataset.placeholder || '';
+        if (phUrl) {
+          let ph = w.querySelector('.placeholder');
+          if (!ph) {
+            ph = document.createElement('div'); ph.className='placeholder';
+            ph.style.backgroundImage = `url('${escapeAttr(phUrl)}')`;
+            w.insertBefore(ph, w.firstChild);
+          }
+        }
+        const img = w.querySelector('img');
+        if (img && img.dataset.src) {
+          // observe the image so it lazy loads and fades in
+          imgObserver.observe(img);
+        }
+      });
+
+      // Also observe any images accidentally inserted with data-src directly inside post-body
+      const postImgs = readerArticle.querySelectorAll('.post-body img[data-src]');
+      postImgs.forEach(i => imgObserver.observe(i));
+
+      // push hash
+      history.replaceState(null,'','#' + id);
     }
 
     function closeReader() {
-      reader.classList.remove('open');
-      reader.setAttribute('aria-hidden','true');
-      // remove hash if it matches a post
-      if(location.hash && posts.some(p => '#' + p.id === location.hash)) {
-        history.replaceState(null,'', location.pathname + location.search);
-      }
-      // optional: cleanup reader content after a small delay
-      setTimeout(()=> { readerArticle.innerHTML = ''; }, 420);
+      reader.classList.remove('open'); reader.setAttribute('aria-hidden','true');
+      // remove hash if it matched
+      if (location.hash && posts.some(p => '#' + p.id === location.hash)) history.replaceState(null,'', location.pathname + location.search);
+      // cleanup content after a short delay to allow fade
+      setTimeout(()=> { // unobserve any observed images inside reader (best-effort)
+        const imgs = readerArticle.querySelectorAll('img');
+        imgs.forEach(i => { try { imgObserver.unobserve(i); } catch(e){} });
+        readerArticle.innerHTML = '';
+      }, 300);
     }
 
     readerClose.addEventListener('click', closeReader);
     reader.addEventListener('click', (e) => { if (e.target === reader) closeReader(); });
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeReader(); });
 
-    renderAll();
-
     // search filter
     searchInput.addEventListener('input', (e) => {
       const q = e.target.value.trim().toLowerCase();
       if (!q) { renderAll(); return; }
-      const filtered = posts.filter(p => p.title.toLowerCase().includes(q) || p.tags.join(' ').toLowerCase().includes(q));
+      const filtered = posts.filter(p => p.title.toLowerCase().includes(q) || (p.tags||[]).join(' ').toLowerCase().includes(q));
       renderAll(filtered);
     });
 
-    // deep-linking: open reader if hash exists
+    // deep-link open if hash present
     window.addEventListener('load', () => {
+      renderAll();
       if (location.hash) {
         const id = location.hash.slice(1);
-        const exists = posts.some(p => p.id === id);
-        if (exists) openReader(id);
+        if (posts.some(p => p.id === id)) openReader(id);
       }
     });
 
-    /* Utility functions */
-    function escapeHtml(str) {
-      return String(str).replace(/[&<>"']/g, (s) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[s]));
-    }
-    function escapeHtmlAttr(str) {
-      return String(str || '').replace(/["']/g, (s) => (s === '"' ? '&quot;' : '&#39;'));
-    }
+    /* utilities */
+    function escapeHtml(s){ return String(s).replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch])); }
+    function escapeAttr(s){ return String(s||'').replace(/["']/g, ch => ch === '"' ? '&quot;' : '&#39;'); }
   </script>
 </body>
 </html>
