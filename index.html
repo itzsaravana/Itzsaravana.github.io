@@ -40,7 +40,10 @@
   .search-input:focus{outline:none;box-shadow:0 6px 18px rgba(11,116,222,0.06)}
 
   @media(max-width:880px){
-    .about-text{display:none} /* conserve space on small screens */
+    /* keep the name/title visible on small screens (slightly smaller font to conserve space) */
+    .about-text{display:flex;flex-direction:column;min-width:0}
+    .about-text .name{font-size:13px}
+    .about-text .role{font-size:11px}
     .search-wrap{flex:1 1 auto;max-width:420px}
     .search-input{font-size:14px}
   }
@@ -322,25 +325,26 @@ function renderAll(list = posts){
   list.forEach(p => { tocEl.appendChild(createTocItem(p)); articlesEl.appendChild(createArticleCard(p)); });
 }
 
-/* About panel toggle */
+/* About panel toggle (stop propagation to prevent immediate close) */
 function toggleAbout(force){
   const open = aboutPanel.classList.contains('open');
   const shouldOpen = typeof force === 'boolean' ? force : !open;
   if (shouldOpen) {
-    // position about panel directly under the about-mini element if possible
     aboutPanel.classList.add('open'); aboutToggle.setAttribute('aria-expanded','true'); aboutPanel.setAttribute('aria-hidden','false');
-    // ensure about panel visible within viewport (simple clamp)
     requestAnimationFrame(()=> {
       const rect = aboutPanel.getBoundingClientRect();
       if (rect.right > window.innerWidth - 8) aboutPanel.style.left = (window.innerWidth - rect.width - 12) + 'px';
     });
   } else {
     aboutPanel.classList.remove('open'); aboutToggle.setAttribute('aria-expanded','false'); aboutPanel.setAttribute('aria-hidden','true');
-    aboutPanel.style.left = ''; // reset
+    aboutPanel.style.left = '';
   }
 }
-aboutToggle.addEventListener('click', ()=> toggleAbout());
-aboutToggle.addEventListener('keydown', (e)=> { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleAbout(); } });
+// Toggle click: stop propagation so the document click handler won't immediately close it
+aboutToggle.addEventListener('click', (e)=> { e.stopPropagation(); toggleAbout(); });
+aboutToggle.addEventListener('keydown', (e)=> { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); e.stopPropagation(); toggleAbout(); } });
+// Don't let clicks inside the about panel bubble to document
+aboutPanel.addEventListener('click', (e)=> { e.stopPropagation(); });
 // close about if click outside
 document.addEventListener('click', (e)=> {
   if (!aboutPanel.contains(e.target) && !aboutToggle.contains(e.target)) toggleAbout(false);
@@ -474,7 +478,6 @@ function showToast(msg, ms=2000){ toast.textContent = msg; toast.classList.add('
 
 /* update CSS variable for topbar height so overlays line up on all devices/zooms */
 function updateTopbarHeight(){
-  // measure topbar and set CSS variable
   const h = topbar.getBoundingClientRect().height || 64;
   document.documentElement.style.setProperty('--topbar-h', Math.max(48, Math.round(h)) + 'px');
 }
@@ -490,11 +493,8 @@ window.addEventListener('load', ()=> {
   }
 });
 
-/* ensure we re-evaluate images when cards are re-rendered (renderAll uses imgIo.observe already) */
-
-/* initial focus handling for keyboard users */
+/* initial focus handling for keyboard users (slash to focus search) */
 document.addEventListener('DOMContentLoaded', ()=> {
-  // a small accessible improvement: focus the search input on slash key
   document.addEventListener('keydown', (e)=> {
     if (e.key === '/' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
       e.preventDefault(); topSearch.focus(); topSearch.select();
