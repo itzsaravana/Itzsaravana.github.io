@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Medium-like Blog — fixed images, create-from-search, About tab</title>
+  <title>Medium-like Blog — About on top + Search only</title>
   <style>
     /* Reset & base */
     * { box-sizing: border-box; }
@@ -25,24 +25,21 @@
     .controls h2 { margin:0; font-size:20px; }
     .meta-note { color:#6b6b6b; font-size:13px; }
 
-    /* Search block with create button */
+    /* About area (now on top) */
+    .about-section { background:#fff; border-radius:12px; padding:18px; box-shadow:0 6px 18px rgba(20,20,20,0.04); margin-bottom:18px; }
+    .about-section h2 { margin-top:0; }
+
+    /* Search */
     .search-wrap { display:flex; gap:8px; align-items:center; }
-    .search { position:relative; display:flex; align-items:center; }
     .search input {
       padding:10px 12px; border-radius:10px; border:1px solid #e6e6e6; width:320px; min-width:120px;
-      transition: width 160ms ease;
     }
-    .search input:focus { width:420px; }
-    .create-from-search {
-      display:inline-flex; align-items:center; justify-content:center;
-      padding:8px 10px; border-radius:10px; border:none; background:#0b74de; color:#fff; cursor:pointer; font-weight:600;
-    }
+    .search input:focus { outline:2px solid rgba(11,116,222,0.12); }
 
     /* Article list */
     .articles { display:grid; grid-template-columns: repeat(auto-fit, minmax(320px,1fr)); gap:18px; }
     .card { background:#fff; border-radius:12px; padding:14px; box-shadow:0 6px 18px rgba(20,20,20,0.04); display:flex; gap:12px; min-height:120px; align-items:flex-start; }
     .thumb { width:120px; height:80px; flex:0 0 120px; border-radius:8px; overflow:hidden; position:relative; background:#ddd; }
-    /* placeholder behind image to avoid double-exposure "burn" */
     .thumb .placeholder { position:absolute; inset:0; background-size:cover; background-position:center; filter: blur(8px) saturate(120%); transform:scale(1.05); transition:opacity 360ms ease; z-index:0; }
     .thumb img { position:relative; z-index:1; width:100%; height:100%; object-fit:cover; display:block; opacity:0; transition:opacity 360ms ease; }
     .thumb img.loaded { opacity:1; }
@@ -59,13 +56,12 @@
     .btn { padding:8px 14px; border-radius:999px; border:none; cursor:pointer; font-weight:600; background:#111; color:#fff; }
     .btn.ghost { background:transparent; border:1px solid #e6e6e6; color:#111; padding:6px 12px; }
 
-    /* Reader overlay: pinned close + top alignment */
+    /* Reader overlay */
     .reader { position:fixed; inset:0; display:none; z-index:1000; background:rgba(0,0,0,0.35); align-items:flex-start; justify-content:center; padding-top:28px; }
     .reader.open { display:flex; }
     .reader-close { position:fixed; top:18px; right:18px; z-index:1300; background:#fff; border-radius:999px; border:1px solid rgba(0,0,0,0.08); padding:8px 10px; cursor:pointer; font-weight:600; box-shadow:0 8px 20px rgba(0,0,0,0.12); }
     .reader-article { width:min(900px,96%); max-height: calc(100vh - 80px); overflow:auto; background:#fff; border-radius:10px; box-shadow:0 20px 60px rgba(10,10,10,0.3); position:relative; z-index:1250; }
 
-    /* hero */
     .reader-hero { width:100%; height:320px; overflow:hidden; position:relative; background:#eee; border-top-left-radius:10px; border-top-right-radius:10px; }
     .reader-hero .placeholder { position:absolute; inset:0; background-size:cover; background-position:center; filter: blur(10px) saturate(120%); transform:scale(1.05); transition:opacity 420ms ease; z-index:0; }
     .reader-hero img { position:relative; z-index:1; width:100%; height:100%; object-fit:cover; display:block; opacity:0; transition:opacity 420ms ease; }
@@ -82,24 +78,18 @@
 
     .reader-article p { line-height:1.7; font-size:18px; color:#222; margin-top:1em; }
 
-    /* inline in-post images: placeholder behind real image; no burn */
     .inpost-img { width:100%; display:block; margin:18px 0; border-radius:8px; position:relative; overflow:hidden; background:#eee; }
     .inpost-img .placeholder { position:absolute; inset:0; background-size:cover; background-position:center; filter: blur(8px) saturate(120%); transform:scale(1.03); transition:opacity 360ms ease; z-index:0; }
     .inpost-img img { position:relative; z-index:1; width:100%; height:auto; display:block; opacity:0; transition:opacity 360ms ease; }
     .inpost-img img.loaded { opacity:1; }
     .inpost-img .placeholder.hidden { opacity:0; }
 
-    /* About area (main replacement) */
-    .about-section { background:#fff; border-radius:12px; padding:18px; box-shadow:0 6px 18px rgba(20,20,20,0.04); }
-
-    /* Responsive */
     @media (max-width:880px) {
       .app { grid-template-columns:1fr; padding:12px; }
       .sidebar { position:static; height:auto; display:none; margin-bottom:12px; }
       .card { flex-direction:column; }
       .thumb { width:100%; height:180px; flex:0 0 auto; }
       .search input { width:160px; }
-      .search input:focus { width:260px; }
       .reader-hero { height:220px; }
       .reader-article { max-height: calc(100vh - 60px); }
     }
@@ -110,21 +100,31 @@
 <div class="app" id="app">
   <aside class="sidebar" id="sidebar" aria-label="Table of contents">
     <h1 class="site-title">My Medium-like Blog</h1>
-    <p style="margin:0 0 12px;color:#5b5b5b;font-size:13px">Navigate posts or view About.</p>
-
-    <div style="margin-bottom:12px;">
-      <button class="btn ghost" id="showArticlesBtn" style="width:100%;margin-bottom:8px;">Articles</button>
-      <button class="btn ghost" id="showAboutBtn" style="width:100%;">About</button>
-    </div>
+    <p style="margin:0 0 12px;color:#5b5b5b;font-size:13px">Navigate posts below. Click title or Read.</p>
 
     <hr style="border:none;height:1px;background:#f0f0f0;margin:12px 0;"/>
-
     <strong style="display:block;margin-bottom:8px;">Table of contents</strong>
     <ul class="toc" id="toc" role="list"></ul>
   </aside>
 
   <main id="mainArea">
-    <div class="controls">
+    <!-- ABOUT on top -->
+    <section class="about-section" id="aboutTop">
+      <h2>About Me</h2>
+      <p><strong>Name:</strong> Saravana Kumar</p>
+      <p><strong>Short bio:</strong> I'm a software engineer and ML practitioner focusing on production-ready RAG systems, local LLM setups, and developer tooling. I love designing robust, simple systems.</p>
+      <h3>Career path</h3>
+      <ol>
+        <li>Software Engineer — Frontend & Backend</li>
+        <li>Data Scientist / ML Engineer — churn models, RAG systems</li>
+        <li>Platform Engineer — Docker, AWS (ECS/Fargate)</li>
+        <li>Current — building AI-enabled tooling and LLM integrations</li>
+      </ol>
+      <p><strong>Contact:</strong> add your email or links here.</p>
+    </section>
+
+    <!-- Controls -->
+    <div class="controls" id="controls">
       <div>
         <h2>Latest stories</h2>
         <div class="meta-note">Curated picks just for you</div>
@@ -134,30 +134,11 @@
         <div class="search" role="search">
           <input id="search" type="search" placeholder="Search posts or tags" aria-label="Search posts"/>
         </div>
-        <button id="createFromSearchBtn" class="create-from-search" title="Create a new post from this search">＋</button>
       </div>
     </div>
 
-    <!-- Articles container -->
+    <!-- Articles -->
     <section class="articles" id="articles" aria-live="polite"></section>
-
-    <!-- About container (hidden by default) -->
-    <section id="about" style="display:none;">
-      <div class="about-section">
-        <h2>About Me</h2>
-        <p><strong>Name:</strong> Saravana Kumar</p>
-        <p><strong>Short bio:</strong> (Replace this text) — I'm a software engineer / ML practitioner specializing in building production-ready RAG systems, local LLM setups, and developer tooling. I enjoy building fast, understandable systems and teaching others.</p>
-        <h3>Career path</h3>
-        <ol>
-          <li>Software Engineer — Frontend & Backend (Start)</li>
-          <li>Data Scientist / ML Engineer — built churn models, RAG systems</li>
-          <li>Platform Engineer — deployment, Docker, AWS (ECS/Fargate)</li>
-          <li>Current — building AI-enabled tools, LLM integrations, and developer platforms</li>
-        </ol>
-        <h3>Contact</h3>
-        <p>Email / links: add your contact details here.</p>
-      </div>
-    </section>
   </main>
 </div>
 
@@ -168,14 +149,8 @@
 </div>
 
 <script>
-/* --------------------------
-   Data: sample posts
-   For inline images in `content`, put:
-     <div class="inpost-img" data-placeholder="...">
-       <img data-src="..." alt="..."/>
-     </div>
-   -------------------------- */
-let posts = [
+/* Sample posts (keep as previously) */
+const posts = [
   {
     id:'post-1',
     title:'Designing for Focus: How to Build Reader-Friendly UIs',
@@ -209,29 +184,32 @@ let posts = [
       </div>
       <p>Keep a clean pipeline and cache embeddings to avoid repeated compute.</p>
     `
+  },
+  {
+    id:'post-3',
+    title:'Thumbnail Selection Techniques to Improve Click-Through',
+    author:'Priya Menon',
+    date:'2025-07-21',
+    tags:['ml','video','engagement'],
+    image:'https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?q=80&w=1600&auto=format&fit=crop&crop=entropy',
+    placeholder:'https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?q=10&w=40&auto=format&fit=crop&crop=entropy',
+    excerpt:'Choosing thumbnails is both art and science.',
+    content: `
+      <p>Thumbnails are often the first impression. Common heuristics: faces, high-contrast frames, and action frames perform well.</p>
+      <p>Use A/B testing to validate — what worked for one audience may not work for another.</p>
+    `
   }
 ];
 
-/* --------------------------
-   DOM refs
-   -------------------------- */
+/* DOM refs */
 const tocEl = document.getElementById('toc');
 const articlesEl = document.getElementById('articles');
 const reader = document.getElementById('reader');
 const readerArticle = document.getElementById('readerArticle');
 const readerClose = document.getElementById('readerClose');
 const searchInput = document.getElementById('search');
-const createBtn = document.getElementById('createFromSearchBtn');
-const showAboutBtn = document.getElementById('showAboutBtn');
-const showArticlesBtn = document.getElementById('showArticlesBtn');
-const aboutSection = document.getElementById('about');
-const mainArea = document.getElementById('mainArea');
 
-/* --------------------------
-   Image lazy loader (IntersectionObserver)
-   Observes <img data-src="..."> inside list and content.
-   Placeholder elements are siblings or parent .placeholder.
-   -------------------------- */
+/* Image lazy loader (IntersectionObserver) */
 const imgIoOptions = { root: null, rootMargin:'200px', threshold:0.01 };
 const imgObserver = new IntersectionObserver((entries, obs) => {
   entries.forEach(entry => {
@@ -244,7 +222,6 @@ const imgObserver = new IntersectionObserver((entries, obs) => {
     img.decoding = img.decoding || 'async';
     img.onload = () => {
       img.classList.add('loaded');
-      // hide placeholder (either parent .placeholder element or parent sibling)
       const ph = img.closest('.thumb')?.querySelector('.placeholder') || img.parentElement.querySelector('.placeholder');
       if (ph) ph.classList.add('hidden');
       delete img.dataset.src;
@@ -253,17 +230,13 @@ const imgObserver = new IntersectionObserver((entries, obs) => {
   });
 }, imgIoOptions);
 
-/* --------------------------
-   Helpers: escaping, read time
-   -------------------------- */
+/* Utilities */
 function escapeHtml(s){ return String(s||'').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch])); }
 function escapeAttr(s){ return String(s||'').replace(/["']/g, ch => ch === '"' ? '&quot;' : '&#39;'); }
 function stripHtml(html){ return String(html||'').replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim(); }
 function estimateReadTime(text){ const words = stripHtml(text).split(/\s+/).filter(Boolean).length; const m = Math.max(1, Math.round(words / 200)); return `${m} min read`; }
 
-/* --------------------------
-   Rendering functions
-   -------------------------- */
+/* Rendering */
 function createTocItem(post) {
   const li = document.createElement('li');
   const btn = document.createElement('button');
@@ -275,60 +248,38 @@ function createTocItem(post) {
 }
 
 function createArticleCard(post) {
-  const card = document.createElement('article');
-  card.className = 'card';
-  card.id = post.id;
-
-  const thumb = document.createElement('div'); thumb.className = 'thumb';
-  const ph = document.createElement('div'); ph.className = 'placeholder';
-  ph.style.backgroundImage = `url("${escapeAttr(post.placeholder||'')}")`;
+  const card = document.createElement('article'); card.className='card'; card.id = post.id;
+  const thumb = document.createElement('div'); thumb.className='thumb';
+  const ph = document.createElement('div'); ph.className='placeholder'; ph.style.backgroundImage = `url("${escapeAttr(post.placeholder||'')}")`;
   const img = document.createElement('img'); img.alt = post.title + ' thumbnail'; img.setAttribute('data-src', post.image || '');
   thumb.appendChild(ph); thumb.appendChild(img);
 
-  const body = document.createElement('div'); body.className = 'card-body';
+  const body = document.createElement('div'); body.className='card-body';
   const h3 = document.createElement('h3'); h3.textContent = post.title; h3.onclick = () => openReader(post.id);
-
-  const meta = document.createElement('div'); meta.className='meta';
-  meta.textContent = `${post.author} · ${new Date(post.date).toLocaleDateString()} · ${estimateReadTime(post.content)}`;
-
+  const meta = document.createElement('div'); meta.className='meta'; meta.textContent = `${post.author} · ${new Date(post.date).toLocaleDateString()} · ${estimateReadTime(post.content)}`;
   const tagWrap = document.createElement('div'); tagWrap.style.display='flex'; tagWrap.style.gap='8px';
-  (post.tags||[]).forEach(t => { const s=document.createElement('span'); s.className='tag'; s.textContent = t; tagWrap.appendChild(s); });
+  (post.tags||[]).forEach(t => { const s=document.createElement('span'); s.className='tag'; s.textContent=t; tagWrap.appendChild(s); });
 
   const excerpt = document.createElement('p'); excerpt.className='excerpt'; excerpt.textContent = post.excerpt;
-
   const actions = document.createElement('div'); actions.className='actions';
   const readBtn = document.createElement('button'); readBtn.className='btn'; readBtn.textContent='Read'; readBtn.onclick = () => openReader(post.id);
   const share = document.createElement('button'); share.className='btn ghost'; share.textContent='Share'; share.onclick = () => navigator.clipboard?.writeText(location.href + '#' + post.id).then(()=> alert('Link copied'));
-
   actions.appendChild(share); actions.appendChild(readBtn);
 
   body.appendChild(h3); body.appendChild(meta); body.appendChild(tagWrap); body.appendChild(excerpt); body.appendChild(actions);
   card.appendChild(thumb); card.appendChild(body);
-
-  // observe thumbnail img
   imgObserver.observe(img);
-
   return card;
 }
 
 function renderAll(list = posts) {
-  // hide about if visible
-  aboutSection.style.display = 'none';
-  articlesEl.style.display = '';
-  tocEl.innerHTML = '';
-  articlesEl.innerHTML = '';
-  list.forEach(p => {
-    tocEl.appendChild(createTocItem(p));
-    articlesEl.appendChild(createArticleCard(p));
-  });
+  tocEl.innerHTML = ''; articlesEl.innerHTML = '';
+  list.forEach(p => { tocEl.appendChild(createTocItem(p)); articlesEl.appendChild(createArticleCard(p)); });
 }
 
-/* --------------------------
-   Reader: open/close
-   -------------------------- */
+/* Reader open/close */
 function openReader(id) {
-  const post = posts.find(p=> p.id === id); if(!post) return;
-  // Build HTML
+  const post = posts.find(p=>p.id===id); if(!post) return;
   readerArticle.innerHTML = `
     <div class="reader-hero" aria-hidden="true">
       <div class="placeholder" style="background-image:url('${escapeAttr(post.placeholder||'')}')"></div>
@@ -347,21 +298,19 @@ function openReader(id) {
       <section class="post-body">${post.content}</section>
     </div>
   `;
-  // prevent background scroll
   document.body.classList.add('no-scroll');
   reader.classList.add('open'); reader.setAttribute('aria-hidden','false');
   setTimeout(()=> readerArticle.focus(), 80);
 
-  // eager load hero img
+  // eager hero load
   const heroImg = readerArticle.querySelector('.reader-hero img');
   const heroPh = readerArticle.querySelector('.reader-hero .placeholder');
   if (heroImg && heroImg.dataset.src) {
-    heroImg.src = heroImg.dataset.src;
-    heroImg.loading = 'lazy'; heroImg.decoding = 'async';
-    heroImg.onload = () => { heroImg.classList.add('loaded'); if (heroPh) heroPh.classList.add('hidden'); delete heroImg.dataset.src; };
+    heroImg.src = heroImg.dataset.src; heroImg.loading='lazy'; heroImg.decoding='async';
+    heroImg.onload = ()=> { heroImg.classList.add('loaded'); if (heroPh) heroPh.classList.add('hidden'); delete heroImg.dataset.src; };
   }
 
-  // find in-post images and ensure placeholder exists + observe
+  // hook in-post images
   const inpostWrappers = readerArticle.querySelectorAll('.inpost-img');
   inpostWrappers.forEach(w => {
     const phUrl = w.dataset.placeholder || '';
@@ -372,18 +321,17 @@ function openReader(id) {
     const img = w.querySelector('img');
     if (img && img.dataset.src) imgObserver.observe(img);
   });
-  // also observe images directly inside post-body
+
+  // also observe any other images inside content
   const postImgs = readerArticle.querySelectorAll('.post-body img[data-src]');
   postImgs.forEach(img => imgObserver.observe(img));
 
-  // deep-link
-  history.replaceState(null, '', '#'+id);
+  history.replaceState(null,'','#'+id);
 }
 
 function closeReader() {
   reader.classList.remove('open'); reader.setAttribute('aria-hidden','true');
   document.body.classList.remove('no-scroll');
-  // cleanup observers and content after short delay to allow fade
   setTimeout(()=> {
     const imgs = readerArticle.querySelectorAll('img');
     imgs.forEach(i => { try{ imgObserver.unobserve(i); } catch(e){} });
@@ -391,82 +339,25 @@ function closeReader() {
   }, 300);
 }
 
-/* --------------------------
-   Create new post from search
-   - Creates a basic post using the search query as title
-   - Adds to top of posts array, re-renders and opens the post
-   -------------------------- */
-function createPostFromSearch(query) {
-  const trimmed = String(query || '').trim();
-  if (!trimmed) { alert('Enter a search term to create a post from.'); return; }
-  const id = 'post-' + Date.now();
-  const title = trimmed.length > 60 ? trimmed.slice(0,60) + '…' : trimmed;
-  const newPost = {
-    id,
-    title,
-    author: 'Saravana Kumar',
-    date: new Date().toISOString().slice(0,10),
-    tags: ['generated'],
-    image: posts[0]?.image || '', // reuse first hero if present
-    placeholder: posts[0]?.placeholder || '',
-    excerpt: `Auto-generated post based on search: "${escapeHtml(trimmed)}" — edit content as needed.`,
-    content: `<p>This post was generated from the search term "<strong>${escapeHtml(trimmed)}</strong>". Replace this content with a full article.</p>
-              <div class="inpost-img" data-placeholder="${escapeAttr(posts[0]?.placeholder||'')}">
-                <img data-src="${escapeAttr(posts[0]?.image||'')}" alt="${escapeAttr(title)} image">
-              </div>
-              <p>Draft content: expand this into your article.</p>`
-  };
-  // add to the start of posts
-  posts = [newPost, ...posts];
-  renderAll();
-  // open the new post
-  setTimeout(()=> openReader(newPost.id), 80);
-}
-
-/* --------------------------
-   Event wiring
-   -------------------------- */
-createBtn.addEventListener('click', ()=> createPostFromSearch(searchInput.value));
-searchInput.addEventListener('keydown', (e) => {
-  // Ctrl+Enter or Cmd+Enter -> create post
-  if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') { e.preventDefault(); createPostFromSearch(searchInput.value); }
-  // Enter: perform search filter
-  if (e.key === 'Enter' && !e.ctrlKey && !e.metaKey) {
-    e.preventDefault();
-    applySearchFilter();
-  }
-});
-
+/* Search */
 function applySearchFilter() {
   const q = String(searchInput.value || '').trim().toLowerCase();
   if (!q) { renderAll(); return; }
-  // filter by title or tags or content
   const filtered = posts.filter(p => p.title.toLowerCase().includes(q) || (p.tags||[]).join(' ').toLowerCase().includes(q) || stripHtml(p.content).toLowerCase().includes(q));
   renderAll(filtered);
 }
 
-/* About / Articles toggle */
-showAboutBtn.addEventListener('click', ()=> {
-  articlesEl.style.display = 'none';
-  aboutSection.style.display = '';
-});
-showArticlesBtn.addEventListener('click', ()=> {
-  aboutSection.style.display = 'none';
-  articlesEl.style.display = '';
-});
+/* Events */
+searchInput.addEventListener('input', () => applySearchFilter());
+searchInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); applySearchFilter(); } });
 
-/* Reader close */
 readerClose.addEventListener('click', closeReader);
-reader.addEventListener('click', (e) => { if (e.target === reader) closeReader(); });
+reader.addEventListener('click', (e)=> { if (e.target === reader) closeReader(); });
 document.addEventListener('keydown', (e)=> { if (e.key === 'Escape') closeReader(); });
 
-/* render on load; also open by deep-link if hash */
 window.addEventListener('load', ()=> {
   renderAll();
-  if (location.hash) {
-    const id = location.hash.slice(1);
-    if (posts.some(p => p.id === id)) openReader(id);
-  }
+  if (location.hash) { const id = location.hash.slice(1); if (posts.some(p => p.id === id)) openReader(id); }
 });
 </script>
 </body>
