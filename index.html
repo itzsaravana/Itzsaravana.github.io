@@ -1,49 +1,446 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Saravanakumar - Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Medium-like Blog</title>
+  <style>
+    /* Reset-ish */
+    * { box-sizing: border-box; }
+    html,body { height: 100%; margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial; color:#111; background:#f6f6f6; }
+
+    /* Layout */
+    .app {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 24px;
+      max-width: 1200px;
+      margin: 28px auto;
+      align-items: start;
+      padding: 0 16px;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      position: sticky;
+      top: 24px;
+      align-self: start;
+      background: #fff;
+      border-radius: 10px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(20,20,20,0.06);
+      height: calc(100vh - 60px);
+      overflow: auto;
+    }
+    .site-title {
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+    .sidebar p { margin: 0 0 14px; color: #5b5b5b; font-size: 13px; }
+    .toc { list-style: none; padding: 0; margin: 8px 0 0; }
+    .toc li + li { margin-top: 8px; }
+    .toc button {
+      display: block;
+      width: 100%;
+      text-align: left;
+      background: transparent;
+      border: none;
+      padding: 8px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      color: #1a1a1a;
+      font-size: 15px;
+    }
+    .toc button:hover, .toc button:focus { background: #f0f0f0; outline: none; }
+
+    /* Main content */
+    main {
+      min-height: 60vh;
+    }
+
+    .controls {
+      display:flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+    .controls h2 { margin: 0; font-size: 20px; }
+    .controls .search {
+      display:flex;
+      gap:8px;
+      align-items:center;
+    }
+    .search input {
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid #e6e6e6;
+      width: 220px;
+    }
+
+    /* Article list: card style like medium */
+    .articles {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 18px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(20,20,20,0.04);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-height: 160px;
+    }
+    .card h3 { margin: 0; font-size: 18px; }
+    .meta { color: #6b6b6b; font-size: 13px; }
+    .excerpt { color: #333; line-height: 1.5; }
+    .card .actions {
+      margin-top: auto;
+      display:flex;
+      justify-content: space-between;
+      align-items:center;
+      gap:12px;
+    }
+    .btn {
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      background: #111;
+      color: #fff;
+    }
+    .btn.ghost {
+      background: transparent;
+      color: #111;
+      border: 1px solid #e6e6e6;
+      font-weight: 600;
+      padding: 6px 12px;
+    }
+
+    /* Read mode overlay (focused, like Medium's reader) */
+    .reader {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      backdrop-filter: blur(4px);
+      background: rgba(0,0,0,0.35);
+    }
+    .reader.open { display:flex; }
+    .reader-article {
+      width: min(900px, 96%);
+      max-height: 92vh;
+      overflow: auto;
+      padding: 36px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 20px 60px rgba(10,10,10,0.3);
+    }
+    .reader-article h1 { margin-top: 0; font-size: 34px; line-height:1.1; }
+    .reader-article .reader-meta { color: #6b6b6b; margin-bottom: 18px; }
+    .reader-article p { line-height: 1.7; font-size: 18px; color: #222; }
+    .reader-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: #fff;
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,0.08);
+      padding: 8px 10px;
+      cursor:pointer;
+      font-weight:600;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    }
+
+    /* Responsive: collapse sidebar to top bar on small widths */
+    @media (max-width: 880px) {
+      .app { grid-template-columns: 1fr; }
+      .sidebar {
+        position: static;
+        height: auto;
+        display: none;
+        margin-bottom: 12px;
+      }
+      .sidebar.open { display: block; }
+      .mobile-toggle {
+        display: inline-flex;
+        gap:8px;
+        align-items:center;
+      }
+    }
+
+    /* small niceties */
+    a { color: inherit; text-decoration: none; }
+    .tag { font-size: 12px; color: #6b6b6b; background: #fafafa; padding: 6px 8px; border-radius: 6px; }
+  </style>
 </head>
 <body>
 
-  <!-- Fixed developer info box -->
-  <div class="fixed-dev-box">
-    <h3>Profile</h3>
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#tech">Tech Stack</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+  <div class="app" id="app">
+    <!-- Sidebar / Table of contents -->
+    <aside class="sidebar" id="sidebar" aria-label="Table of contents">
+      <div>
+        <h1 class="site-title">My Medium-like Blog</h1>
+        <p>Recent posts &amp; navigation. Click any title to open the full article in read mode.</p>
+      </div>
+
+      <ul class="toc" id="toc">
+        <!-- JS will populate -->
+      </ul>
+    </aside>
+
+    <!-- Main -->
+    <main>
+      <div class="controls">
+        <div>
+          <h2>Latest stories</h2>
+          <div style="margin-top:6px; color:#6b6b6b; font-size:13px;">Curated picks just for you</div>
+        </div>
+
+        <div style="display:flex; gap:12px; align-items:center;">
+          <div class="mobile-toggle" style="display:none;">
+            <button class="btn ghost" id="toggleSidebar">Menu</button>
+          </div>
+          <div class="search">
+            <input id="search" type="search" placeholder="Search posts... (title or tag)" aria-label="Search posts" />
+          </div>
+        </div>
+      </div>
+
+      <section class="articles" id="articles" aria-live="polite">
+        <!-- JS will populate article cards -->
+      </section>
+    </main>
   </div>
 
-  <!-- Scrollable main content -->
-  <main class="main-content">
-    <section id="about">
-      <h1>Hello, I'm <span class="highlight">Saravanakumar</span></h1>
-      <p class="role">Software Developer | Problem Solver</p>
-      <p>
-        Passionate about building efficient systems and clean user experiences.
-        Currently working on <strong>Ai/ML Projects </strong> and learning <strong>FastAPI & AWS</strong>.
-      </p>
-    </section>
-    <section id="tech">
-      <h2>Tech Stack</h2>
-      <ul>
-        <li><strong>Languages:</strong> Python, JavaScript</li>
-        <li><strong>Frameworks:</strong> React, Django, FastAPI</li>
-        <li><strong>Tools:</strong> Git, Docker, AWS, Linux</li>
-      </ul>
-    </section>
-    <section id="contact">
-      <h2>Contact</h2>
-      <ul>
-        <li><a href="https://github.com/itzsaravana" target="_blank">GitHub</a></li>
-        <li><a href="https://linkedin.com/in/itzsaravana" target="_blank">LinkedIn</a></li>
-      </ul>
-    </section>
-  </main>
+  <!-- Reader / Full article overlay -->
+  <div class="reader" id="reader" aria-hidden="true" role="dialog" aria-modal="true">
+    <button class="reader-close" id="readerClose" aria-label="Close reader (Esc)">✕</button>
+    <article class="reader-article" id="readerArticle" tabindex="0">
+      <!-- JS fills this -->
+    </article>
+  </div>
 
+  <script>
+    /******** Sample blog data ********/
+    const posts = [
+      {
+        id: 'post-1',
+        title: 'Designing for Focus: How to Build Reader-Friendly UIs',
+        author: 'Saravana Kumar',
+        date: '2025-09-09',
+        tags: ['design','ux','readability'],
+        excerpt: `Readers crave focus. In this piece we cover typography choices, layout strategies, and small UX details that dramatically improve reading comprehension and time on page.`,
+        content: `<p>Readers crave focus. To design a reader-friendly UI, start with typography: use a comfortable measure (line length), slightly larger font sizes for body copy, and increased line-height. Avoid high-contrast pure black on pure white; a soft dark gray reduces eye strain.</p>
+          <p>Next, structure content: clear headings, short paragraphs, and callouts help scanability. Consider implementing a "read mode" that removes distractions (navigation, ads, sidebars) to help readers immerse themselves.</p>
+          <h3>Micro-interactions matter</h3>
+          <p>Small animations, like smooth scrolling or subtle hover states, make the interface feel alive and polished. But keep them fast and unobtrusive — nothing should break the reading flow.</p>`
+      },
+      {
+        id: 'post-2',
+        title: 'Building a Local Dev RAG Stack with Chroma and Ollama',
+        author: 'Saravana Kumar',
+        date: '2025-08-30',
+        tags: ['llm','rag','devops'],
+        excerpt: `This guide explains how to wire up a local Retrieval-Augmented Generation stack: document ingestion, vector db with Chroma, and local LLM hosting with Ollama.`,
+        content: `<p>Setting up a local RAG system can accelerate experimentation. The key parts are: document preprocessing, chunking strategy (semantic-aware chunk size), vector storage (Chroma / FAISS), and the LLM (Ollama or local LLaMA variants).</p>
+          <p>Keep a clean ingestion pipeline: parse documents, normalize whitespace, and preserve context windows. Use embedding batching and cache results to avoid repeated compute.</p>`
+      },
+      {
+        id: 'post-3',
+        title: 'Thumbnail Selection Techniques to Improve Click-Through',
+        author: 'Priya Menon',
+        date: '2025-07-21',
+        tags: ['ml','video','engagement'],
+        excerpt: `Choosing thumbnails is both art and science. We'll go over heuristics and ML approaches to pick frames that increase click-through rates.`,
+        content: `<p>Thumbnails are often the first impression. Common heuristics: faces, high-contrast frames, and action frames perform well. ML pipelines can evaluate candidate frames by predicted CTR using historical labels.</p>
+          <p>Use A/B testing to validate — what worked for one audience may not work for another. Also watch for platform-specific constraints (aspect ratio, cropping).</p>`
+      },
+      // add more posts as desired...
+    ];
+
+    /******** Helpers to render UI ********/
+    const tocEl = document.getElementById('toc');
+    const articlesEl = document.getElementById('articles');
+    const reader = document.getElementById('reader');
+    const readerArticle = document.getElementById('readerArticle');
+    const readerClose = document.getElementById('readerClose');
+    const searchInput = document.getElementById('search');
+    const sidebar = document.getElementById('sidebar');
+    const toggleSidebarBtn = document.getElementById('toggleSidebar');
+
+    function createTocItem(post) {
+      const li = document.createElement('li');
+      const btn = document.createElement('button');
+      btn.textContent = post.title;
+      btn.title = 'Open "' + post.title + '"';
+      btn.onclick = () => openReader(post.id);
+      btn.onkeydown = (e) => { if(e.key === 'Enter') openReader(post.id); };
+      li.appendChild(btn);
+      return li;
+    }
+
+    function createArticleCard(post) {
+      const card = document.createElement('article');
+      card.className = 'card';
+      card.id = post.id;
+
+      const h3 = document.createElement('h3');
+      h3.textContent = post.title;
+
+      const meta = document.createElement('div');
+      meta.className = 'meta';
+      meta.textContent = `${post.author} · ${new Date(post.date).toLocaleDateString()}`;
+
+      const tagWrap = document.createElement('div');
+      tagWrap.style.display = 'flex';
+      tagWrap.style.gap = '8px';
+      post.tags.forEach(t => {
+        const span = document.createElement('span');
+        span.className = 'tag';
+        span.textContent = t;
+        tagWrap.appendChild(span);
+      });
+
+      const excerpt = document.createElement('p');
+      excerpt.className = 'excerpt';
+      excerpt.textContent = post.excerpt;
+
+      const actions = document.createElement('div');
+      actions.className = 'actions';
+
+      const readBtn = document.createElement('button');
+      readBtn.className = 'btn';
+      readBtn.textContent = 'Read';
+      readBtn.onclick = () => openReader(post.id);
+
+      const more = document.createElement('button');
+      more.className = 'btn ghost';
+      more.textContent = 'Share';
+      more.onclick = () => navigator.clipboard?.writeText(location.href + '#' + post.id).then(()=> alert('Post link copied to clipboard'));
+
+      actions.appendChild(more);
+      actions.appendChild(readBtn);
+
+      card.appendChild(h3);
+      card.appendChild(meta);
+      card.appendChild(tagWrap);
+      card.appendChild(excerpt);
+      card.appendChild(actions);
+
+      // clicking title scrolls to open
+      h3.style.cursor = 'pointer';
+      h3.onclick = () => openReader(post.id);
+
+      return card;
+    }
+
+    function renderAll(postsToRender = posts) {
+      tocEl.innerHTML = '';
+      articlesEl.innerHTML = '';
+      postsToRender.forEach(p => {
+        tocEl.appendChild(createTocItem(p));
+        articlesEl.appendChild(createArticleCard(p));
+      });
+    }
+
+    /******** Reader (Read mode) ********/
+    function openReader(id) {
+      const post = posts.find(p => p.id === id);
+      if (!post) return;
+      // build reader HTML
+      readerArticle.innerHTML = `
+        <header>
+          <h1>${escapeHtml(post.title)}</h1>
+          <div class="reader-meta">${escapeHtml(post.author)} · ${new Date(post.date).toLocaleDateString()}</div>
+        </header>
+        <section>${post.content}</section>
+      `;
+      reader.classList.add('open');
+      reader.setAttribute('aria-hidden','false');
+      // focus for keyboard
+      setTimeout(()=> readerArticle.focus(), 80);
+
+      // push hash for deep-linking
+      history.replaceState(null, '', '#' + id);
+    }
+
+    function closeReader() {
+      reader.classList.remove('open');
+      reader.setAttribute('aria-hidden','true');
+      // remove hash if it matches a post
+      if(location.hash && posts.some(p => '#' + p.id === location.hash)) {
+        history.replaceState(null,'', location.pathname + location.search);
+      }
+    }
+
+    readerClose.addEventListener('click', closeReader);
+    reader.addEventListener('click', (e) => {
+      if (e.target === reader) closeReader();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeReader();
+    });
+
+    // hydrate on load
+    renderAll();
+
+    // handle search filter (title or tag)
+    searchInput.addEventListener('input', (e) => {
+      const q = e.target.value.trim().toLowerCase();
+      if (!q) { renderAll(); return; }
+      const filtered = posts.filter(p => p.title.toLowerCase().includes(q) || p.tags.join(' ').toLowerCase().includes(q));
+      renderAll(filtered);
+    });
+
+    // deep-linking: open reader if hash exists
+    window.addEventListener('load', () => {
+      if (location.hash) {
+        const id = location.hash.slice(1);
+        const exists = posts.some(p => p.id === id);
+        if (exists) openReader(id);
+      }
+    });
+
+    // simple sidebar toggle for small screens
+    (function manageResponsive() {
+      const mql = window.matchMedia('(max-width:880px)');
+      function update() {
+        const mobile = mql.matches;
+        if (mobile) {
+          toggleSidebarBtn.style.display = 'inline-flex';
+          toggleSidebarBtn.onclick = () => {
+            sidebar.classList.toggle('open');
+          };
+        } else {
+          toggleSidebarBtn.style.display = 'none';
+          sidebar.classList.remove('open');
+        }
+      }
+      mql.addListener(update);
+      update();
+    })();
+
+    // Utility to escape text (used for title injection)
+    function escapeHtml(str) {
+      return String(str).replace(/[&<>"']/g, (s) => {
+        return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[s];
+      });
+    }
+
+    // Make TOC keyboard-friendly: first item focusable
+    // (auto-focus the first toc button for keyboard nav)
+    setTimeout(()=> {
+      const firstBtn = tocEl.querySelector('button');
+      if(firstBtn) firstBtn.tabIndex = 0;
+    }, 200);
+  </script>
 </body>
 </html>
