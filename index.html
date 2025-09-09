@@ -10,30 +10,11 @@
   button{font-family:inherit}
   a{color:inherit}
 
-  /* topbar height variable (updated at runtime) */
   :root { --topbar-h:64px; }
 
   /* Topbar */
-  .topbar {
-    position: sticky;
-    top: 0;
-    z-index: 1400;
-    display:block;
-    background:#fff; border-bottom:1px solid #eee;
-    box-shadow:0 6px 18px rgba(10,10,10,0.03);
-    padding:6px 12px;
-  }
-
-  /* Topbar inner layout: left (about), center (search), right (actions) */
-  .topbar-inner {
-    display:flex;
-    gap:12px;
-    align-items:center;
-    width:100%;
-    max-width:1200px;
-    margin:0 auto;
-  }
-
+  .topbar { position: sticky; top: 0; z-index:1400; background:#fff; border-bottom:1px solid #eee; box-shadow:0 6px 18px rgba(10,10,10,0.03); padding:6px 12px; }
+  .topbar-inner { display:flex; gap:12px; align-items:center; width:100%; max-width:1200px; margin:0 auto; }
   .left-zone, .center-zone, .right-zone { display:flex; align-items:center; gap:12px; }
   .left-zone { flex:0 0 auto; }
   .center-zone { flex:1 1 420px; justify-content:center; min-width:140px; }
@@ -46,57 +27,46 @@
   .about-text .name{font-weight:700;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .about-text .role{color:#666;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
-  /* search area: center zone contains the input and auto-centers it */
   .search-wrap{display:flex;align-items:center;justify-content:center;width:100%;padding:0 8px}
   .search-input{width:100%;max-width:640px;padding:9px 12px;border-radius:10px;border:1px solid #e6e6e6;transition:box-shadow .12s; font-size:15px}
   .search-input:focus{outline:none;box-shadow:0 6px 18px rgba(11,116,222,0.06)}
 
-  @media(max-width:1100px){
-    .topbar-inner{padding:0 6px}
-    .center-zone{flex:1 1 360px}
-    .search-input{max-width:520px}
-  }
-
+  @media(max-width:1100px){ .center-zone{flex:1 1 360px} .search-input{max-width:520px} }
   @media(max-width:880px){
-    /* keep the name/title visible on small screens (slightly smaller font) */
-    .about-text{display:flex;flex-direction:column;min-width:0}
-    .about-text .name{font-size:13px}
-    .about-text .role{font-size:11px}
-    .center-zone{flex:1 1 1px} /* allow search to shrink; center it */
-    .search-input{font-size:14px}
+    .about-text .name{font-size:13px} .about-text .role{font-size:11px}
+    .center-zone{flex:1 1 1px} .search-input{font-size:14px}
   }
 
-  /* About panel - positioned under about-mini, but constrained to viewport */
-  .about-panel{position:absolute;top:calc(var(--topbar-h) + 8px);left:16px;z-index:1450;min-width:260px;max-width:360px;background:#fff;border-radius:10px;box-shadow:0 20px 60px rgba(10,10,10,0.12);padding:14px;display:none}
+  .about-panel{
+    position:absolute; top:calc(var(--topbar-h) + 8px);
+    left:16px; z-index:1450; min-width:260px; max-width:360px;
+    background:#fff;border-radius:10px;box-shadow:0 20px 60px rgba(10,10,10,0.12);padding:14px;
+    display:none;
+  }
   .about-panel.open{display:block}
   .about-panel h3{margin:0 0 8px;font-size:16px}
   .about-panel p{margin:6px 0;color:#333;line-height:1.4;font-size:14px}
-  @media(max-width:880px){.about-panel{left:8px;right:8px;min-width:auto}}
+  @media(max-width:880px){ .about-panel{left:8px;right:8px;min-width:auto} }
 
-  /* Container */
+  /* layout */
   .container{display:grid;grid-template-columns:280px 1fr;gap:24px;max-width:1200px;margin:20px auto;padding:0 16px 60px;align-items:start}
   @media(max-width:1100px){.container{max-width:980px}}
   @media(max-width:880px){.container{grid-template-columns:1fr;padding:0 12px 60px}}
 
-  /* Sidebar */
   .sidebar{position:sticky;top:calc(var(--topbar-h) + 20px);background:#fff;border-radius:10px;padding:18px;box-shadow:0 6px 18px rgba(20,20,20,0.06);height:calc(100vh - (var(--topbar-h) + 40px));overflow:auto}
   .site-title{margin:0 0 12px;font-weight:700;font-size:18px}
   .toc{list-style:none;padding:0;margin:0}
-  .toc li+li{margin-top:8px}
   .toc button{display:block;width:100%;text-align:left;background:transparent;border:none;padding:8px 10px;border-radius:8px;cursor:pointer;font-size:15px}
   .toc button:hover,.toc button:focus{background:#f0f0f0;outline:none}
 
-  /* Main & controls */
   main{min-height:60vh}
   .controls{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:18px;flex-wrap:wrap}
   .controls h2{margin:0;font-size:20px}
   .meta-note{color:#6b6b6b;font-size:13px}
 
-  /* Articles grid: responsive and proportional */
   .articles{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
   .card{background:#fff;border-radius:12px;padding:14px;box-shadow:0 6px 18px rgba(20,20,20,0.04);display:flex;gap:12px;min-height:120px;align-items:flex-start;transition:transform .12s}
   .card:hover{transform:translateY(-4px)}
-  /* thumb proportion: on wide screens thumbnail takes ~36% */
   .thumb{width:36%;height:120px;flex:0 0 36%;border-radius:8px;overflow:hidden;position:relative;background:#ddd;display:block}
   .thumb .placeholder{position:absolute;inset:0;background-size:cover;background-position:center;filter:blur(8px) saturate(120%);transform:scale(1.03);transition:opacity 360ms;z-index:0}
   .thumb img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity 360ms}
@@ -111,7 +81,6 @@
   .btn{padding:8px 14px;border-radius:999px;border:none;cursor:pointer;font-weight:600;background:#111;color:#fff}
   .btn.ghost{background:transparent;border:1px solid #e6e6e6;color:#111;padding:6px 12px}
 
-  /* Mobile: stack thumb above content and adjust sizes */
   @media(max-width:880px){
     .sidebar{display:none}
     .card{flex-direction:column}
@@ -120,17 +89,14 @@
     .reader-article{max-height:calc(100vh - (var(--topbar-h) + 40px))}
   }
 
-  /* reader overlay */
   .reader{position:fixed;inset:0;display:none;z-index:1200;background:rgba(0,0,0,0.35);align-items:flex-start;justify-content:center;padding-top:calc(var(--topbar-h) + 16px)}
   .reader.open{display:flex}
   .reader-close{position:fixed;top:calc(var(--topbar-h) + 12px);right:18px;z-index:1600;background:#fff;border-radius:999px;border:1px solid rgba(0,0,0,0.08);padding:8px 10px;cursor:pointer;font-weight:600;box-shadow:0 8px 20px rgba(0,0,0,0.12)}
   .reader-article{width:min(900px,96%);max-height:calc(100vh - (var(--topbar-h) + 56px));overflow:auto;background:#fff;border-radius:10px;box-shadow:0 20px 60px rgba(10,10,10,0.3);position:relative;z-index:1550}
-
   .reader-hero{width:100%;height:320px;overflow:hidden;position:relative;background:#eee;border-top-left-radius:10px;border-top-right-radius:10px}
   .reader-hero .placeholder{position:absolute;inset:0;background-size:cover;background-position:center;filter:blur(10px) saturate(120%);transform:scale(1.05);transition:opacity 420ms;z-index:0}
   .reader-hero img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity 420ms}
   .reader-hero img.loaded{opacity:1}
-  .reader-hero .placeholder.hidden{opacity:0}
   .reader-content{padding:28px 36px}
   .reader-article h1{margin-top:0;font-size:34px;line-height:1.1}
   .reader-meta{color:#6b6b6b;margin-bottom:12px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
@@ -142,18 +108,13 @@
   .inpost-img img.loaded{opacity:1}
   .inpost-img .placeholder.hidden{opacity:0}
 
-  /* back to top button */
   .reader-top{position:fixed;right:20px;bottom:28px;z-index:1700;background:#111;color:#fff;border-radius:999px;padding:10px 12px;cursor:pointer;font-weight:600;display:none;box-shadow:0 10px 30px rgba(0,0,0,0.18)}
   .reader-top.show{display:block}
-
-  /* toast */
   .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:32px;z-index:1800;background:rgba(0,0,0,0.85);color:#fff;padding:8px 14px;border-radius:8px;font-size:14px;opacity:0;transition:opacity .2s}
   .toast.show{opacity:1}
 </style>
 </head>
 <body>
-
-  <!-- Topbar -->
   <header class="topbar" role="banner" id="topbar">
     <div class="topbar-inner">
       <div class="left-zone">
@@ -183,20 +144,16 @@
 
       <div class="center-zone" aria-hidden="false">
         <div class="search-wrap" role="search" aria-label="Site search">
-          <input id="topSearch" class="search-input" type="search" placeholder="Search posts, tags, content (press / to focus)" aria-label="Search posts">
+          <input id="topSearch" class="search-input" type="search" placeholder="Search posts, tags, content — press / to focus" aria-label="Search posts">
         </div>
       </div>
 
       <div class="right-zone" aria-hidden="false">
-        <!-- placeholder for right side actions if needed; kept for layout stability -->
-        <div style="display:flex;gap:8px;align-items:center;">
-          <!-- e.g. future icons or action buttons -->
-        </div>
+        <!-- reserved for future actions -->
       </div>
     </div>
   </header>
 
-  <!-- Main container -->
   <div class="container" role="main">
     <aside class="sidebar" id="sidebar" aria-label="Table of contents">
       <h2 class="site-title">Blog</h2>
@@ -208,19 +165,14 @@
 
     <main>
       <div class="controls">
-        <div>
-          <h2>Latest stories</h2>
-          <div class="meta-note">Curated picks</div>
-        </div>
+        <div><h2>Latest stories</h2><div class="meta-note">Curated picks</div></div>
       </div>
 
       <section class="articles" id="articles" aria-live="polite"></section>
     </main>
   </div>
 
-  <!-- Reader overlay -->
   <div class="reader" id="reader" aria-hidden="true" role="dialog" aria-modal="true">
-    <!-- close button pinned below topbar -->
     <button class="reader-close" id="readerClose" aria-label="Close reader (Esc)">✕</button>
     <article class="reader-article" id="readerArticle" tabindex="0" aria-live="polite"></article>
   </div>
@@ -229,65 +181,348 @@
   <div class="toast" id="toast" role="status" aria-live="polite">Copied link</div>
 
 <script>
-/* Posts (same samples) */
-const posts = [
-  {
-    id:'post-1', title:'Designing for Focus: How to Build Reader-Friendly UIs', author:'Saravana Kumar', date:'2025-09-09',
-    tags:['design','ux','readability'],
-    image:'https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=1600&auto=format&fit=crop&crop=entropy',
-    placeholder:'https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=10&w=40&auto=format&fit=crop&crop=entropy',
-    excerpt:'Readers crave focus. Typography, layout and micro-interactions matter.',
-    content:`<p>Readers crave focus. To design a reader-friendly UI, start with typography: use a comfortable measure (line length), slightly larger font sizes for body copy, and increased line-height.</p>
-      <div class="inpost-img" data-placeholder="https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=10&w=80&auto=format&fit=crop&crop=entropy">
-        <img data-src="https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=1200&auto=format&fit=crop&crop=entropy" alt="typography example">
-      </div>
-      <p>Next, structure content: clear headings, short paragraphs, and callouts help scanability.</p>`
-  },
-  {
-    id:'post-2', title:'Building a Local Dev RAG Stack with Chroma and Ollama', author:'Saravana Kumar', date:'2025-08-30',
-    tags:['llm','rag','devops'],
-    image:'https://images.unsplash.com/photo-1548095115-45697e3c1f6a?q=80&w=1600&auto=format&fit=crop&crop=entropy',
-    placeholder:'https://images.unsplash.com/photo-1548095115-45697e3c1f6a?q=10&w=40&auto=format&fit=crop&crop=entropy',
-    excerpt:'A practical local RAG stack guide.',
-    content:`<p>Key parts: document preprocessing, chunking, vector storage, and your LLM.</p>
-      <div class="inpost-img" data-placeholder="https://images.unsplash.com/photo-1548095115-45697e3c1f6a?q=10&w=80&auto=format&fit=crop&crop=entropy">
-        <img data-src="https://images.unsplash.com/photo-1548095115-45697e3c1f6a?q=80&w=1200&auto=format&fit=crop&crop=entropy" alt="local rag diagram">
-      </div>
-      <p>Keep a clean pipeline and cache embeddings to avoid repeated compute.</p>`
-  },
-  {
-    id:'post-3', title:'Thumbnail Selection Techniques to Improve Click-Through', author:'Priya Menon', date:'2025-07-21',
-    tags:['ml','video','engagement'],
-    image:'https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?q=80&w=1600&auto=format&fit=crop&crop=entropy',
-    placeholder:'https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?q=10&w=40&auto=format&fit=crop&crop=entropy',
-    excerpt:'Choosing thumbnails is both art and science.',
-    content:`<p>Thumbnails are often the first impression. Common heuristics: faces, high-contrast frames, and action frames perform well.</p>`
-  },
-  {
-    id:'post-4', title:'Practical Monitoring for Production ML Systems', author:'Anita Rao', date:'2025-06-10',
-    tags:['ml','monitoring','mle'],
-    image:'https://images.unsplash.com/photo-1557800636-894a64c1696f?q=80&w=1600&auto=format&fit=crop&crop=entropy',
-    placeholder:'https://images.unsplash.com/photo-1557800636-894a64c1696f?q=10&w=40&auto=format&fit=crop&crop=entropy',
-    excerpt:'What to monitor in ML systems and how to set up reliable alerts.',
-    content:`<p>Monitor both model and data: input distribution drifts, prediction distribution shifts, and downstream KPI changes.</p>`
+/* Wrap everything to run after DOM is ready to avoid timing issues */
+document.addEventListener('DOMContentLoaded', () => {
+  /* sample posts */
+  const posts = [
+    {
+      id:'post-1', title:'Designing for Focus: How to Build Reader-Friendly UIs', author:'Saravana Kumar', date:'2025-09-09',
+      tags:['design','ux','readability'],
+      image:'https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=1600&auto=format&fit=crop&crop=entropy',
+      placeholder:'https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=10&w=40&auto=format&fit=crop&crop=entropy',
+      excerpt:'Readers crave focus. Typography, layout and micro-interactions matter.',
+      content:`<p>Readers crave focus. To design a reader-friendly UI, start with typography: use a comfortable measure (line length), slightly larger font sizes for body copy, and increased line-height.</p>
+        <div class="inpost-img" data-placeholder="https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=10&w=80&auto=format&fit=crop&crop=entropy">
+          <img data-src="https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=1200&auto=format&fit=crop&crop=entropy" alt="typography example">
+        </div>
+        <p>Next, structure content: clear headings, short paragraphs, and callouts help scanability.</p>`
+    },
+    {
+      id:'post-2', title:'Building a Local Dev RAG Stack with Chroma and Ollama', author:'Saravana Kumar', date:'2025-08-30',
+      tags:['llm','rag','devops'],
+      image:'https://images.unsplash.com/photo-1548095115-45697e3c1f6a?q=80&w=1600&auto=format&fit=crop&crop=entropy',
+      placeholder:'https://images.unsplash.com/photo-1548095115-45697e3c1f6a?q=10&w=40&auto=format&fit=crop&crop=entropy',
+      excerpt:'A practical local RAG stack guide.',
+      content:`<p>Key parts: document preprocessing, chunking, vector storage, and your LLM.</p>
+        <div class="inpost-img" data-placeholder="https://images.unsplash.com/photo-1548095115-45697e3c1f6a?q=10&w=80&auto=format&fit=crop&crop=entropy">
+          <img data-src="https://images.unsplash.com/photo-1548095115-45697e3c1f6a?q=80&w=1200&auto=format&fit=crop&crop=entropy" alt="local rag diagram">
+        </div>
+        <p>Keep a clean pipeline and cache embeddings to avoid repeated compute.</p>`
+    },
+    {
+      id:'post-3', title:'Thumbnail Selection Techniques to Improve Click-Through', author:'Priya Menon', date:'2025-07-21',
+      tags:['ml','video','engagement'],
+      image:'https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?q=80&w=1600&auto=format&fit=crop&crop=entropy',
+      placeholder:'https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?q=10&w=40&auto=format&fit=crop&crop=entropy',
+      excerpt:'Choosing thumbnails is both art and science.',
+      content:`<p>Thumbnails are often the first impression. Common heuristics: faces, high-contrast frames, and action frames perform well.</p>`
+    },
+    {
+      id:'post-4', title:'Practical Monitoring for Production ML Systems', author:'Anita Rao', date:'2025-06-10',
+      tags:['ml','monitoring','mle'],
+      image:'https://images.unsplash.com/photo-1557800636-894a64c1696f?q=80&w=1600&auto=format&fit=crop&crop=entropy',
+      placeholder:'https://images.unsplash.com/photo-1557800636-894a64c1696f?q=10&w=40&auto=format&fit=crop&crop=entropy',
+      excerpt:'What to monitor in ML systems and how to set up reliable alerts.',
+      content:`<p>Monitor both model and data: input distribution drifts, prediction distribution shifts, and downstream KPI changes.</p>`
+    }
+  ];
+
+  /* DOM refs */
+  const tocEl = document.getElementById('toc');
+  const articlesEl = document.getElementById('articles');
+  const reader = document.getElementById('reader');
+  const readerArticle = document.getElementById('readerArticle');
+  const readerClose = document.getElementById('readerClose');
+  const topSearch = document.getElementById('topSearch');
+  const aboutToggle = document.getElementById('aboutToggle');
+  const aboutPanel = document.getElementById('aboutPanel');
+  const readerTop = document.getElementById('readerTop');
+  const toast = document.getElementById('toast');
+  const topbar = document.getElementById('topbar');
+
+  /* helpers */
+  function escapeHtml(s){ return String(s||'').replace(/[&<>"']/g, ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch])); }
+  function escapeAttr(s){ return String(s||'').replace(/["']/g, ch=> ch === '"' ? '&quot;' : '&#39;'); }
+  function stripHtml(html){ return String(html||'').replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim(); }
+  function estimateReadTime(text){ const words = stripHtml(text).split(/\s+/).filter(Boolean).length; return `${Math.max(1, Math.round(words/200))} min read`; }
+
+  /* IntersectionObserver for lazy images */
+  const imgIo = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry=>{
+      if (!entry.isIntersecting) return;
+      const img = entry.target;
+      const src = img.dataset.src;
+      if (!src) { obs.unobserve(img); return; }
+      img.src = src;
+      img.loading = img.loading || 'lazy';
+      img.decoding = img.decoding || 'async';
+      img.onload = ()=> {
+        img.classList.add('loaded');
+        const ph = img.closest('.thumb')?.querySelector('.placeholder') || img.parentElement?.querySelector('.placeholder');
+        if (ph) ph.classList.add('hidden');
+        delete img.dataset.src;
+      };
+      obs.unobserve(img);
+    });
+  }, { root:null, rootMargin:'200px', threshold:0.01 });
+
+  /* render helpers */
+  function createTocItem(post){
+    const li = document.createElement('li');
+    const btn = document.createElement('button');
+    btn.textContent = post.title;
+    btn.onclick = ()=> openReader(post.id);
+    li.appendChild(btn);
+    return li;
   }
-];
+  function createArticleCard(post){
+    const card = document.createElement('article'); card.className='card'; card.id = post.id;
+    const thumb = document.createElement('div'); thumb.className='thumb';
+    const ph = document.createElement('div'); ph.className='placeholder'; ph.style.backgroundImage = `url("${escapeAttr(post.placeholder||'')}")`;
+    const img = document.createElement('img'); img.alt = post.title + ' thumbnail'; img.setAttribute('data-src', post.image || '');
+    thumb.appendChild(ph); thumb.appendChild(img);
 
-/* DOM refs */
-const tocEl = document.getElementById('toc');
-const articlesEl = document.getElementById('articles');
-const reader = document.getElementById('reader');
-const readerArticle = document.getElementById('readerArticle');
-const readerClose = document.getElementById('readerClose');
-const topSearch = document.getElementById('topSearch');
-const aboutToggle = document.getElementById('aboutToggle');
-const aboutPanel = document.getElementById('aboutPanel');
-const readerTop = document.getElementById('readerTop');
-const toast = document.getElementById('toast');
-const topbar = document.getElementById('topbar');
+    const body = document.createElement('div'); body.className='card-body';
+    const h3 = document.createElement('h3'); h3.textContent = post.title; h3.onclick = ()=> openReader(post.id);
+    const meta = document.createElement('div'); meta.className='meta'; meta.textContent = `${post.author} · ${new Date(post.date).toLocaleDateString()} · ${estimateReadTime(post.content)}`;
+    const tagWrap = document.createElement('div'); tagWrap.style.display='flex'; tagWrap.style.gap='8px'; tagWrap.style.flexWrap='wrap';
+    (post.tags||[]).forEach(t=>{ const s=document.createElement('span'); s.className='tag'; s.textContent=t; tagWrap.appendChild(s); });
+    const excerpt = document.createElement('p'); excerpt.className='excerpt'; excerpt.textContent = post.excerpt;
+    const actions = document.createElement('div'); actions.className='actions';
+    const share = document.createElement('button'); share.className='btn ghost'; share.textContent='Share';
+    share.onclick = ()=> copyToClipboard(location.origin + location.pathname + '#' + post.id);
+    const readBtn = document.createElement('button'); readBtn.className='btn'; readBtn.textContent='Read'; readBtn.onclick = ()=> openReader(post.id);
+    actions.appendChild(share); actions.appendChild(readBtn);
 
-/* utils */
-function escapeHtml(s){ return String(s||'').replace(/[&<>"']/g, ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch])); }
-function escapeAttr(s){ return String(s||'').replace(/["']/g, ch=> ch === '"' ? '&quot;' : '&#39;'); }
-function stripHtml(html){ return String(html||'').replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim(); }
-function estimateReadTime(text){ const words = stripHtml(text
+    body.appendChild(h3); body.appendChild(meta); body.appendChild(tagWrap); body.appendChild(excerpt); body.appendChild(actions);
+    card.appendChild(thumb); card.appendChild(body);
+    imgIo.observe(img);
+    return card;
+  }
+
+  /* render all posts */
+  function renderAll(list = posts){
+    tocEl.innerHTML = ''; articlesEl.innerHTML = '';
+    list.forEach(p => { tocEl.appendChild(createTocItem(p)); articlesEl.appendChild(createArticleCard(p)); });
+  }
+
+  /* About panel: open/close while preventing event propagation */
+  function toggleAbout(force){
+    const open = aboutPanel.classList.contains('open');
+    const shouldOpen = typeof force === 'boolean' ? force : !open;
+    if (shouldOpen) {
+      aboutPanel.classList.add('open'); aboutToggle.setAttribute('aria-expanded','true'); aboutPanel.setAttribute('aria-hidden','false');
+      requestAnimationFrame(()=> {
+        try {
+          const anchor = aboutToggle.getBoundingClientRect();
+          const panelRect = aboutPanel.getBoundingClientRect();
+          let left = Math.max(8, anchor.left);
+          if (left + panelRect.width > window.innerWidth - 8) left = Math.max(8, window.innerWidth - panelRect.width - 8);
+          aboutPanel.style.left = left + 'px';
+          const topbarH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--topbar-h')) || topbar.getBoundingClientRect().height || 64;
+          aboutPanel.style.top = (topbarH + 8) + 'px';
+        } catch(e){}
+      });
+    } else {
+      aboutPanel.classList.remove('open'); aboutToggle.setAttribute('aria-expanded','false'); aboutPanel.setAttribute('aria-hidden','true');
+      aboutPanel.style.left = ''; aboutPanel.style.top = '';
+    }
+  }
+
+  aboutToggle.addEventListener('click', (e)=> { e.stopPropagation(); toggleAbout(); });
+  aboutToggle.addEventListener('keydown', (e)=> { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); e.stopPropagation(); toggleAbout(); } });
+  aboutPanel.addEventListener('click', (e)=> e.stopPropagation());
+  document.addEventListener('click', (e)=> {
+    if (!aboutPanel.contains(e.target) && !aboutToggle.contains(e.target)) toggleAbout(false);
+  });
+
+  /* Open/close reader overlay */
+  function openReader(id){
+    toggleAbout(false);
+    const post = posts.find(p=>p.id===id); if(!post) return;
+    readerArticle.innerHTML = `
+      <div class="reader-hero" aria-hidden="true">
+        <div class="placeholder" style="background-image:url('${escapeAttr(post.placeholder||'')}')"></div>
+        <img data-src="${escapeAttr(post.image||'')}" alt="${escapeAttr(post.title)} — header">
+      </div>
+      <div class="reader-content">
+        <header>
+          <h1>${escapeHtml(post.title)}</h1>
+          <div class="reader-meta">
+            <div class="meta-author">${escapeHtml(post.author)}</div>
+            <div class="meta-date">${new Date(post.date).toLocaleDateString()}</div>
+            <div class="meta-readtime">${estimateReadTime(post.content)}</div>
+            <div class="meta-tags">${(post.tags||[]).map(t=>`<span class="tag">${escapeHtml(t)}</span>`).join(' ')}</div>
+          </div>
+        </header>
+        <section class="post-body">${post.content}</section>
+      </div>
+    `;
+    document.body.style.overflow = 'hidden';
+    reader.classList.add('open'); reader.setAttribute('aria-hidden','false');
+    setTimeout(()=> readerArticle.focus(), 80);
+
+    // eager load hero
+    const heroImg = readerArticle.querySelector('.reader-hero img');
+    const heroPh = readerArticle.querySelector('.reader-hero .placeholder');
+    if (heroImg && heroImg.dataset.src){
+      heroImg.src = heroImg.dataset.src; heroImg.loading='lazy'; heroImg.decoding='async';
+      heroImg.onload = ()=> { heroImg.classList.add('loaded'); if(heroPh) heroPh.classList.add('hidden'); delete heroImg.dataset.src; };
+    }
+
+    // ensure in-post images are observed for lazy-loading and placeholders inserted
+    const inpost = readerArticle.querySelectorAll('.inpost-img');
+    inpost.forEach(w=>{
+      const p = w.dataset.placeholder || '';
+      if (p && !w.querySelector('.placeholder')) {
+        const el = document.createElement('div'); el.className='placeholder'; el.style.backgroundImage = `url('${escapeAttr(p)}')`; w.insertBefore(el, w.firstChild);
+      }
+      const img = w.querySelector('img');
+      if (img && img.dataset.src) imgIo.observe(img);
+    });
+
+    // ensure any other data-src images inside post-body are observed
+    readerArticle.querySelectorAll('.post-body img[data-src]').forEach(i=> imgIo.observe(i));
+
+    readerArticle.addEventListener('scroll', onReaderScroll);
+    onReaderScroll();
+
+    try { history.replaceState(null,'','#'+id); } catch(e){}
+  }
+
+  function closeReader(){
+    reader.classList.remove('open'); reader.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+    setTimeout(()=>{
+      readerArticle.querySelectorAll('img').forEach(i=>{ try{ imgIo.unobserve(i); } catch(e){} });
+      readerArticle.innerHTML = '';
+      readerArticle.removeEventListener('scroll', onReaderScroll);
+      readerTop.classList.remove('show');
+      try { history.replaceState(null,'',location.pathname + location.search); } catch(e){}
+    }, 200);
+  }
+  readerClose.addEventListener('click', closeReader);
+  reader.addEventListener('click', (e)=> { if (e.target === reader) closeReader(); });
+  document.addEventListener('keydown', (e)=> { if (e.key === 'Escape') closeReader(); });
+
+  function onReaderScroll(){
+    if (!readerArticle) return;
+    if (readerArticle.scrollTop > 300) readerTop.classList.add('show'); else readerTop.classList.remove('show');
+  }
+  readerTop.addEventListener('click', ()=> readerArticle.scrollTo({ top:0, behavior:'smooth' }));
+
+  /* Search functionality (robust + immediate) */
+  const normalize = s => String(s||'').toLowerCase().replace(/\s+/g,' ').trim();
+  let searchTimer = null;
+  function applySearch(){
+    const q = normalize(topSearch.value);
+    if (!q) { renderAll(); return; }
+    const filtered = posts.filter(p => {
+      const hay = [
+        normalize(p.title),
+        normalize((p.tags||[]).join(' ')),
+        normalize(p.excerpt),
+        normalize(stripHtml(p.content))
+      ].join(' ');
+      return hay.indexOf(q) !== -1;
+    });
+    renderAll(filtered);
+    if (filtered.length === 0) {
+      articlesEl.innerHTML = '<div style="grid-column:1/-1;background:#fff;border-radius:10px;padding:18px;box-shadow:0 6px 18px rgba(20,20,20,0.04);text-align:center;color:#666">No results — try different keywords.</div>';
+      tocEl.innerHTML = '';
+    }
+  }
+
+  topSearch.addEventListener('input', ()=> {
+    if (searchTimer) clearTimeout(searchTimer);
+    searchTimer = setTimeout(()=> applySearch(), 150);
+  });
+  topSearch.addEventListener('keydown', (e)=> {
+    if (e.key === 'Enter') { e.preventDefault(); if (searchTimer) clearTimeout(searchTimer); applySearch(); }
+  });
+
+  // slash -> focus search (keyboard shortcut)
+  document.addEventListener('keydown', (e) => {
+    if (e.key === '/' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
+      e.preventDefault(); topSearch.focus(); topSearch.select();
+    }
+  });
+
+  /* clipboard helper */
+  function copyToClipboard(text){
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(()=> showToast('Link copied to clipboard')).catch(fallback);
+    } else fallback();
+    function fallback(){
+      const ta = document.createElement('textarea'); ta.value = text; ta.style.position='fixed'; ta.style.left='-9999px';
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); showToast('Link copied'); } catch(e){ alert('Copy failed'); }
+      ta.remove();
+    }
+  }
+  let toastTimer = null;
+  function showToast(msg, ms=2000){ toast.textContent = msg; toast.classList.add('show'); if (toastTimer) clearTimeout(toastTimer); toastTimer = setTimeout(()=> toast.classList.remove('show'), ms); }
+
+  /* measure topbar height for overlay placement */
+  function updateTopbarHeight(){ const h = topbar.getBoundingClientRect().height || 64; document.documentElement.style.setProperty('--topbar-h', Math.max(48, Math.round(h)) + 'px'); }
+  window.addEventListener('resize', updateTopbarHeight); window.addEventListener('orientationchange', ()=> setTimeout(updateTopbarHeight,120));
+
+  /* initial render and deep-link handling */
+  function init(){
+    updateTopbarHeight();
+    renderAll();
+    // open from hash if provided
+    if (location.hash){
+      const id = location.hash.slice(1);
+      if (posts.some(p => p.id === id)) openReader(id);
+    }
+  }
+
+  init();
+
+  /* expose renderAll to outer scope within this closure for search & re-render uses */
+  function renderAll(list = posts){
+    tocEl.innerHTML = ''; articlesEl.innerHTML = '';
+    list.forEach(p => { tocEl.appendChild(createTocItem(p)); articlesEl.appendChild(createArticleCard(p)); });
+  }
+
+  // Re-define createArticleCard & createTocItem in this scope (they reference functions above; keep references aligned)
+  function createTocItem(post){
+    const li = document.createElement('li');
+    const btn = document.createElement('button');
+    btn.textContent = post.title;
+    btn.onclick = ()=> openReader(post.id);
+    li.appendChild(btn);
+    return li;
+  }
+  function createArticleCard(post){
+    const card = document.createElement('article'); card.className='card'; card.id = post.id;
+    const thumb = document.createElement('div'); thumb.className='thumb';
+    const ph = document.createElement('div'); ph.className='placeholder'; ph.style.backgroundImage = `url("${escapeAttr(post.placeholder||'')}")`;
+    const img = document.createElement('img'); img.alt = post.title + ' thumbnail'; img.setAttribute('data-src', post.image || '');
+    thumb.appendChild(ph); thumb.appendChild(img);
+
+    const body = document.createElement('div'); body.className='card-body';
+    const h3 = document.createElement('h3'); h3.textContent = post.title; h3.onclick = ()=> openReader(post.id);
+    const meta = document.createElement('div'); meta.className='meta'; meta.textContent = `${post.author} · ${new Date(post.date).toLocaleDateString()} · ${estimateReadTime(post.content)}`;
+    const tagWrap = document.createElement('div'); tagWrap.style.display='flex'; tagWrap.style.gap='8px'; tagWrap.style.flexWrap='wrap';
+    (post.tags||[]).forEach(t=>{ const s=document.createElement('span'); s.className='tag'; s.textContent=t; tagWrap.appendChild(s); });
+    const excerpt = document.createElement('p'); excerpt.className='excerpt'; excerpt.textContent = post.excerpt;
+    const actions = document.createElement('div'); actions.className='actions';
+    const share = document.createElement('button'); share.className='btn ghost'; share.textContent='Share';
+    share.onclick = ()=> copyToClipboard(location.origin + location.pathname + '#' + post.id);
+    const readBtn = document.createElement('button'); readBtn.className='btn'; readBtn.textContent='Read'; readBtn.onclick = ()=> openReader(post.id);
+    actions.appendChild(share); actions.appendChild(readBtn);
+
+    body.appendChild(h3); body.appendChild(meta); body.appendChild(tagWrap); body.appendChild(excerpt); body.appendChild(actions);
+    card.appendChild(thumb); card.appendChild(body);
+    imgIo.observe(img);
+    return card;
+  }
+
+  // ensure search input exists and is focused when pressing slash
+  topSearch.setAttribute('aria-live','polite');
+});
+</script>
+</body>
+</html>
