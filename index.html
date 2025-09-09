@@ -12,9 +12,29 @@
 
   :root { --topbar-h:64px; }
 
-  /* Topbar */
-  .topbar { position: sticky; top: 0; z-index:1400; background:#fff; border-bottom:1px solid #eee; box-shadow:0 6px 18px rgba(10,10,10,0.03); padding:6px 12px; }
-  .topbar-inner { display:flex; gap:12px; align-items:center; width:100%; max-width:1200px; margin:0 auto; }
+  /* Topbar - fixed so it remains visible at all times */
+  .topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    background:#fff;
+    border-bottom:1px solid #eee;
+    box-shadow:0 6px 18px rgba(10,10,10,0.03);
+    padding:6px 12px;
+  }
+
+  /* keep topbar content centered and constrained */
+  .topbar-inner {
+    display:flex;
+    gap:12px;
+    align-items:center;
+    width:100%;
+    max-width:1200px;
+    margin:0 auto;
+  }
+
   .left-zone, .center-zone, .right-zone { display:flex; align-items:center; gap:12px; }
   .left-zone { flex:0 0 auto; }
   .center-zone { flex:1 1 420px; justify-content:center; min-width:140px; }
@@ -31,10 +51,15 @@
   .search-input{width:100%;max-width:640px;padding:9px 12px;border-radius:10px;border:1px solid #e6e6e6;transition:box-shadow .12s; font-size:15px}
   .search-input:focus{outline:none;box-shadow:0 6px 18px rgba(11,116,222,0.06)}
 
-  @media(max-width:1100px){ .center-zone{flex:1 1 360px} .search-input{max-width:520px} }
+  @media(max-width:1100px){
+    .center-zone{flex:1 1 360px}
+    .search-input{max-width:520px}
+  }
   @media(max-width:880px){
-    .about-text .name{font-size:13px} .about-text .role{font-size:11px}
-    .center-zone{flex:1 1 1px} .search-input{font-size:14px}
+    .about-text .name{font-size:13px}
+    .about-text .role{font-size:11px}
+    .center-zone{flex:1 1 1px}
+    .search-input{font-size:14px}
   }
 
   .about-panel{
@@ -93,10 +118,12 @@
   .reader.open{display:flex}
   .reader-close{position:fixed;top:calc(var(--topbar-h) + 12px);right:18px;z-index:1600;background:#fff;border-radius:999px;border:1px solid rgba(0,0,0,0.08);padding:8px 10px;cursor:pointer;font-weight:600;box-shadow:0 8px 20px rgba(0,0,0,0.12)}
   .reader-article{width:min(900px,96%);max-height:calc(100vh - (var(--topbar-h) + 56px));overflow:auto;background:#fff;border-radius:10px;box-shadow:0 20px 60px rgba(10,10,10,0.3);position:relative;z-index:1550}
+
   .reader-hero{width:100%;height:320px;overflow:hidden;position:relative;background:#eee;border-top-left-radius:10px;border-top-right-radius:10px}
   .reader-hero .placeholder{position:absolute;inset:0;background-size:cover;background-position:center;filter:blur(10px) saturate(120%);transform:scale(1.05);transition:opacity 420ms;z-index:0}
   .reader-hero img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity 420ms}
   .reader-hero img.loaded{opacity:1}
+  .reader-hero .placeholder.hidden{opacity:0}
   .reader-content{padding:28px 36px}
   .reader-article h1{margin-top:0;font-size:34px;line-height:1.1}
   .reader-meta{color:#6b6b6b;margin-bottom:12px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
@@ -122,15 +149,15 @@
           <span class="avatar" aria-hidden="true">
             <img id="avatarImg" src="https://avatars.githubusercontent.com/u/26116706?v=4?q=80&w=800&auto=format&fit=crop&crop=faces" alt="Profile avatar">
           </span>
-          <!--<div class="about-text">
+          <div class="about-text">
             <span class="name">Saravana Kumar</span>
             <span class="role">Software engineer · ML practitioner</span>
-          </div> -->
+          </div>
         </div>
 
         <div class="about-panel" id="aboutPanel" aria-hidden="true">
           <h3>About Me</h3>
-          <p><strong>Name:</strong> Saravana Kumar</<p>
+          <p><strong>Name:</strong> Saravana Kumar</p>
           <p><strong>Bio:</strong> I'm a software engineer and ML practitioner focusing on production-ready RAG systems, churn models, LLM, and developer tooling.</p>
           <h4>Career</h4>
           <ol style="margin:6px 0 0;padding-left:18px">
@@ -164,9 +191,7 @@
     </aside>
 
     <main>
-      <div class="controls">
-        <div><h2>Latest stories</h2><div class="meta-note">Curated picks</div></div>
-      </div>
+      <div class="controls"><div><h2>Latest stories</h2><div class="meta-note">Curated picks</div></div></div>
 
       <section class="articles" id="articles" aria-live="polite"></section>
     </main>
@@ -181,9 +206,8 @@
   <div class="toast" id="toast" role="status" aria-live="polite">Copied link</div>
 
 <script>
-/* Wrap everything to run after DOM is ready to avoid timing issues */
+/* Wrap code to run after DOM ready */
 document.addEventListener('DOMContentLoaded', () => {
-  /* sample posts */
   const posts = [
     {
       id:'post-1', title:'Designing for Focus: How to Build Reader-Friendly UIs', author:'Saravana Kumar', date:'2025-09-09',
@@ -370,7 +394,7 @@ document.addEventListener('DOMContentLoaded', () => {
       heroImg.onload = ()=> { heroImg.classList.add('loaded'); if(heroPh) heroPh.classList.add('hidden'); delete heroImg.dataset.src; };
     }
 
-    // ensure in-post images are observed for lazy-loading and placeholders inserted
+    // in-post images
     const inpost = readerArticle.querySelectorAll('.inpost-img');
     inpost.forEach(w=>{
       const p = w.dataset.placeholder || '';
@@ -380,9 +404,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const img = w.querySelector('img');
       if (img && img.dataset.src) imgIo.observe(img);
     });
-
-    // ensure any other data-src images inside post-body are observed
-    readerArticle.querySelectorAll('.post-body img[data-src]').forEach(i=> imgIo.observe(i));
 
     readerArticle.addEventListener('scroll', onReaderScroll);
     onReaderScroll();
@@ -411,7 +432,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   readerTop.addEventListener('click', ()=> readerArticle.scrollTo({ top:0, behavior:'smooth' }));
 
-  /* Search functionality (robust + immediate) */
+  /* Search functionality */
   const normalize = s => String(s||'').toLowerCase().replace(/\s+/g,' ').trim();
   let searchTimer = null;
   function applySearch(){
@@ -441,7 +462,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'Enter') { e.preventDefault(); if (searchTimer) clearTimeout(searchTimer); applySearch(); }
   });
 
-  // slash -> focus search (keyboard shortcut)
+  // slash -> focus search
   document.addEventListener('keydown', (e) => {
     if (e.key === '/' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
       e.preventDefault(); topSearch.focus(); topSearch.select();
@@ -463,15 +484,21 @@ document.addEventListener('DOMContentLoaded', () => {
   let toastTimer = null;
   function showToast(msg, ms=2000){ toast.textContent = msg; toast.classList.add('show'); if (toastTimer) clearTimeout(toastTimer); toastTimer = setTimeout(()=> toast.classList.remove('show'), ms); }
 
-  /* measure topbar height for overlay placement */
-  function updateTopbarHeight(){ const h = topbar.getBoundingClientRect().height || 64; document.documentElement.style.setProperty('--topbar-h', Math.max(48, Math.round(h)) + 'px'); }
-  window.addEventListener('resize', updateTopbarHeight); window.addEventListener('orientationchange', ()=> setTimeout(updateTopbarHeight,120));
+  /* update CSS variable and body padding for fixed topbar */
+  function updateTopbarHeight(){
+    const h = topbar.getBoundingClientRect().height || 64;
+    const heightPx = Math.max(48, Math.round(h));
+    document.documentElement.style.setProperty('--topbar-h', heightPx + 'px');
+    // ensure body content sits below the fixed topbar
+    document.body.style.paddingTop = heightPx + 'px';
+  }
+  window.addEventListener('resize', updateTopbarHeight);
+  window.addEventListener('orientationchange', ()=> setTimeout(updateTopbarHeight,120));
 
   /* initial render and deep-link handling */
   function init(){
     updateTopbarHeight();
     renderAll();
-    // open from hash if provided
     if (location.hash){
       const id = location.hash.slice(1);
       if (posts.some(p => p.id === id)) openReader(id);
@@ -480,13 +507,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   init();
 
-  /* expose renderAll to outer scope within this closure for search & re-render uses */
+  /* re-declare supporting functions used earlier inside closure */
   function renderAll(list = posts){
     tocEl.innerHTML = ''; articlesEl.innerHTML = '';
     list.forEach(p => { tocEl.appendChild(createTocItem(p)); articlesEl.appendChild(createArticleCard(p)); });
   }
-
-  // Re-define createArticleCard & createTocItem in this scope (they reference functions above; keep references aligned)
   function createTocItem(post){
     const li = document.createElement('li');
     const btn = document.createElement('button');
@@ -520,7 +545,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return card;
   }
 
-  // ensure search input exists and is focused when pressing slash
+  // accessibility: announce search input
   topSearch.setAttribute('aria-live','polite');
 });
 </script>
