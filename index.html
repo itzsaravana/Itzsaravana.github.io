@@ -3,13 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Medium-like Blog</title>
+  <title>Medium-like Blog — lazy images + blur-up</title>
   <style>
-    /* Reset-ish */
     * { box-sizing: border-box; }
     html,body { height: 100%; margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial; color:#111; background:#f6f6f6; }
 
-    /* Layout */
     .app {
       display: grid;
       grid-template-columns: 280px 1fr;
@@ -32,151 +30,94 @@
       height: calc(100vh - 60px);
       overflow: auto;
     }
-    .site-title {
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin: 0 0 12px;
-      font-size: 18px;
-    }
+    .site-title { font-weight: 700; letter-spacing: -0.02em; margin: 0 0 12px; font-size: 18px; }
     .sidebar p { margin: 0 0 14px; color: #5b5b5b; font-size: 13px; }
     .toc { list-style: none; padding: 0; margin: 8px 0 0; }
     .toc li + li { margin-top: 8px; }
     .toc button {
-      display: block;
-      width: 100%;
-      text-align: left;
-      background: transparent;
-      border: none;
-      padding: 8px 10px;
-      border-radius: 8px;
-      cursor: pointer;
-      color: #1a1a1a;
-      font-size: 15px;
+      display: block; width: 100%; text-align: left; background: transparent; border: none; padding: 8px 10px;
+      border-radius: 8px; cursor: pointer; color: #1a1a1a; font-size: 15px;
     }
     .toc button:hover, .toc button:focus { background: #f0f0f0; outline: none; }
 
-    /* Main content */
-    main {
-      min-height: 60vh;
-    }
+    /* Main */
+    main { min-height: 60vh; }
 
-    .controls {
-      display:flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 18px;
-    }
+    .controls { display:flex; justify-content: space-between; align-items: center; margin-bottom: 18px; }
     .controls h2 { margin: 0; font-size: 20px; }
-    .controls .search {
-      display:flex;
-      gap:8px;
-      align-items:center;
-    }
-    .search input {
-      padding: 8px 10px;
-      border-radius: 8px;
-      border: 1px solid #e6e6e6;
-      width: 220px;
-    }
+    .search input { padding: 8px 10px; border-radius: 8px; border: 1px solid #e6e6e6; width: 220px; }
 
-    /* Article list: card style like medium */
-    .articles {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 18px;
-    }
+    /* Article list: card with thumbnail */
+    .articles { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 18px; }
     .card {
-      background: #fff;
-      border-radius: 12px;
-      padding: 18px;
-      box-shadow: 0 6px 18px rgba(20,20,20,0.04);
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      min-height: 160px;
-    }
-    .card h3 { margin: 0; font-size: 18px; }
-    .meta { color: #6b6b6b; font-size: 13px; }
-    .excerpt { color: #333; line-height: 1.5; }
-    .card .actions {
-      margin-top: auto;
-      display:flex;
-      justify-content: space-between;
-      align-items:center;
-      gap:12px;
-    }
-    .btn {
-      padding: 8px 14px;
-      border-radius: 999px;
-      border: none;
-      cursor: pointer;
-      font-weight: 600;
-      background: #111;
-      color: #fff;
-    }
-    .btn.ghost {
-      background: transparent;
-      color: #111;
-      border: 1px solid #e6e6e6;
-      font-weight: 600;
-      padding: 6px 12px;
+      background: #fff; border-radius: 12px; padding: 14px; box-shadow: 0 6px 18px rgba(20,20,20,0.04);
+      display: flex; gap: 12px; min-height: 120px; align-items: flex-start;
     }
 
-    /* Read mode overlay (focused, like Medium's reader) */
+    /* blur-up wrapper for thumbnails */
+    .thumb {
+      width: 120px; height: 80px; flex: 0 0 120px; border-radius: 8px; overflow: hidden; background:#ddd;
+      display:flex; align-items:center; justify-content:center; position: relative;
+    }
+    .thumb .placeholder {
+      position:absolute; inset:0; background-size:cover; background-position:center; filter: blur(8px) saturate(120%);
+      transform: scale(1.05);
+      transition: opacity 400ms ease;
+    }
+    .thumb img {
+      width: 100%; height: 100%; object-fit: cover; display:block; opacity: 0; transition: opacity 420ms ease;
+    }
+    .thumb img.loaded { opacity: 1; }
+    .thumb .placeholder.hidden { opacity: 0; }
+
+    .card-body { flex:1; display:flex; flex-direction:column; gap:8px; min-width:0; }
+    .card h3 { margin: 0; font-size: 17px; cursor:pointer; }
+    .meta { color: #6b6b6b; font-size: 13px; }
+    .excerpt { color: #333; line-height: 1.45; margin:0; }
+
+    .card .actions { margin-top:auto; display:flex; justify-content: space-between; align-items:center; gap:12px; }
+    .btn { padding: 8px 14px; border-radius: 999px; border: none; cursor: pointer; font-weight: 600; background: #111; color: #fff; }
+    .btn.ghost { background: transparent; color: #111; border: 1px solid #e6e6e6; font-weight: 600; padding: 6px 12px; }
+
+    /* Reader overlay */
     .reader {
-      position: fixed;
-      inset: 0;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-      backdrop-filter: blur(4px);
-      background: rgba(0,0,0,0.35);
+      position: fixed; inset: 0; display: none; align-items: center; justify-content: center;
+      z-index: 1000; backdrop-filter: blur(4px); background: rgba(0,0,0,0.35);
     }
     .reader.open { display:flex; }
     .reader-article {
-      width: min(900px, 96%);
-      max-height: 92vh;
-      overflow: auto;
-      padding: 36px;
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 20px 60px rgba(10,10,10,0.3);
+      width: min(900px, 96%); max-height: 92vh; overflow: auto; padding: 0 0 36px 0;
+      background: #fff; border-radius: 10px; box-shadow: 0 20px 60px rgba(10,10,10,0.3);
     }
+    /* Header image (hero) with blur-up */
+    .reader-hero { width:100%; height: 320px; border-top-left-radius:10px; border-top-right-radius:10px; overflow:hidden; background:#eee; position: relative; }
+    .reader-hero .placeholder {
+      position:absolute; inset:0; background-size:cover; background-position:center; filter: blur(10px) saturate(120%); transform: scale(1.05);
+      transition: opacity 420ms ease;
+    }
+    .reader-hero img { width:100%; height:100%; object-fit:cover; display:block; opacity:0; transition: opacity 420ms ease; }
+    .reader-hero img.loaded { opacity: 1; }
+    .reader-hero .placeholder.hidden { opacity: 0; }
+
+    .reader-content { padding: 28px 36px; }
     .reader-article h1 { margin-top: 0; font-size: 34px; line-height:1.1; }
     .reader-article .reader-meta { color: #6b6b6b; margin-bottom: 18px; }
-    .reader-article p { line-height: 1.7; font-size: 18px; color: #222; }
+    .reader-article p { line-height: 1.7; font-size: 18px; color: #222; margin-top:1em; }
+
     .reader-close {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: #fff;
-      border-radius: 999px;
-      border: 1px solid rgba(0,0,0,0.08);
-      padding: 8px 10px;
-      cursor:pointer;
-      font-weight:600;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      position: absolute; top: 20px; right: 20px; background: #fff; border-radius: 999px; border: 1px solid rgba(0,0,0,0.08);
+      padding: 8px 10px; cursor:pointer; font-weight:600; box-shadow: 0 8px 20px rgba(0,0,0,0.08);
     }
 
-    /* Responsive: collapse sidebar to top bar on small widths */
-    @media (max-width: 880px) {
+    @media (max-width:880px) {
       .app { grid-template-columns: 1fr; }
-      .sidebar {
-        position: static;
-        height: auto;
-        display: none;
-        margin-bottom: 12px;
-      }
-      .sidebar.open { display: block; }
-      .mobile-toggle {
-        display: inline-flex;
-        gap:8px;
-        align-items:center;
-      }
+      .sidebar { position: static; height: auto; display: none; margin-bottom: 12px; }
+      .sidebar.open { display:block; }
+      .card { flex-direction: column; }
+      .thumb { width:100%; height:180px; flex: 0 0 auto; }
+      .reader-hero { height: 220px; }
     }
 
-    /* small niceties */
     a { color: inherit; text-decoration: none; }
     .tag { font-size: 12px; color: #6b6b6b; background: #fafafa; padding: 6px 8px; border-radius: 6px; }
   </style>
@@ -184,16 +125,13 @@
 <body>
 
   <div class="app" id="app">
-    <!-- Sidebar / Table of contents -->
+    <!-- Sidebar -->
     <aside class="sidebar" id="sidebar" aria-label="Table of contents">
       <div>
         <h1 class="site-title">My Medium-like Blog</h1>
-        <p>Recent posts &amp; navigation. Click any title to open the full article in read mode.</p>
+        <p>Recent posts &amp; navigation. Click any title to open that article.</p>
       </div>
-
-      <ul class="toc" id="toc">
-        <!-- JS will populate -->
-      </ul>
+      <ul class="toc" id="toc"></ul>
     </aside>
 
     <!-- Main -->
@@ -205,7 +143,7 @@
         </div>
 
         <div style="display:flex; gap:12px; align-items:center;">
-          <div class="mobile-toggle" style="display:none;">
+          <div style="display:none;" class="mobile-toggle">
             <button class="btn ghost" id="toggleSidebar">Menu</button>
           </div>
           <div class="search">
@@ -214,22 +152,20 @@
         </div>
       </div>
 
-      <section class="articles" id="articles" aria-live="polite">
-        <!-- JS will populate article cards -->
-      </section>
+      <section class="articles" id="articles" aria-live="polite"></section>
     </main>
   </div>
 
-  <!-- Reader / Full article overlay -->
+  <!-- Reader overlay -->
   <div class="reader" id="reader" aria-hidden="true" role="dialog" aria-modal="true">
     <button class="reader-close" id="readerClose" aria-label="Close reader (Esc)">✕</button>
     <article class="reader-article" id="readerArticle" tabindex="0">
-      <!-- JS fills this -->
+      <!-- hero + content injected by JS -->
     </article>
   </div>
 
   <script>
-    /******** Sample blog data ********/
+    /* Sample posts with image and placeholder (tiny blurred) */
     const posts = [
       {
         id: 'post-1',
@@ -237,11 +173,15 @@
         author: 'Saravana Kumar',
         date: '2025-09-09',
         tags: ['design','ux','readability'],
+        image: 'https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=1600&auto=format&fit=crop&crop=entropy',
+        // placeholder should be a tiny blurred version — replace with your low-res url/data-uri
+        placeholder: 'https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=10&w=40&auto=format&fit=crop&crop=entropy',
         excerpt: `Readers crave focus. In this piece we cover typography choices, layout strategies, and small UX details that dramatically improve reading comprehension and time on page.`,
         content: `<p>Readers crave focus. To design a reader-friendly UI, start with typography: use a comfortable measure (line length), slightly larger font sizes for body copy, and increased line-height. Avoid high-contrast pure black on pure white; a soft dark gray reduces eye strain.</p>
           <p>Next, structure content: clear headings, short paragraphs, and callouts help scanability. Consider implementing a "read mode" that removes distractions (navigation, ads, sidebars) to help readers immerse themselves.</p>
           <h3>Micro-interactions matter</h3>
-          <p>Small animations, like smooth scrolling or subtle hover states, make the interface feel alive and polished. But keep them fast and unobtrusive — nothing should break the reading flow.</p>`
+          <p>Small animations, like smooth scrolling or subtle hover states, make the interface feel alive and polished. But keep them fast and unobtrusive — nothing should break the reading flow.</p>
+          <p>Finally, validate changes with metrics: reading time, completion rate, and scroll depth.</p>`
       },
       {
         id: 'post-2',
@@ -249,9 +189,13 @@
         author: 'Saravana Kumar',
         date: '2025-08-30',
         tags: ['llm','rag','devops'],
+        image: 'https://images.unsplash.com/photo-1548095115-45697e3c1f6a?q=80&w=1600&auto=format&fit=crop&crop=entropy',
+        placeholder: 'https://images.unsplash.com/photo-1548095115-45697e3c1f6a?q=10&w=40&auto=format&fit=crop&crop=entropy',
         excerpt: `This guide explains how to wire up a local Retrieval-Augmented Generation stack: document ingestion, vector db with Chroma, and local LLM hosting with Ollama.`,
         content: `<p>Setting up a local RAG system can accelerate experimentation. The key parts are: document preprocessing, chunking strategy (semantic-aware chunk size), vector storage (Chroma / FAISS), and the LLM (Ollama or local LLaMA variants).</p>
-          <p>Keep a clean ingestion pipeline: parse documents, normalize whitespace, and preserve context windows. Use embedding batching and cache results to avoid repeated compute.</p>`
+          <p>Keep a clean ingestion pipeline: parse documents, normalize whitespace, and preserve context windows. Use embedding batching and cache results to avoid repeated compute.</p>
+          <h3>Practical tips</h3>
+          <p>Use small batches and monitor memory usage. Separate ingestion and query-time components so you can re-index without downtime.</p>`
       },
       {
         id: 'post-3',
@@ -259,14 +203,15 @@
         author: 'Priya Menon',
         date: '2025-07-21',
         tags: ['ml','video','engagement'],
+        image: 'https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?q=80&w=1600&auto=format&fit=crop&crop=entropy',
+        placeholder: 'https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?q=10&w=40&auto=format&fit=crop&crop=entropy',
         excerpt: `Choosing thumbnails is both art and science. We'll go over heuristics and ML approaches to pick frames that increase click-through rates.`,
         content: `<p>Thumbnails are often the first impression. Common heuristics: faces, high-contrast frames, and action frames perform well. ML pipelines can evaluate candidate frames by predicted CTR using historical labels.</p>
           <p>Use A/B testing to validate — what worked for one audience may not work for another. Also watch for platform-specific constraints (aspect ratio, cropping).</p>`
-      },
-      // add more posts as desired...
+      }
     ];
 
-    /******** Helpers to render UI ********/
+    /* UI elements */
     const tocEl = document.getElementById('toc');
     const articlesEl = document.getElementById('articles');
     const reader = document.getElementById('reader');
@@ -274,7 +219,33 @@
     const readerClose = document.getElementById('readerClose');
     const searchInput = document.getElementById('search');
     const sidebar = document.getElementById('sidebar');
-    const toggleSidebarBtn = document.getElementById('toggleSidebar');
+
+    /* IntersectionObserver for lazy-loading images (thumbnails and images in DOM) */
+    const ioOptions = { root: null, rootMargin: '200px', threshold: 0.01 };
+    const imgObserver = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        // el is the <img> element with data-src
+        const src = el.dataset.src;
+        if (src) {
+          // set native attributes
+          el.src = src;
+          el.loading = 'lazy';
+          el.decoding = 'async';
+          // when loaded, add .loaded and hide placeholder sibling
+          el.onload = () => {
+            el.classList.add('loaded');
+            const ph = el.parentElement.querySelector('.placeholder');
+            if (ph) ph.classList.add('hidden');
+            // remove data-src to avoid reprocessing
+            delete el.dataset.src;
+          };
+          // stop observing
+          obs.unobserve(el);
+        }
+      });
+    }, ioOptions);
 
     function createTocItem(post) {
       const li = document.createElement('li');
@@ -291,6 +262,27 @@
       const card = document.createElement('article');
       card.className = 'card';
       card.id = post.id;
+
+      // thumb wrapper with placeholder and lazy img
+      const thumb = document.createElement('div');
+      thumb.className = 'thumb';
+
+      const placeholder = document.createElement('div');
+      placeholder.className = 'placeholder';
+      placeholder.style.backgroundImage = `url("${escapeHtmlAttr(post.placeholder || '')}")`;
+      thumb.appendChild(placeholder);
+
+      const img = document.createElement('img');
+      img.alt = post.title + ' — thumbnail';
+      img.setAttribute('data-src', post.image || '');
+      img.loading = 'lazy';
+      img.decoding = 'async';
+      // will be observed for lazy load
+      thumb.appendChild(img);
+
+      // body
+      const body = document.createElement('div');
+      body.className = 'card-body';
 
       const h3 = document.createElement('h3');
       h3.textContent = post.title;
@@ -329,15 +321,19 @@
       actions.appendChild(more);
       actions.appendChild(readBtn);
 
-      card.appendChild(h3);
-      card.appendChild(meta);
-      card.appendChild(tagWrap);
-      card.appendChild(excerpt);
-      card.appendChild(actions);
-
-      // clicking title scrolls to open
-      h3.style.cursor = 'pointer';
       h3.onclick = () => openReader(post.id);
+
+      body.appendChild(h3);
+      body.appendChild(meta);
+      body.appendChild(tagWrap);
+      body.appendChild(excerpt);
+      body.appendChild(actions);
+
+      card.appendChild(thumb);
+      card.appendChild(body);
+
+      // observe image for lazy load
+      imgObserver.observe(img);
 
       return card;
     }
@@ -351,22 +347,49 @@
       });
     }
 
-    /******** Reader (Read mode) ********/
+    /* Open reader: we must ensure hero image loads immediately (not just on intersection) */
     function openReader(id) {
       const post = posts.find(p => p.id === id);
       if (!post) return;
-      // build reader HTML
+
+      // build reader hero + content with placeholder + data-src
       readerArticle.innerHTML = `
-        <header>
-          <h1>${escapeHtml(post.title)}</h1>
-          <div class="reader-meta">${escapeHtml(post.author)} · ${new Date(post.date).toLocaleDateString()}</div>
-        </header>
-        <section>${post.content}</section>
+        <div class="reader-hero" aria-hidden="true">
+          <div class="placeholder" style="background-image: url('${escapeHtmlAttr(post.placeholder || '')}');"></div>
+          <img data-src="${escapeHtmlAttr(post.image || '')}" alt="${escapeHtmlAttr(post.title)} — header image" />
+        </div>
+        <div class="reader-content">
+          <header>
+            <h1>${escapeHtml(post.title)}</h1>
+            <div class="reader-meta">${escapeHtml(post.author)} · ${new Date(post.date).toLocaleDateString()}</div>
+          </header>
+          <section>${post.content}</section>
+        </div>
       `;
+
       reader.classList.add('open');
       reader.setAttribute('aria-hidden','false');
+
       // focus for keyboard
       setTimeout(()=> readerArticle.focus(), 80);
+
+      // since reader is visible, eagerly load hero image (don't wait for intersection)
+      const heroImg = readerArticle.querySelector('.reader-hero img');
+      const heroPlaceholder = readerArticle.querySelector('.reader-hero .placeholder');
+      if (heroImg) {
+        const src = heroImg.dataset.src;
+        if (src) {
+          // load image right away
+          heroImg.src = src;
+          heroImg.loading = 'lazy';
+          heroImg.decoding = 'async';
+          heroImg.onload = () => {
+            heroImg.classList.add('loaded');
+            if (heroPlaceholder) heroPlaceholder.classList.add('hidden');
+            delete heroImg.dataset.src;
+          };
+        }
+      }
 
       // push hash for deep-linking
       history.replaceState(null, '', '#' + id);
@@ -379,20 +402,17 @@
       if(location.hash && posts.some(p => '#' + p.id === location.hash)) {
         history.replaceState(null,'', location.pathname + location.search);
       }
+      // optional: cleanup reader content after a small delay
+      setTimeout(()=> { readerArticle.innerHTML = ''; }, 420);
     }
 
     readerClose.addEventListener('click', closeReader);
-    reader.addEventListener('click', (e) => {
-      if (e.target === reader) closeReader();
-    });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeReader();
-    });
+    reader.addEventListener('click', (e) => { if (e.target === reader) closeReader(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeReader(); });
 
-    // hydrate on load
     renderAll();
 
-    // handle search filter (title or tag)
+    // search filter
     searchInput.addEventListener('input', (e) => {
       const q = e.target.value.trim().toLowerCase();
       if (!q) { renderAll(); return; }
@@ -409,38 +429,13 @@
       }
     });
 
-    // simple sidebar toggle for small screens
-    (function manageResponsive() {
-      const mql = window.matchMedia('(max-width:880px)');
-      function update() {
-        const mobile = mql.matches;
-        if (mobile) {
-          toggleSidebarBtn.style.display = 'inline-flex';
-          toggleSidebarBtn.onclick = () => {
-            sidebar.classList.toggle('open');
-          };
-        } else {
-          toggleSidebarBtn.style.display = 'none';
-          sidebar.classList.remove('open');
-        }
-      }
-      mql.addListener(update);
-      update();
-    })();
-
-    // Utility to escape text (used for title injection)
+    /* Utility functions */
     function escapeHtml(str) {
-      return String(str).replace(/[&<>"']/g, (s) => {
-        return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[s];
-      });
+      return String(str).replace(/[&<>"']/g, (s) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[s]));
     }
-
-    // Make TOC keyboard-friendly: first item focusable
-    // (auto-focus the first toc button for keyboard nav)
-    setTimeout(()=> {
-      const firstBtn = tocEl.querySelector('button');
-      if(firstBtn) firstBtn.tabIndex = 0;
-    }, 200);
+    function escapeHtmlAttr(str) {
+      return String(str || '').replace(/["']/g, (s) => (s === '"' ? '&quot;' : '&#39;'));
+    }
   </script>
 </body>
 </html>
