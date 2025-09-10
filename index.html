@@ -139,6 +139,23 @@
   .reader-top.show{display:block}
   .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:32px;z-index:1800;background:rgba(0,0,0,0.85);color:#fff;padding:8px 14px;border-radius:8px;font-size:14px;opacity:0;transition:opacity .2s}
   .toast.show{opacity:1}
+
+  /* Responsive YouTube iframe wrapper (16:9) */
+  .video-wrapper{
+    position:relative;
+    width:100%;
+    padding-bottom:56.25%; /* 16:9 ratio */
+    height:0;
+    margin:20px 0;
+  }
+  .video-wrapper iframe{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    border:0;
+  }
 </style>
 </head>
 <body>
@@ -149,10 +166,6 @@
           <span class="avatar" aria-hidden="true">
             <img id="avatarImg" src="https://avatars.githubusercontent.com/u/26116706?v=4?q=80&w=800&auto=format&fit=crop&crop=faces" alt="Profile avatar">
           </span>
-         <!-- <div class="about-text">
-            <span class="name">Saravana Kumar</span>
-            <span class="role">Software engineer · ML practitioner</span>
-          </div> -->
         </div>
 
         <div class="about-panel" id="aboutPanel" aria-hidden="true">
@@ -242,37 +255,37 @@ document.addEventListener('DOMContentLoaded', () => {
       content:`<p>Thumbnails are often the first impression. Common heuristics: faces, high-contrast frames, and action frames perform well.</p>`
     },
     {
-      id:'post-4', title:'Practical Monitoring for Production ML Systems', author:'Anita Rao', date:'2025-06-10',
+      id:'post-4',
+      title:'Practical Monitoring for Production ML Systems',
+      author:'Anita Rao',
+      date:'2025-06-10',
       tags:['ml','monitoring','mle'],
       image:'https://images.unsplash.com/photo-1557800636-894a64c1696f?q=80&w=1600&auto=format&fit=crop&crop=entropy',
       placeholder:'https://images.unsplash.com/photo-1557800636-894a64c1696f?q=10&w=40&auto=format&fit=crop&crop=entropy',
       excerpt:'What to monitor in ML systems and how to set up reliable alerts.',
-      content:`<p>Monitor both model and data: input distribution drifts, prediction distribution shifts, and downstream KPI changes.</p>`
-    },
-   {
-  id:'post-4',
-  title:'Practical Monitoring for Production ML Systems',
-  author:'Anita Rao',
-  date:'2025-06-10',
-  tags:['ml','monitoring','mle'],
-  image:'https://images.unsplash.com/photo-1557800636-894a64c1696f?q=80&w=1600&auto=format&fit=crop&crop=entropy',
-  placeholder:'https://images.unsplash.com/photo-1557800636-894a64c1696f?q=10&w=40&auto=format&fit=crop&crop=entropy',
-  excerpt:'What to monitor in ML systems and how to set up reliable alerts.',
-  content: '
-    <p>Monitor both model and data: input distribution drifts, prediction distribution shifts, and downstream KPI changes.</p>
-    
-    <div style="margin:20px 0;">
-      <iframe width="560" height="315"
-        src="https://www.youtube.com/embed/VIDEO_ID"
-        title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-      </iframe>
-    </div>
-  '
-}
+      content: `
+        <h2>Monitoring model & data</h2>
+        <p>Monitor both model and data: input distribution drifts, prediction distribution shifts, and downstream KPI changes.</p>
 
+        <h3>Practical checklist</h3>
+        <ul>
+          <li>Compare input feature distributions vs training set</li>
+          <li>Monitor prediction-confidence and class-frequency changes</li>
+          <li>Track downstream business KPIs and latency</li>
+        </ul>
+
+        <div class="video-wrapper" aria-hidden="false">
+          <!-- Replace VIDEO_ID with a real YouTube video id -->
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Monitoring ML systems" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+
+        <h3>Alerting</h3>
+        <p>Use anomaly detection + thresholding. Integrate alerts into your on-call workflow (PagerDuty, Slack).</p>
+
+        <h3>Short case study</h3>
+        <p>Seasonal shifts can cause sudden degradation — add windowed comparison checks and cached-rate evaluation to detect changes quickly.</p>
+      `
+    }
   ];
 
   /* DOM refs */
@@ -530,44 +543,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   init();
-
-  /* re-declare supporting functions used earlier inside closure */
-  function renderAll(list = posts){
-    tocEl.innerHTML = ''; articlesEl.innerHTML = '';
-    list.forEach(p => { tocEl.appendChild(createTocItem(p)); articlesEl.appendChild(createArticleCard(p)); });
-  }
-  function createTocItem(post){
-    const li = document.createElement('li');
-    const btn = document.createElement('button');
-    btn.textContent = post.title;
-    btn.onclick = ()=> openReader(post.id);
-    li.appendChild(btn);
-    return li;
-  }
-  function createArticleCard(post){
-    const card = document.createElement('article'); card.className='card'; card.id = post.id;
-    const thumb = document.createElement('div'); thumb.className='thumb';
-    const ph = document.createElement('div'); ph.className='placeholder'; ph.style.backgroundImage = `url("${escapeAttr(post.placeholder||'')}")`;
-    const img = document.createElement('img'); img.alt = post.title + ' thumbnail'; img.setAttribute('data-src', post.image || '');
-    thumb.appendChild(ph); thumb.appendChild(img);
-
-    const body = document.createElement('div'); body.className='card-body';
-    const h3 = document.createElement('h3'); h3.textContent = post.title; h3.onclick = ()=> openReader(post.id);
-    const meta = document.createElement('div'); meta.className='meta'; meta.textContent = `${post.author} · ${new Date(post.date).toLocaleDateString()} · ${estimateReadTime(post.content)}`;
-    const tagWrap = document.createElement('div'); tagWrap.style.display='flex'; tagWrap.style.gap='8px'; tagWrap.style.flexWrap='wrap';
-    (post.tags||[]).forEach(t=>{ const s=document.createElement('span'); s.className='tag'; s.textContent=t; tagWrap.appendChild(s); });
-    const excerpt = document.createElement('p'); excerpt.className='excerpt'; excerpt.textContent = post.excerpt;
-    const actions = document.createElement('div'); actions.className='actions';
-    const share = document.createElement('button'); share.className='btn ghost'; share.textContent='Share';
-    share.onclick = ()=> copyToClipboard(location.origin + location.pathname + '#' + post.id);
-    const readBtn = document.createElement('button'); readBtn.className='btn'; readBtn.textContent='Read'; readBtn.onclick = ()=> openReader(post.id);
-    actions.appendChild(share); actions.appendChild(readBtn);
-
-    body.appendChild(h3); body.appendChild(meta); body.appendChild(tagWrap); body.appendChild(excerpt); body.appendChild(actions);
-    card.appendChild(thumb); card.appendChild(body);
-    imgIo.observe(img);
-    return card;
-  }
 
   // accessibility: announce search input
   topSearch.setAttribute('aria-live','polite');
