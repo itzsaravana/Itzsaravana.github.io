@@ -276,7 +276,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         <div class="video-wrapper" aria-hidden="false">
           <!-- Replace VIDEO_ID with a real YouTube video id -->
-          <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Monitoring ML systems" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/pNZw6QxRqfo" title="Monitoring ML systems" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
 
         <h3>Alerting</h3>
@@ -350,10 +350,25 @@ document.addEventListener('DOMContentLoaded', () => {
     (post.tags||[]).forEach(t=>{ const s=document.createElement('span'); s.className='tag'; s.textContent=t; tagWrap.appendChild(s); });
     const excerpt = document.createElement('p'); excerpt.className='excerpt'; excerpt.textContent = post.excerpt;
     const actions = document.createElement('div'); actions.className='actions';
-    const share = document.createElement('button'); share.className='btn ghost'; share.textContent='Share';
-    share.onclick = ()=> copyToClipboard(location.origin + location.pathname + '#' + post.id);
+    // const share = document.createElement('button'); share.className='btn ghost'; share.textContent='Share';
+    // share.onclick = ()=> copyToClipboard(location.origin + location.pathname + '#' + post.id);
+    // actions.appendChild(share); 
+        const share = document.createElement('button');
+    share.className = 'btn ghost';
+    share.textContent = 'Share';
+    // Build the full URL of the current post
+    const postUrl = encodeURIComponent(location.origin + location.pathname + '#' + post.id);
+    // When clicked, open LinkedIn share dialog in a new tab
+    share.onclick = () => {
+     const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${postUrl}`;
+      window.open(linkedInUrl, '_blank', 'noopener,noreferrer');
+    };
+    actions.appendChild(share);
+
     const readBtn = document.createElement('button'); readBtn.className='btn'; readBtn.textContent='Read'; readBtn.onclick = ()=> openReader(post.id);
-    actions.appendChild(share); actions.appendChild(readBtn);
+    actions.appendChild(readBtn);
+
+
 
     body.appendChild(h3); body.appendChild(meta); body.appendChild(tagWrap); body.appendChild(excerpt); body.appendChild(actions);
     card.appendChild(thumb); card.appendChild(body);
