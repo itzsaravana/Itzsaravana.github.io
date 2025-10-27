@@ -350,20 +350,20 @@ document.addEventListener('DOMContentLoaded', () => {
     (post.tags||[]).forEach(t=>{ const s=document.createElement('span'); s.className='tag'; s.textContent=t; tagWrap.appendChild(s); });
     const excerpt = document.createElement('p'); excerpt.className='excerpt'; excerpt.textContent = post.excerpt;
     const actions = document.createElement('div'); actions.className='actions';
-    // const share = document.createElement('button'); share.className='btn ghost'; share.textContent='Share';
-    // share.onclick = ()=> copyToClipboard(location.origin + location.pathname + '#' + post.id);
-    // actions.appendChild(share); 
-        const share = document.createElement('button');
-    share.className = 'btn ghost';
-    share.textContent = 'Share';
+    const share = document.createElement('button'); share.className='btn ghost'; share.textContent='Copy Link';
+    share.onclick = ()=> copyToClipboard(location.origin + location.pathname + '#' + post.id);
+    actions.appendChild(share); 
+    const linkedin_share = document.createElement('button');
+    linkedin_share.className = 'btn ghost';
+    linkedin_share.textContent = 'Share';
     // Build the full URL of the current post
     const postUrl = encodeURIComponent(location.origin + location.pathname + '#' + post.id);
     // When clicked, open LinkedIn share dialog in a new tab
-    share.onclick = () => {
+    linkedin_share.onclick = () => {
      const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${postUrl}`;
       window.open(linkedInUrl, '_blank', 'noopener,noreferrer');
     };
-    actions.appendChild(share);
+    actions.appendChild(linkedin_share);
 
     const readBtn = document.createElement('button'); readBtn.className='btn'; readBtn.textContent='Read'; readBtn.onclick = ()=> openReader(post.id);
     actions.appendChild(readBtn);
@@ -565,3 +565,5 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 </body>
 </html>
+
+<
