@@ -218,75 +218,10 @@
   <button class="reader-top" id="readerTop" title="Back to top">Top</button>
   <div class="toast" id="toast" role="status" aria-live="polite">Copied link</div>
 
+<script src="posts.js"></script>
 <script>
 /* Wrap code to run after DOM ready */
 document.addEventListener('DOMContentLoaded', () => {
-  const posts = [
-    {
-      id:'post-1', title:'Designing for Focus: How to Build Reader-Friendly UIs', author:'Saravana Kumar', date:'2025-09-09',
-      tags:['design','ux','readability'],
-      image:'https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=1600&auto=format&fit=crop&crop=entropy',
-      placeholder:'https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=10&w=40&auto=format&fit=crop&crop=entropy',
-      excerpt:'Readers crave focus. Typography, layout and micro-interactions matter.',
-      content:`<p>Readers crave focus. To design a reader-friendly UI, start with typography: use a comfortable measure (line length), slightly larger font sizes for body copy, and increased line-height.</p>
-        <div class="inpost-img" data-placeholder="https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=10&w=80&auto=format&fit=crop&crop=entropy">
-          <img data-src="https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=1200&auto=format&fit=crop&crop=entropy" alt="typography example">
-        </div>
-        <p>Next, structure content: clear headings, short paragraphs, and callouts help scanability.</p>`
-    },
-    {
-      id:'post-2', title:'Building a Local Dev RAG Stack with Chroma and Ollama', author:'Saravana Kumar', date:'2025-08-30',
-      tags:['llm','rag','devops'],
-      image:'https://images.unsplash.com/photo-1548095115-45697e3c1f6a?q=80&w=1600&auto=format&fit=crop&crop=entropy',
-      placeholder:'https://images.unsplash.com/photo-1548095115-45697e3c1f6a?q=10&w=40&auto=format&fit=crop&crop=entropy',
-      excerpt:'A practical local RAG stack guide.',
-      content:`<p>Key parts: document preprocessing, chunking, vector storage, and your LLM.</p>
-        <div class="inpost-img" data-placeholder="https://images.unsplash.com/photo-1548095115-45697e3c1f6a?q=10&w=80&auto=format&fit=crop&crop=entropy">
-          <img data-src="https://images.unsplash.com/photo-1548095115-45697e3c1f6a?q=80&w=1200&auto=format&fit=crop&crop=entropy" alt="local rag diagram">
-        </div>
-        <p>Keep a clean pipeline and cache embeddings to avoid repeated compute.</p>`
-    },
-    {
-      id:'post-3', title:'Thumbnail Selection Techniques to Improve Click-Through', author:'Priya Menon', date:'2025-07-21',
-      tags:['ml','video','engagement'],
-      image:'https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?q=80&w=1600&auto=format&fit=crop&crop=entropy',
-      placeholder:'https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?q=10&w=40&auto=format&fit=crop&crop=entropy',
-      excerpt:'Choosing thumbnails is both art and science.',
-      content:`<p>Thumbnails are often the first impression. Common heuristics: faces, high-contrast frames, and action frames perform well.</p>`
-    },
-    {
-      id:'post-4',
-      title:'Practical Monitoring for Production ML Systems',
-      author:'Anita Rao',
-      date:'2025-06-10',
-      tags:['ml','monitoring','mle'],
-      image:'https://images.unsplash.com/photo-1557800636-894a64c1696f?q=80&w=1600&auto=format&fit=crop&crop=entropy',
-      placeholder:'https://images.unsplash.com/photo-1557800636-894a64c1696f?q=10&w=40&auto=format&fit=crop&crop=entropy',
-      excerpt:'What to monitor in ML systems and how to set up reliable alerts.',
-      content: `
-        <h2>Monitoring model & data</h2>
-        <p>Monitor both model and data: input distribution drifts, prediction distribution shifts, and downstream KPI changes.</p>
-
-        <h3>Practical checklist</h3>
-        <ul>
-          <li>Compare input feature distributions vs training set</li>
-          <li>Monitor prediction-confidence and class-frequency changes</li>
-          <li>Track downstream business KPIs and latency</li>
-        </ul>
-
-        <div class="video-wrapper" aria-hidden="false">
-          <!-- Replace VIDEO_ID with a real YouTube video id -->
-          <iframe src="https://www.youtube.com/embed/pNZw6QxRqfo" title="Monitoring ML systems" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-
-        <h3>Alerting</h3>
-        <p>Use anomaly detection + thresholding. Integrate alerts into your on-call workflow (PagerDuty, Slack).</p>
-
-        <h3>Short case study</h3>
-        <p>Seasonal shifts can cause sudden degradation — add windowed comparison checks and cached-rate evaluation to detect changes quickly.</p>
-      `
-    }
-  ];
 
   /* DOM refs */
   const tocEl = document.getElementById('toc');
