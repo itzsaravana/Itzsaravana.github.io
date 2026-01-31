@@ -1,5 +1,20 @@
 const posts = [
     {
+        "id": "post-1769871274",
+        "title": "Advanced Git Workflows for Teams",
+        "author": "Saravana Kumar",
+        "date": "2026-01-31",
+        "tags": [
+            "git",
+            "collaboration",
+            "workflow"
+        ],
+        "image": "https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=1600&auto=format&fit=crop&crop=entropy",
+        "placeholder": "https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=10&w=40&auto=format&fit=crop&crop=entropy",
+        "excerpt": "Master branching strategies and collaborative workflows with Git for better team coordination.",
+        "content": "<p>Master branching strategies and collaborative workflows with Git for better team coordination.</p>\n<p>This blog post covers key aspects of Advanced Git Workflows for Teams. Please review and expand with more detailed content.</p>"
+    },
+    {
   id:'post-6',
   title:'Bagging vs Boosting Explained: Core Ideas, Differences, and Interview Tips',
   author:'Saravana Kumar',
