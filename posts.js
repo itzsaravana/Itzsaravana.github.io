@@ -15,21 +15,6 @@ const posts = [
         "content": "<p>Embark on a transformative journey and master the art of application containerization with Docker! This blog post serves as your comprehensive guide, outlining essential steps to simplify deployment processes.</p>\n\n<h2><strong>Understanding Docker</strong></h2>\n<p>Docker is an open-source platform that automates the deployment, scaling, and management of applications. It enables developers to package their applications with all necessary dependencies into lightweight, portable containers.</p>\n<h3><em>Key Benefits:</em></h3>\n<ul>\n<li>Isolation: Containers share the host operating system's kernel, minimizing resource duplication and enhancing performance</li>\n<li>Portability: Applications can run consistently across various environments, be it development, testing, or production</li>\n<li>Efficiency: Docker images reduce the size of application packages, making them faster to download and deploy</li>\n</ul>\n\n<h2><strong>Getting Started with Docker</strong></h2>\n<p>To begin, install Docker on your preferred operating system. Follow the instructions provided on the official <a href=\"https://docs.docker.com/get-docker/\">Docker documentation page</a>.</p>\n<h3><em>First Command:</em></h3>\n<p>Verify successful installation by executing the command: <code>docker run hello-world</code>. This command downloads and runs the \"hello-world\" Docker image, displaying a simple greeting upon completion.</p>\n\n<h2><strong>Building Your First Docker Image</strong></h2>\n<p>Create a new directory for your application and navigate to it using the terminal. In this example, we will build a Dockerfile that creates a basic Node.js application with NPM dependencies.</p>\n<pre><code># Dockerfile\nFROM node:14 # Use official Node.js 14 image as base\nWORKDIR /app\nCOPY package*.json ./\nRUN npm install\nCOPY . .\nEXPOSE 3000\nCMD [ \"npm\", \"start\" ]\n</code></pre>\n<h3><em>Build and Run Your Docker Image:</em></h3>\n<p>To build the image, execute <code>docker build -t my-node-app .</code>, replacing \"my-node-app\" with your desired container name. Once built, run the image using <code>docker run -p 3000:3000 my-node-app</code></p>\n\n<h2><strong>Conclusion</strong></h2>\n<p>Docker offers a powerful solution for developers and DevOps professionals seeking to streamline application deployment. By containerizing your applications, you can guarantee consistency across environments, reduce resource consumption, and improve the overall development workflow.</p>\n<p>Ready to dive deeper into Docker? Explore the official <a href=\"https://docs.docker.com/get-started/\">Docker documentation</a> for more tutorials, guides, and best practices.</p>\n<hr />\n<p>We hope this guide has been informative and helpful in your Docker journey! Stay tuned for future blog posts on advanced topics and practical case studies.</p>"
     },
     {
-        "id": "post-1769871274",
-        "title": "Advanced Git Workflows for Teams",
-        "author": "Saravana Kumar",
-        "date": "2026-01-31",
-        "tags": [
-            "git",
-            "collaboration",
-            "workflow"
-        ],
-        "image": "https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=1600&auto=format&fit=crop&crop=entropy",
-        "placeholder": "https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=10&w=40&auto=format&fit=crop&crop=entropy",
-        "excerpt": "Master branching strategies and collaborative workflows with Git for better team coordination.",
-        "content": "<p>Master branching strategies and collaborative workflows with Git for better team coordination.</p>\n<p>This blog post covers key aspects of Advanced Git Workflows for Teams. Please review and expand with more detailed content.</p>"
-    },
-    {
   id:'post-6',
   title:'Bagging vs Boosting Explained: Core Ideas, Differences, and Interview Tips',
   author:'Saravana Kumar',
