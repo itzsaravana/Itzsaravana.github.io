@@ -1,5 +1,20 @@
 const posts = [
     {
+        "id": "post-1769876461",
+        "title": "Getting Started with Docker",
+        "author": "Saravana Kumar",
+        "date": "2026-01-31",
+        "tags": [
+            "docker",
+            "devops",
+            "containers"
+        ],
+        "image": "https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=1600&auto=format&fit=crop&crop=entropy",
+        "placeholder": "https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=10&w=40&auto=format&fit=crop&crop=entropy",
+        "excerpt": "Learn how to use Docker to containerize your applications and simplify deployment.",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Getting Started with Docker</title>\n</head>\n\n<body>\n    <p>Welcome to the world of containerization! In this tutorial, we will guide you through the process of using Docker to streamline your application deployment.</p>\n\n    <h2><strong>Installing Docker</strong></h2>\n    <p>To get started with Docker, first, you need to install it on your system. Visit the official Docker website (<a href=\"https://www.docker.com/products/docker-desktop\">Docker Desktop</a> for Mac and Windows, or <a href=\"https://docs.docker.com/engine/install/ubuntu/\">Ubuntu</a> instructions), download the appropriate package, and follow the installation steps.</p>\n    <ul>\n        <li>Ensure that your system meets the prerequisites outlined in the installation guide.</li>\n        <li>During installation, choose the options that best suit your needs, such as setting up Docker Compose or integrating with your IDE.</li>\n    </ul>\n\n    <h2><strong>Creating a Dockerfile</strong></h2>\n    <p>A Dockerfile is a script that contains instructions for building a Docker image. To create a simple Dockerfile, start by creating a new directory for your project and adding a file named Dockerfile.</p>\n    <ul>\n        <li>In the Dockerfile, you will specify the base image, install dependencies, and copy your application files into the image.</li>\n        <li>Save the file and run `docker build -t <your-image-name> .` in the terminal to create an image from your Dockerfile.</li>\n    </ul>\n\n    <h2><strong>Running a Docker Container</strong></h2>\n    <p>Now that you have created a Docker image, you can run it as a container. To do this, use the command `docker run -p <host-port>:<container-port> <your-image-name>`. This will start your application and make it accessible at the specified host port.</p>\n    <ul>\n        <li>You can also link multiple containers using Docker Compose to create complex, multi-tier applications.</li>\n        <li>Furthermore, you can easily share or deploy your containerized application by simply sending the Dockerfile and any additional files required for your app.</li>\n    </ul>\n\n    <h2><strong>Conclusion</strong></h2>\n    <p>Docker provides a powerful platform for simplifying your development, testing, and deployment workflows. With Docker, you can easily containerize your applications, making them more portable, scalable, and maintainable.</p>\n</body>\n\n</html>"
+    },
+    {
         "id": "post-1769871274",
         "title": "Advanced Git Workflows for Teams",
         "author": "Saravana Kumar",
