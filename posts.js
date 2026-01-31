@@ -1,5 +1,20 @@
 const posts = [
     {
+        "id": "post-1769872548",
+        "title": "Getting Started with Docker",
+        "author": "Saravana Kumar",
+        "date": "2026-01-31",
+        "tags": [
+            "docker",
+            "devops",
+            "containers"
+        ],
+        "image": "https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=1600&auto=format&fit=crop&crop=entropy",
+        "placeholder": "https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=10&w=40&auto=format&fit=crop&crop=entropy",
+        "excerpt": "Learn how to use Docker to containerize your applications and simplify deployment.",
+        "content": "<p>Learn how to use Docker to containerize your applications and simplify deployment.</p>\n<p>This blog post covers key aspects of Getting Started with Docker. Please review and expand with more detailed content.</p>"
+    },
+    {
         "id": "post-1769871274",
         "title": "Advanced Git Workflows for Teams",
         "author": "Saravana Kumar",
