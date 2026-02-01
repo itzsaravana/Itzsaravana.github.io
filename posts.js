@@ -1,5 +1,20 @@
 const posts = [
     {
+        "id": "post-1769941701",
+        "title": "Types of Machine Learning Algorithms",
+        "author": "Saravana Kumar",
+        "date": "2026-02-01",
+        "tags": [
+            "machine-learning",
+            "basics",
+            "algorithms"
+        ],
+        "image": "https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=1600&auto=format&fit=crop&crop=entropy",
+        "placeholder": "https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=10&w=40&auto=format&fit=crop",
+        "excerpt": "Learn the differences between supervised unsupervised and reinforcement learning.",
+        "content": "<p>Delve into the fascinating world of Machine Learning Algorithms, where computers learn from data to make predictions or decisions. In this blog post, we'll explore three primary types: Supervised Learning, Unsupervised Learning, and Reinforcement Learning.</p>\n\n<h2><strong>Supervised Learning</strong></h2>\n<p>Supervised learning is a type of machine learning where the algorithm learns from labeled data. The data consists of input-output pairs, enabling the model to predict outputs for new inputs. For instance, imagine an email spam detector. It's trained on thousands of emails, some labeled as 'spam' and others as 'not spam'. Once the model understands these patterns, it can accurately classify new emails.</p>\n<h3><em>Common Algorithms:</em></h3>\n<ul>\n<li>Linear Regression</li>\n<li>Logistic Regression</li>\n<li>Decision Trees</li>\n<li>Support Vector Machines (SVM)</li>\n<li>Naive Bayes Classifier</li>\n</ul>\n\n<h2><strong>Unsupervised Learning</strong></h2>\n<p>In contrast to supervised learning, unsupervised learning involves analyzing unlabeled data. The goal is for the algorithm to discover hidden patterns or structures within the data on its own. A practical example is customer segmentation in marketing. By grouping customers based on their purchasing behavior, businesses can tailor their strategies more effectively.</p>\n<h3><em>Common Algorithms:</em></h3>\n<ul>\n<li>K-means Clustering</li>\n<li>Hierarchical Clustering</li>\n<li>Principal Component Analysis (PCA)</li>\n<li>Apriori Algorithm for Association Rule Learning</li>\n</ul>\n\n<h2><strong>Reinforcement Learning</strong></h2>\n<p>Reinforcement learning is a technique where an agent learns to perform actions by interacting with an environment. The goal is to maximize a reward signal over time. A well-known example is Google's AlphaGo, which mastered the game of Go by playing against itself and learning from its mistakes.</p>\n<h3><em>Common Algorithms:</em></h3>\n<ul>\n<li>Q-Learning</li>\n<li>Deep Q-Network (DQN)</li>\n<li>Monte Carlo Methods</li>\n<li>Policy Gradients</li>\n</ul>\n\n<p><strong>Embrace the power of these machine learning algorithms to unlock new possibilities and transform data into actionable insights.</strong></p>\n<h2><strong>Conclusion</strong></h2>\n<p>Whether you're dealing with labeled or unlabeled data, or creating an agent that learns from its interactions, understanding these machine learning algorithms is crucial in today's data-driven world. From email spam detection to customer segmentation, and even mastering complex games like Go, the applications are vast and ever-evolving.</p>"
+    },
+    {
         "id": "post-1769938567",
         "title": "Introduction to Machine Learning",
         "author": "Saravana Kumar",
