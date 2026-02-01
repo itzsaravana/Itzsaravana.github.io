@@ -139,6 +139,75 @@ class BlogAutomation:
             print(f"  ✗ Error calling LLM: {e}")
             return ""
     
+    def get_fallback_image_url(self, tags: str) -> tuple:
+        """
+        Fetch image URLs from Unsplash based on tags/keywords.
+        Returns tuple of (full_image_url, placeholder_url)
+        """
+        try:
+            # Extract first tag as search keyword
+            search_term = tags.split(',')[0].strip() if tags else 'technology'
+            search_term = search_term.lower().replace(' ', '-')
+            
+            # Fallback for generic terms
+            generic_terms = ['technology', 'blog', 'article', 'content', 'general']
+            if search_term in generic_terms or len(search_term) < 2:
+                search_term = 'technology'
+            
+            print(f"  Fetching image from Unsplash for tag: {search_term}")
+            
+            # Get API key from environment variable
+            unsplash_api_key = os.getenv('UNSPLASH_API_KEY')
+            
+            if not unsplash_api_key:
+                print(f"  ⚠ UNSPLASH_API_KEY not set in .env, using default images")
+                return self._get_default_image_urls(search_term)
+            
+            # Unsplash API endpoint for random image
+            unsplash_url = f"https://api.unsplash.com/photos/random?query={search_term}&orientation=landscape"
+            headers = {
+                'Accept-Version': 'v1',
+                'Authorization': f'Client-ID {unsplash_api_key}'
+            }
+            
+            response = requests.get(unsplash_url, headers=headers, timeout=10)
+            
+            if response.status_code == 200:
+                data = response.json()
+                full_image_url = data['urls']['regular']
+                placeholder_url = data['urls']['thumb']
+                print(f"  ✓ Got image from Unsplash: {data['user']['name']}")
+                return (full_image_url, placeholder_url)
+            elif response.status_code == 401:
+                print(f"  ⚠ Unsplash API error: 401 Unauthorized")
+                print(f"    ✓ Solution: Add valid UNSPLASH_API_KEY to .env")
+                print(f"    Get key from: https://unsplash.com/oauth/applications")
+                return self._get_default_image_urls(search_term)
+            else:
+                print(f"  ⚠ Unsplash API error: {response.status_code}")
+                return self._get_default_image_urls(search_term)
+                
+        except requests.exceptions.ConnectionError:
+            print(f"  ⚠ Cannot connect to Unsplash, using default images")
+            search_term = tags.split(',')[0].strip() if tags else 'technology'
+            return self._get_default_image_urls(search_term)
+        except Exception as e:
+            print(f"  ⚠ Error fetching image: {e}")
+            search_term = tags.split(',')[0].strip() if tags else 'technology'
+            return self._get_default_image_urls(search_term)
+    
+    def _get_default_image_urls(self, keyword: str = 'technology') -> tuple:
+        """
+        Generate default Unsplash URLs as fallback.
+        """
+        keyword = keyword.lower().replace(' ', '-').strip()
+        
+        # Use Unsplash search with parameters
+        full_image_url = f"https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=1600&auto=format&fit=crop&crop=entropy"
+        placeholder_url = f"https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=10&w=40&auto=format&fit=crop"
+        
+        return (full_image_url, placeholder_url)
+    
     def generate_blog_post_with_llm(self, topic: Dict) -> str:
         """Generate blog post content using local LLM."""
         
@@ -196,6 +265,8 @@ Example format:
             tags = []
         
         post_id = f"post-{int(datetime.now().timestamp())}"
+
+        image_url, placeholder_url = self.get_fallback_image_url(topic['tags'])
         
         post = {
             'id': post_id,
@@ -203,8 +274,8 @@ Example format:
             'author': topic['author'],
             'date': topic['date'],
             'tags': tags,
-            'image': 'https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=1600&auto=format&fit=crop&crop=entropy',
-            'placeholder': 'https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=10&w=40&auto=format&fit=crop&crop=entropy',
+            'image': image_url,
+            'placeholder': placeholder_url,
             'excerpt': topic['excerpt'],
             'content': llm_content
         }

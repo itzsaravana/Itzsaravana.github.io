@@ -1,0 +1,25 @@
+title,excerpt,tags,author,date
+Introduction to Machine Learning,Understand what machine learning is and how it differs from traditional programming.,"machine-learning,basics,ai",Saravana Kumar,2026-01-31
+Types of Machine Learning Algorithms,Learn the differences between supervised unsupervised and reinforcement learning.,"machine-learning,basics,algorithms",Saravana Kumar,2026-02-01
+Data Preprocessing in Machine Learning,Explore data cleaning feature scaling and handling missing values.,"machine-learning,data-preprocessing,basics",Saravana Kumar,2026-02-03
+Exploratory Data Analysis for ML,Learn how to analyze datasets using statistics and visualization techniques.,"machine-learning,eda,data-analysis",Saravana Kumar,2026-02-04
+Linear Regression Explained,Understand how linear regression works and when to use it.,"machine-learning,regression,basics",Saravana Kumar,2026-02-05
+Logistic Regression for Classification,Learn how logistic regression is used for binary and multi-class classification.,"machine-learning,classification,basics",Saravana Kumar,2026-02-06
+Bias Variance Tradeoff,Understand underfitting overfitting and how to balance bias and variance.,"machine-learning,model-evaluation,concepts",Saravana Kumar,2026-02-07
+Model Evaluation Metrics,Learn accuracy precision recall F1 score and ROC-AUC.,"machine-learning,evaluation,metrics",Saravana Kumar,2026-02-08
+Decision Trees Explained,Understand how decision trees split data and make predictions.,"machine-learning,decision-trees,basics",Saravana Kumar,2026-02-09
+Ensemble Learning Concepts,Learn how combining multiple models improves performance.,"machine-learning,ensemble-learning,intermediate",Saravana Kumar,2026-02-10
+Bagging vs Boosting,Understand the core differences between bagging and boosting techniques.,"machine-learning,ensemble-learning,intermediate",Saravana Kumar,2026-02-11
+Random Forest Algorithm,Learn how random forests reduce variance using bagging.,"machine-learning,random-forest,intermediate",Saravana Kumar,2026-02-12
+Gradient Boosting Explained,Understand how models learn sequentially from errors.,"machine-learning,boosting,intermediate",Saravana Kumar,2026-02-13
+XGBoost and LightGBM,Learn why tree-based boosting models dominate tabular data problems.,"machine-learning,xgboost,lightgbm,advanced",Saravana Kumar,2026-02-14
+Support Vector Machines,Understand margins kernels and hyperplanes in SVM.,"machine-learning,svm,intermediate",Saravana Kumar,2026-02-15
+K-Nearest Neighbors Algorithm,Learn how instance-based learning works in KNN.,"machine-learning,knn,basics",Saravana Kumar,2026-02-16
+Clustering with K-Means,Understand how unsupervised clustering groups similar data points.,"machine-learning,clustering,kmeans",Saravana Kumar,2026-02-17
+Dimensionality Reduction with PCA,Learn how PCA reduces features while preserving variance.,"machine-learning,pca,dimensionality-reduction",Saravana Kumar,2026-02-18
+Neural Networks Fundamentals,Understand neurons layers activation functions and backpropagation.,"machine-learning,neural-networks,intermediate",Saravana Kumar,2026-02-19
+Deep Learning Basics,Learn how deep neural networks differ from traditional ML models.,"machine-learning,deep-learning,intermediate",Saravana Kumar,2026-02-20
+Convolutional Neural Networks (CNN),Understand how CNNs process images using convolution layers.,"machine-learning,cnn,deep-learning,advanced",Saravana Kumar,2026-02-21
+Recurrent Neural Networks (RNN),Learn how RNNs handle sequential and time-series data.,"machine-learning,rnn,deep-learning,advanced",Saravana Kumar,2026-02-22
+Transformers and Attention Mechanism,Understand how attention replaced recurrence in modern models.,"machine-learning,transformers,attention,advanced",Saravana Kumar,2026-02-23
+Model Deployment and Monitoring,Learn how to deploy ML models and monitor performance in production.,"machine-learning,mlops,production",Saravana Kumar,2026-02-24
