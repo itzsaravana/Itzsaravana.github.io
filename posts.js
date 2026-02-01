@@ -1,5 +1,20 @@
 const posts = [
     {
+        "id": "post-1769950933",
+        "title": "Data Preprocessing in Machine Learning",
+        "author": "Saravana Kumar",
+        "date": "2026-02-01",
+        "tags": [
+            "machine-learning",
+            "data-preprocessing",
+            "basics"
+        ],
+        "image": "https://images.unsplash.com/photo-1670153557617-2570853bff36?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3Njk5NTA5MzR8&ixlib=rb-4.1.0&q=80&w=1080",
+        "placeholder": "https://images.unsplash.com/photo-1670153557617-2570853bff36?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3Njk5NTA5MzR8&ixlib=rb-4.1.0&q=80&w=200",
+        "excerpt": "Explore data cleaning feature scaling and handling missing values.",
+        "content": "<p>Welcome to our exploration of Data Preprocessing in Machine Learning, a crucial yet often overlooked step in the field. Today, we'll delve into three key aspects: data cleaning, feature scaling, and handling missing values.</p>\n\n<h2>Data Cleaning</h2>\n<p>Data Cleaning is the process of identifying and correcting or removing errors, inconsistencies, and inaccuracies in datasets. It's like giving your data a bath before feeding it to a machine learning model. Here are some common issues:</p>\n<ul>\n<li><strong>Duplicates</strong>: Removing identical records helps avoid biasing the results.</li>\n<li><strong>Outliers</strong>: These can skew your data, so they should be identified and dealt with appropriately.</li>\n<li><strong>Inconsistent Data Types</strong>: Ensuring all data is in a compatible format improves model performance.</li>\n</ul>\n\n<h2>Feature Scaling</h2>\n<p>Feature Scaling, also known as Data Normalization, is the process of adjusting the magnitude of features so that they don't affect the learning process unfairly. Here's a practical example:</p>\n<p>Imagine you have two features: height (ranging from 150 cm to 200 cm) and weight (ranging from 40 kg to 120 kg). If you use both in the same model without scaling, the weight feature will dominate as it has a larger range. Scaling solves this issue.</p>\n\n<h3>Normalization</h3>\n<p>Normalization scales data between a specific range, often 0 and 1 or -1 and 1.</p>\n\n<h3>Standardization</h3>\n<p>Standardization adjusts the data so that it has a mean of 0 and standard deviation of 1. This is useful when your dataset doesn't follow a normal distribution.</p>\n\n<h2>Handling Missing Values</h2>\n<p>Missing values can be a headache, but they don't have to derail your project. Here are some common strategies:</p>\n<ul>\n<li><strong>Imputation</strong>: Replacing missing values with statistical measures like mean, median, or mode.</li>\n<li><strong>Deletion</strong>: Removing rows or columns with missing values. However, this should be done sparingly as it can lead to loss of information.</li>\n<li><strong>Predictive Models</strong>: Using machine learning algorithms to predict the missing values based on the available data.</li>\n</ul>\n\n<p>In conclusion, Data Preprocessing is a vital step in Machine Learning that ensures your data is clean, scalable, and complete. By understanding these basics, you're setting yourself up for successful machine learning projects.</p>\n\n<h2>Call to Action</h2>\n<p>Start practicing these techniques today! Remember, the best way to learn is by doing. Happy preprocessing!</p>"
+    },
+    {
         "id": "post-1769942446",
         "title": "Types of Machine Learning Algorithms",
         "author": "Saravana Kumar",
