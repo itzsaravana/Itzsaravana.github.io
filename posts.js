@@ -1,5 +1,20 @@
 const posts = [
     {
+        "id": "post-1769938492",
+        "title": "Introduction to Machine Learning",
+        "author": "Saravana Kumar",
+        "date": "2026-02-01",
+        "tags": [
+            "machine-learning",
+            "basics",
+            "ai"
+        ],
+        "image": "https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=1600&auto=format&fit=crop&crop=entropy",
+        "placeholder": "https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=10&w=40&auto=format&fit=crop&crop=entropy",
+        "excerpt": "Understand what machine learning is and how it differs from traditional programming.",
+        "content": "<p>Understand what machine learning is and how it differs from traditional programming.</p>\n<p>This blog post covers key aspects of Introduction to Machine Learning. Please review and expand with more detailed content.</p>"
+    },
+    {
         "id": "post-1769876929",
         "title": "Getting Started with Docker",
         "author": "Saravana Kumar",
