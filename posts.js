@@ -1,5 +1,21 @@
 const posts = [
     {
+        "id": "post-1769971632",
+        "title": "Concurrency Bugs in Java",
+        "author": "Saravana Kumar",
+        "date": "2026-02-02",
+        "tags": [
+            "java",
+            "concurrency",
+            "threading",
+            "debugging"
+        ],
+        "image": "https://images.unsplash.com/photo-1737530969496-c9bac432b1fc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3Njk5NzE2MzJ8&ixlib=rb-4.1.0&q=80&w=1080",
+        "placeholder": "https://images.unsplash.com/photo-1737530969496-c9bac432b1fc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3Njk5NzE2MzJ8&ixlib=rb-4.1.0&q=80&w=200",
+        "excerpt": "Understand race conditions deadlocks and how to write thread-safe code.",
+        "content": "<h2>Mastering Concurrency Bugs in Java</h2>\n<p>Welcome to our in-depth exploration of a critical aspect of modern programming: Concurrency bugs in Java. This post will provide you with an understanding of race conditions, deadlocks, and the essential techniques for writing thread-safe code.</p>\n\n<h3>Race Conditions: The Unseen Peril</h3>\n<p>Race conditions occur when multiple threads access shared resources in an inconsistent order, leading to unexpected outcomes. To illustrate this, consider the following example:</p>\n\n```java\nclass Counter {\n    private int count = 0;\n\n    public void increment() {\n        count++;\n    }\n}\n```\n\n<p>Two threads can both call the <code>increment()</code> method on a shared <code>Counter</code> object, leading to an inconsistent state if not properly managed.</p>\n\n<h3>Synchronization: The Key to Prevention</h3>\n<p>Java offers several ways to mitigate race conditions. One such approach is synchronizing methods or blocks of code using the <code>synchronized</code> keyword:</p>\n\n```java\nclass Counter {\n    private int count = 0;\n    private final Object lock = new Object();\n\n    public void increment() {\n        synchronized (lock) {\n            count++;\n        }\n    }\n}\n```\n\n<h3>Deadlocks: A Perfect Storm</h3>\n<p>Deadlocks occur when two or more threads are unable to proceed because each is waiting for the other to release a resource. To avoid this, it's crucial to ensure that your locks are acquired in a consistent order and never hold multiple locks simultaneously.</p>\n\n<h4>Avoiding Deadlocks: Best Practices</h4>\n<ul>\n<li>Order lock acquisition consistently across all threads;</li>\n<li>Avoid holding multiple locks at the same time;</li>\n<li>Use a designated \"guardian\" thread to release resources when needed.</li>\n</ul>\n\n<h3>Writing Thread-Safe Code: A Matter of Practice</h3>\n<p>Adopting best practices and understanding common pitfalls are key to writing robust, concurrent code in Java. By mastering the art of managing shared resources across multiple threads, developers can create more reliable and efficient applications.</p>\n\n<h4>Conclusion</h4>\n<p>Understanding race conditions and deadlocks in concurrent programming is essential for creating reliable and efficient Java applications. Adopting synchronization techniques and following best practices are the keys to writing thread-safe code. By doing so, developers can unlock the true potential of modern multithreaded systems.</p>\n\n<h4>Next Steps</h4>\n<p>To further explore this topic, consider experimenting with the concepts discussed here by implementing the examples provided or researching real-world case studies involving concurrency bugs in Java. Happy coding!</p>"
+    },
+    {
         "id": "post-1769950933",
         "title": "Data Preprocessing in Machine Learning",
         "author": "Saravana Kumar",
