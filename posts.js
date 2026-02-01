@@ -1,5 +1,20 @@
 const posts = [
     {
+        "id": "post-1769942400",
+        "title": "Types of Machine Learning Algorithms",
+        "author": "Saravana Kumar",
+        "date": "2026-02-01",
+        "tags": [
+            "machine-learning",
+            "basics",
+            "algorithms"
+        ],
+        "image": "https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=1600&auto=format&fit=crop&crop=entropy",
+        "placeholder": "https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=10&w=40&auto=format&fit=crop",
+        "excerpt": "Learn the differences between supervised unsupervised and reinforcement learning.",
+        "content": "<h2>Understanding Machine Learning Algorithms</h2>\n<p>In the realm of artificial intelligence, machine learning algorithms play a pivotal role in enabling systems to learn from data without being explicitly programmed. This blog post aims to shed light on three primary types: supervised learning, unsupervised learning, and reinforcement learning.</p>\n\n<h3>Supervised Learning</h3>\n<p>Supervised learning is a technique where the algorithm learns from labeled data, i.e., data that has been categorized or classified in advance. It's like teaching a child to recognize animals by showing them pictures and labeling each one.</p>\n<ul>\n<li>Example: Sentiment analysis (classifying text as positive, negative, or neutral).</li>\n<li>Tip: Use it when you have access to labeled data and want your model to make accurate predictions based on that information.</li>\n\n<h3>Unsupervised Learning</h3>\n<p>In contrast, unsupervised learning deals with unlabeled data. The algorithm must find patterns and relationships within the data on its own. It's like letting a child play with building blocks to figure out the patterns by themselves.</p>\n<ul>\n<li>Example: Clustering (grouping similar data points together).</li>\n<li>Tip: Use it when you want your model to identify hidden structures or relationships within your data.</li>\n\n<h3>Reinforcement Learning</h3>\n<p>Reinforcement learning is a method where an agent learns to make decisions based on reward feedback from its environment. It's like training a pet using rewards and punishments to shape its behavior.</p>\n<ul>\n<li>Example: Training an autonomous vehicle to navigate a city efficiently (the vehicle receives rewards for reaching the destination quickly and safely).</li>\n<li>Tip: Use it when you want your model to learn optimal strategies in complex, dynamic environments.</li>\n\n<h2>Conclusion</h2>\n<p>Each machine learning algorithm has its unique strengths and applications. By understanding their differences, we can make informed decisions about which one to use for specific problems. As technology advances, the potential for these algorithms to revolutionize industries continues to grow.</p>\n<em>Stay tuned for more insights into the world of machine learning!</em>"
+    },
+    {
         "id": "post-1769938567",
         "title": "Introduction to Machine Learning",
         "author": "Saravana Kumar",
