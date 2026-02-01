@@ -1,5 +1,20 @@
 const posts = [
     {
+        "id": "post-1769942446",
+        "title": "Types of Machine Learning Algorithms",
+        "author": "Saravana Kumar",
+        "date": "2026-02-01",
+        "tags": [
+            "machine-learning",
+            "basics",
+            "algorithms"
+        ],
+        "image": "https://images.unsplash.com/photo-1690683790356-c1edb75e3df7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3Njk5NDI0NDd8&ixlib=rb-4.1.0&q=80&w=1080",
+        "placeholder": "https://images.unsplash.com/photo-1690683790356-c1edb75e3df7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3Njk5NDI0NDd8&ixlib=rb-4.1.0&q=80&w=200",
+        "excerpt": "Learn the differences between supervised unsupervised and reinforcement learning.",
+        "content": "<p>Dive into the fascinating world of Machine Learning Algorithms, a crucial component in the development of intelligent systems. This post sheds light on three primary types: Supervised Learning, Unsupervised Learning, and Reinforcement Learning.</p>\n\n<h2>Supervised Learning</h2>\n<p>Supervised learning is a type of machine learning where the algorithm learns from labeled data, i.e., input-output pairs. The aim is to predict the output for new inputs based on patterns found in the provided examples.</p>\n<strong>Example:</strong> An image classification model trained to recognize cats and dogs given a dataset containing thousands of images with correct labels.\n\n<h3>Sub-types of Supervised Learning</h3>\n<ul>\n<li><em>Classification:</em> The algorithm predicts a categorical output variable.</li>\n<li><em>Regression:</em> The algorithm predicts a continuous value (e.g., price or weight).</li>\n</ul>\n\n<h2>Unsupervised Learning</h2>\n<p>In contrast, unsupervised learning deals with unlabeled data and aims to discover hidden patterns, structure, or groupings within the data.</p>\n<strong>Example:</strong> Clustering algorithms that group similar customers together based on their purchasing history without any predefined labels.\n\n<h3>Sub-types of Unsupervised Learning</h3>\n<ul>\n<li><em>Clustering:</em> The algorithm groups data points into distinct, non-overlapping clusters.</li>\n<li><em>Association Rule Learning:</em> The algorithm discovers interesting relationships among variables in large datasets.</li>\n</ul>\n\n<h2>Reinforcement Learning</h2>\n<p>Reinforcement learning is a type of machine learning that learns by interacting with an environment and receiving rewards or punishments for its actions. The goal is to learn optimal strategies to maximize the total reward over time.</p>\n<strong>Example:</strong> An autonomous car learning to navigate through city traffic, receiving rewards for successfully reaching its destination and avoiding collisions.\n\n<h3>Case Study</h3>\n<p>Applying these machine learning algorithms has revolutionized various industries, from recommendation systems in e-commerce to self-driving cars and virtual assistants like Siri and Alexa.</p>\n\n<h2>Conclusion</h2>\n<p>Understanding the differences between supervised, unsupervised, and reinforcement learning is fundamental to mastering machine learning. Each algorithm serves distinct purposes and is crucial for tackling diverse real-world problems, driving innovation across industries.</p>\n\n<p>Stay tuned as we delve deeper into these topics, exploring practical applications and best practices for implementing machine learning algorithms in your projects.</p>"
+    },
+    {
         "id": "post-1769938567",
         "title": "Introduction to Machine Learning",
         "author": "Saravana Kumar",
