@@ -1,5 +1,20 @@
 const posts = [
     {
+        "id": "post-1769938567",
+        "title": "Introduction to Machine Learning",
+        "author": "Saravana Kumar",
+        "date": "2026-02-01",
+        "tags": [
+            "machine-learning",
+            "basics",
+            "ai"
+        ],
+        "image": "https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=1600&auto=format&fit=crop&crop=entropy",
+        "placeholder": "https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=10&w=40&auto=format&fit=crop&crop=entropy",
+        "excerpt": "Understand what machine learning is and how it differs from traditional programming.",
+        "content": "<p>Delve into the fascinating world of Machine Learning, a revolutionary approach to data analysis that's transforming industries worldwide.</p>\n\n<h2><strong>Understanding Machine Learning</strong></h2>\n<p>Machine Learning (ML) is a subset of Artificial Intelligence (AI) that empowers computer systems to automatically learn and improve from experience without being explicitly programmed. It's all about creating algorithms capable of recognizing patterns in data and using them to make informed decisions or predictions.</p>\n\n<h3><em>How does Machine Learning differ from traditional programming?</em></h3>\n<p>Traditional programming requires explicit instructions for a computer to perform specific tasks. On the other hand, Machine Learning allows computers to learn patterns and make decisions based on these patterns without being explicitly programmed.</p>\n\n<h2><strong>Types of Machine Learning</strong></h2>\n<p>Machine Learning can be broadly categorized into three types: Supervised Learning, Unsupervised Learning, and Reinforcement Learning. Each has its unique approach to data analysis and problem-solving.</p>\n\n<h3><em>Supervised Learning:</em></h3>\n<p>In supervised learning, the algorithm learns from labeled data, meaning the correct answer is provided during training. This type of learning is ideal for tasks such as image recognition and speech recognition.</p>\n\n<h3><em>Unsupervised Learning:</em></h3>\n<p>Unsupervised learning involves dealing with unlabeled data, where the algorithm must find patterns without any guidance about the correct answers. Clustering and dimensionality reduction are common examples of this type of learning.</p>\n\n<h2><strong>Practical Applications</strong></h2>\n<p>Machine Learning has found numerous applications across various sectors, from recommending products to predicting stock market trends. For instance, Netflix uses ML for personalized movie recommendations, while Amazon leverages it for product suggestions based on browsing and purchasing history.</p>\n\n<h2><strong>The Future of Machine Learning</strong></h2>\n<p>As data continues to grow exponentially, the demand for machine learning will rise, driving advancements in AI and transforming our world in ways we can hardly imagine today. Whether it's self-driving cars or personalized healthcare, ML is set to play a pivotal role in shaping our future.</p>\n\n<p>Embark on this journey of understanding Machine Learning, and unlock the potential to revolutionize your field of work and beyond.</p>"
+    },
+    {
         "id": "post-1769876929",
         "title": "Getting Started with Docker",
         "author": "Saravana Kumar",
