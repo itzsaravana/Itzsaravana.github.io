@@ -1,5 +1,20 @@
 const posts = [
     {
+        "id": "post-1769941797",
+        "title": "Types of Machine Learning Algorithms",
+        "author": "Saravana Kumar",
+        "date": "2026-02-01",
+        "tags": [
+            "machine-learning",
+            "basics",
+            "algorithms"
+        ],
+        "image": "https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=1600&auto=format&fit=crop&crop=entropy",
+        "placeholder": "https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=10&w=40&auto=format&fit=crop",
+        "excerpt": "Learn the differences between supervised unsupervised and reinforcement learning.",
+        "content": "<h2>Understanding Machine Learning Algorithms</h2>\n<p>Machine learning, a subset of artificial intelligence, has been revolutionizing the way we approach data analysis and prediction. At its core, machine learning enables systems to automatically learn and improve from experience without being explicitly programmed.</p>\n\n<h3>Supervised Learning</h3>\n<p>In supervised learning, the algorithm learns from labeled examples \u2013 input-output pairs where the correct output (label) is known. This approach trains the model to generalize patterns and make accurate predictions for new data.</p>\n<ul>\n    <li><strong>Example:</strong> Predicting whether an email is spam or not based on a training dataset of spam/non-spam emails.</li>\n</ul>\n\n<h3>Unsupervised Learning</h3>\n<p>On the other hand, unsupervised learning focuses on finding hidden patterns and structures within unlabeled data. The algorithm seeks to group similar instances together without any specific guidance regarding correct outputs.</p>\n<ul>\n    <li><strong>Example:</strong> Clustering customers based on their buying behavior or identifying anomalies in network traffic.</li>\n</ul>\n\n<h3>Reinforcement Learning</h3>\n<p>Reinforcement learning is a type of machine learning where an agent learns to make decisions by interacting with its environment. The agent receives rewards for correct actions and penalties for incorrect ones, allowing it to optimize its behavior over time.</p>\n<ul>\n    <li><strong>Example:</strong> Training an autonomous vehicle to navigate roads by rewarding successful navigation and penalizing collisions.</li>\n</ul>\n\n<h2>Choosing the Right Algorithm</h2>\n<p>The choice of machine learning algorithm depends on various factors such as the nature of the problem, the amount and quality of available data, and computational resources. Understanding these different types of algorithms is essential for making informed decisions when tackling real-world machine learning problems.</p>\n\n<h2>Conclusion</h2>\n<p>Machine learning algorithms offer powerful tools for solving a wide range of problems, from email filtering to autonomous vehicles. By mastering supervised, unsupervised, and reinforcement learning, data scientists can unlock the full potential of machine learning in today's rapidly evolving world.</p>"
+    },
+    {
         "id": "post-1769938567",
         "title": "Introduction to Machine Learning",
         "author": "Saravana Kumar",
