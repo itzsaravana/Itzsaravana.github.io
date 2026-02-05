@@ -1,5 +1,20 @@
 const posts = [
     {
+        "id": "post-1770299210",
+        "title": "Exploratory Data Analysis for ML",
+        "author": "Saravana Kumar",
+        "date": "2026-02-05",
+        "tags": [
+            "machine-learning",
+            "eda",
+            "data-analysis"
+        ],
+        "image": "https://images.unsplash.com/photo-1525338078858-d762b5e32f2c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzAyOTkyMTB8&ixlib=rb-4.1.0&q=80&w=1080",
+        "placeholder": "https://images.unsplash.com/photo-1525338078858-d762b5e32f2c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzAyOTkyMTB8&ixlib=rb-4.1.0&q=80&w=200",
+        "excerpt": "Learn how to analyze datasets using statistics and visualization techniques.",
+        "content": "<h2>Exploratory Data Analysis for Machine Learning</h2>\n<p>Dive into the fascinating world of data analysis, focusing on Exploratory Data Analysis (EDA) techniques that are instrumental in preparing datasets for machine learning models. This article will guide you through the process of analyzing datasets using statistics and visualization methods.</p>\n\n<h3>Why is EDA essential for Machine Learning?</h3>\n<p>EDA offers valuable insights into your dataset before applying any ML algorithms. It helps identify patterns, trends, and outliers that may impact the model's performance. By understanding the data's structure, you can make informed decisions about preprocessing, feature selection, and choosing the most suitable ML algorithm.</p>\n\n<h3>Key Steps in EDA</h3>\n<ol>\n    <li><strong>Data Understanding:</strong> Familiarize yourself with the dataset, including its size, structure, and data types. Check for missing values or inconsistencies that might affect your analysis.</li>\n    <li><strong>Descriptive Statistics:</strong> Calculate summary statistics such as mean, median, mode, standard deviation, and quantiles to gain a better understanding of the distribution of variables.</li>\n    <li><strong>Data Visualization:</strong> Utilize various charts, graphs, and plots to visualize data relationships, distributions, and trends. This helps identify patterns that might be difficult to discern from raw data alone.</li>\n    <li><strong>Hypothesis Testing:</strong> Perform statistical tests to validate assumptions, such as normality of data distribution or independence between variables. This can guide you in selecting appropriate machine learning algorithms.</li>\n</ol>\n\n<h3>Practical Example: Iris Dataset Analysis</h3>\n<p>The classic Iris flower dataset is a popular choice for EDA due to its simplicity and richness of information. By applying the steps mentioned above, we can examine relationships between petal and sepal dimensions, visualize distributions, and test hypotheses about the data.</p>\n\n<h3>Tips for Effective EDA</h3>\n<ul>\n    <li><strong>Choose appropriate visualizations:</strong> Different chart types are suited for various purposes. For example, box plots can reveal distribution patterns and outliers, while scatter plots help identify correlations between variables.</li>\n    <li><strong>Explore interactions:</strong> Don't limit your analysis to individual variables; investigate the relationships between multiple features to gain a more comprehensive understanding of the dataset.</li>\n    <li><strong>Iterate and refine:</strong> EDA is an iterative process. As you explore different aspects of your dataset, you may uncover new insights or questions that lead to further analysis.</li>\n</ul>\n\n<h2>Conclusion</h2>\n<p>Exploratory Data Analysis is a vital step in the machine learning workflow, providing essential insights into the structure and relationships within your dataset. By mastering EDA techniques, you can make informed decisions about data preprocessing, feature selection, and model choice. Happy exploring!</p>"
+    },
+    {
         "id": "post-1770283803",
         "title": "Linear Regression Explained",
         "author": "Saravana Kumar",
