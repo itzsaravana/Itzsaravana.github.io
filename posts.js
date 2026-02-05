@@ -1,5 +1,20 @@
 const posts = [
     {
+        "id": "post-1770299072",
+        "title": "Linear Regression Explained",
+        "author": "Saravana Kumar",
+        "date": "2026-02-05",
+        "tags": [
+            "machine-learning",
+            "regression",
+            "basics"
+        ],
+        "image": "https://images.unsplash.com/photo-1717501218347-64853a917fd8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzAyOTkwNzN8&ixlib=rb-4.1.0&q=80&w=1080",
+        "placeholder": "https://images.unsplash.com/photo-1717501218347-64853a917fd8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzAyOTkwNzN8&ixlib=rb-4.1.0&q=80&w=200",
+        "excerpt": "Understand how linear regression works and when to use it.",
+        "content": "<p>Dive into the world of statistical analysis and machine learning with Linear Regression, a powerful tool in the data scientist's arsenal. This guide will explain its workings, use-cases, and provide practical examples.</p>\n<h2>What is Linear Regression?</h2>\n<p>Linear Regression is a fundamental machine learning algorithm used for modeling the relationship between two continuous variables: the independent variable (predictor or explanatory) and the dependent variable (response or outcome). The goal is to find the best linear equation that describes this relationship.</p>\n\n<h3>The Linear Equation</h3>\n<p><em>y = \u03b20 + \u03b21x</em></p>\n<p>In this equation:</p>\n<ul>\n<li><em>y</em>: Dependent variable (output)</li>\n<li><em>x</em>: Independent variable (input)</li>\n<li><em>\u03b20 (intercept)</em> and <em>\u03b21 (slope)</em>: Coefficients to be learned from the data.</li>\n</ul>\n\n<h3>Assumptions and Limitations</h3>\n<p>Linear Regression makes certain assumptions about your data, such as linearity, homoscedasticity, independence of errors, and normality. Violating these assumptions can lead to inaccurate results. However, it's important to remember that no method is perfect, but Linear Regression offers a solid foundation for understanding relationships between variables.</p>\n\n<h2>When to Use Linear Regression?</h2>\n<p>Linear Regression shines when there's a clear linear relationship between the predictor and response variables, or when you want to predict a continuous outcome. Examples include:</p>\n<ul>\n<li>Predicting house prices based on factors like location, square footage, and number of bedrooms.</li>\n<li>Analyzing the impact of temperature changes on energy consumption for a building.</li>\n</ul>\n\n<h2>Conclusion</h2>\n<p>Linear Regression is an essential algorithm in machine learning, allowing us to understand and make predictions based on relationships between variables. Its simplicity and wide applicability make it an ideal starting point for exploring statistical analysis and data science.</p>\n<p>Remember to always assess your assumptions and data quality to ensure accurate results. As you delve deeper into the world of machine learning, you'll find that Linear Regression serves as a strong foundation for more complex models.</p>"
+    },
+    {
         "id": "post-1770283803",
         "title": "Linear Regression Explained",
         "author": "Saravana Kumar",
