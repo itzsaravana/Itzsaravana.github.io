@@ -1,5 +1,20 @@
 const posts = [
     {
+        "id": "post-1770299134",
+        "title": "Linear Regression Explained",
+        "author": "Saravana Kumar",
+        "date": "2026-02-05",
+        "tags": [
+            "machine-learning",
+            "regression",
+            "basics"
+        ],
+        "image": "https://images.unsplash.com/photo-1717501219905-2711c58ab655?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzAyOTkxMzR8&ixlib=rb-4.1.0&q=80&w=1080",
+        "placeholder": "https://images.unsplash.com/photo-1717501219905-2711c58ab655?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzAyOTkxMzR8&ixlib=rb-4.1.0&q=80&w=200",
+        "excerpt": "Understand how linear regression works and when to use it.",
+        "content": "<p>Dive into the world of linear regression, a fundamental tool in machine learning and statistical modeling. Let's demystify its workings and explore when to wield this powerful technique.</p>\n\n<h2>What is Linear Regression?</h2>\n<p>Linear regression is a predictive analytics method that aims to establish a linear relationship between two continuous variables \u2013 a dependent variable (Y) and one or more independent variables (X). By fitting a linear equation to observed data, it allows us to make predictions about future values of the dependent variable.</p>\n\n<h2>Components of Linear Regression</h2>\n<h3>Simple Linear Regression</h3>\n<p>In simple linear regression, there's a single independent variable. The equation is represented as Y = \u03b20 + \u03b21X + \u03b5, where \u03b20 and \u03b21 are coefficients, X is the independent variable, and \u03b5 is the error term.</p>\n\n<h3>Multiple Linear Regression</h3>\n<p>Multiple linear regression extends this concept to multiple independent variables. The equation now looks like Y = \u03b20 + \u03b21X1 + \u03b22X2 + ... + \u03b5, with each coefficient representing the influence of an individual variable on the dependent one.</p>\n\n<h2>How Does Linear Regression Work?</h2>\n<p>Linear regression finds the best-fitting line through the data points by minimizing the sum of squared errors between the predicted and actual values. This approach ensures that the model is optimally adjusted to the given dataset.</p>\n\n<h2>When to Use Linear Regression?</h2>\n<h3>Predicting Continuous Outcomes</h3>\n<p>Use linear regression when you're trying to forecast continuous outcomes, like stock prices or customer lifetimes.</p>\n\n<h3>Identifying Relationships between Variables</h3>\n<p>This method is also beneficial for determining the relationship between variables and understanding their impact on each other, such as examining the factors affecting home sale prices or employee performance metrics.</p>\n\n<h2>Practical Example: Predicting House Prices</h2>\n<p>Suppose you want to predict house prices based on factors like square footage, number of bedrooms, and location. Linear regression can help build a model that considers these variables and produces accurate predictions for future housing market analysis.</p>\n\n<p>Equipped with this foundational knowledge of linear regression, you'll be well-prepared to navigate its various applications in your data science endeavors.</p>"
+    },
+    {
         "id": "post-1770283803",
         "title": "Linear Regression Explained",
         "author": "Saravana Kumar",
