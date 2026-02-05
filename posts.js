@@ -1,5 +1,20 @@
 const posts = [
     {
+        "id": "post-1770283803",
+        "title": "Linear Regression Explained",
+        "author": "Saravana Kumar",
+        "date": "2026-02-05",
+        "tags": [
+            "machine-learning",
+            "regression",
+            "basics"
+        ],
+        "image": "https://images.unsplash.com/photo-1633248869117-573d5bcc3bde?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzAyODM4MDV8&ixlib=rb-4.1.0&q=80&w=1080",
+        "placeholder": "https://images.unsplash.com/photo-1633248869117-573d5bcc3bde?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzAyODM4MDV8&ixlib=rb-4.1.0&q=80&w=200",
+        "excerpt": "Understand how linear regression works and when to use it.",
+        "content": "<h2>Understanding Linear Regression in Machine Learning</h2>\n<p>Linear regression is a fundamental statistical model and an essential tool in the machine learning arsenal. This technique helps us understand the relationship between a dependent variable and one or more independent variables by approximating a linear relationship.</p>\n\n<h3>The Basics of Linear Regression</h3>\n<p>In simpler terms, linear regression attempts to find the best fit line that minimizes the error between actual and predicted values. The equation for a linear regression model is y = b + mx, where 'b' represents the intercept (y-intercept), 'm' represents the slope (gradient), and 'x' and 'y' are the input and output variables, respectively.</p>\n\n<h3>How Linear Regression Works</h3>\n<p>The primary goal of linear regression is to find the optimal values for 'b' and 'm' by minimizing the sum of squared errors (SSE). This process involves using various optimization algorithms, such as Gradient Descent or Normal Equation Method. Once the optimum values are found, the model can be used to predict output variables for new input data.</p>\n\n<h3>When to Use Linear Regression</h3>\n<ul>\n<li><strong>Predicting Continuous Outcomes:</strong> Linear regression excels at making predictions about continuous variables, such as housing prices or stock prices.</li>\n<li><strong>Simple Relationships:</strong> If the relationship between independent and dependent variables is linear, using linear regression can provide accurate and interpretable results.</li>\n<li><strong>Large Datasets:</strong> Linear regression performs well with large datasets and works efficiently compared to other regression techniques like polynomial regression or logistic regression for simpler scenarios.</li>\n</ul>\n\n<h3>Practical Example and Tips</h3>\n<p>For example, consider a situation where we want to predict the selling price of a house based on its area and number of bedrooms. Linear regression can be used to create a model that takes these two variables as inputs and outputs the predicted selling price.</p>\n\n<p>Some tips when using linear regression include:</p>\n<ul>\n<li><strong>Ensure linearity:</strong> Check for a linear relationship between input and output variables before applying linear regression.</li>\n<li><strong>Handle outliers:</strong> Outliers can significantly affect the model, so it is essential to remove or handle them properly.</li>\n<li><strong>Optimize features:</strong> Feature selection and scaling can improve the performance of the linear regression model.</li>\n</ul>\n\n<h2>Conclusion</h2>\n<p>Linear regression serves as a powerful foundation for machine learning, allowing us to understand and predict relationships between variables effectively. By understanding its basics and applying it in practical scenarios, we can build accurate models and gain valuable insights from data.</p>\n\n<em>Explore more about linear regression and other essential machine learning techniques to become an expert data scientist!</em>"
+    },
+    {
         "id": "post-1769971632",
         "title": "Concurrency Bugs in Java",
         "author": "Saravana Kumar",
