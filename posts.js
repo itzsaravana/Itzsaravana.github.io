@@ -1,5 +1,20 @@
 const posts = [
     {
+        "id": "post-1770348997",
+        "title": "Logistic Regression for Classification",
+        "author": "Saravana Kumar",
+        "date": "2026-02-06",
+        "tags": [
+            "machine-learning",
+            "classification",
+            "basics"
+        ],
+        "image": "https://images.unsplash.com/photo-1717501217941-ea11df0605f2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzAzNDg5OTd8&ixlib=rb-4.1.0&q=80&w=1080",
+        "placeholder": "https://images.unsplash.com/photo-1717501217941-ea11df0605f2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzAzNDg5OTd8&ixlib=rb-4.1.0&q=80&w=200",
+        "excerpt": "Learn how logistic regression is used for binary and multi-class classification.",
+        "content": "<h2>Understanding Logistic Regression for Classification</h2>\n<p>Logistic Regression, a fundamental machine learning algorithm, plays a crucial role in classification tasks. This technique is extensively utilized for both binary and multi-class classification problems, making it an indispensable tool in the machine learning arsenal.</p>\n\n<h3>Binary Classification with Logistic Regression</h3>\n<p>In binary classification, the task is to predict whether a data point belongs to one of two distinct classes. Logistic Regression addresses this by estimating the probability of a given data point belonging to each class.</p>\n<ul>\n<li>The model fits a logistic function (or sigmoid function) to the input data, which outputs probabilities between 0 and 1 for each class.</li>\n<li>During prediction, if the output probability is greater than 0.5, the data point is assigned to the corresponding class; otherwise, it's attributed to the other class.</li>\n</ul>\n\n<h3>Multi-class Classification with Logistic Regression</h3>\n<p>For multi-class classification problems, where there are more than two classes, logistic regression can be extended using techniques such as One-vs-Rest (OvR) or One-vs-One (OvO).</p>\n<ul>\n<li><strong>One-vs-Rest (OvR)</strong>: In this approach, a separate binary classifier is trained for each class compared to all other classes. The final prediction for a data point is the class with the highest probability among these binary classifiers.</li>\n<li><strong>One-vs-One (OvO)</li></strong>: Unlike OvR, in OvO, pairwise comparisons are made between every pair of classes to determine which of the two classes a data point belongs to. The final prediction is made based on the majority vote of these pairwise classifiers.</li>\n</ul>\n\n<h3>Practical Example and Tips</h3>\n<p>A common use case for logistic regression is in email spam filtering, where it helps distinguish between spam and non-spam emails. The algorithm learns from labeled training data to identify features like the presence of certain words or specific patterns that indicate a higher probability of an email being spam.</p>\n<p><strong>Tips:</strong> To optimize logistic regression performance, it is essential to preprocess the data by handling missing values, normalizing features, and scaling the data. Additionally, choosing an appropriate cost function and optimizer can help improve model accuracy.</p>\n\n<h2>Conclusion</h2>\n<p>Logistic Regression stands as a cornerstone in the machine learning world for classification tasks. Its simplicity and ease of implementation make it a powerful tool for solving both binary and multi-class classification problems, whether it's filtering emails or predicting customer churn.</p>"
+    },
+    {
         "id": "post-1770299210",
         "title": "Exploratory Data Analysis for ML",
         "author": "Saravana Kumar",
