@@ -1,9 +1,9 @@
 title,excerpt,tags,author,date
 Introduction to Machine Learning,Understand what machine learning is and how it differs from traditional programming.,"machine-learning,basics,ai",Saravana Kumar,2026-01-31
-Types of Machine Learning Algorithms,Learn the differences between supervised unsupervised and reinforcement learning.,"machine-learning,basics,algorithms",Saravana Kumar,2026-02-01
-Data Preprocessing in Machine Learning,Explore data cleaning feature scaling and handling missing values.,"machine-learning,data-preprocessing,basics",Saravana Kumar,2026-02-03
-Exploratory Data Analysis for ML,Learn how to analyze datasets using statistics and visualization techniques.,"machine-learning,eda,data-analysis",Saravana Kumar,2026-02-04
-Linear Regression Explained,Understand how linear regression works and when to use it.,"machine-learning,regression,basics",Saravana Kumar,2026-02-05
+Types of Machine Learning Algorithms,Learn the differences between supervised unsupervised and reinforcement learning.,"machine-learning,basics,algorithms",Saravana Kumar,2026-02-31
+Data Preprocessing in Machine Learning,Explore data cleaning feature scaling and handling missing values.,"machine-learning,data-preprocessing,basics",Saravana Kumar,2026-02-01
+Exploratory Data Analysis for ML,Learn how to analyze datasets using statistics and visualization techniques.,"machine-learning,eda,data-analysis",Saravana Kumar,2026-02-05
+Linear Regression Explained,Understand how linear regression works and when to use it.,"machine-learning,regression,basics",Saravana Kumar,2026-02-04
 Logistic Regression for Classification,Learn how logistic regression is used for binary and multi-class classification.,"machine-learning,classification,basics",Saravana Kumar,2026-02-06
 Bias Variance Tradeoff,Understand underfitting overfitting and how to balance bias and variance.,"machine-learning,model-evaluation,concepts",Saravana Kumar,2026-02-07
 Model Evaluation Metrics,Learn accuracy precision recall F1 score and ROC-AUC.,"machine-learning,evaluation,metrics",Saravana Kumar,2026-02-08
@@ -23,3 +23,4 @@ Convolutional Neural Networks (CNN),Understand how CNNs process images using con
 Recurrent Neural Networks (RNN),Learn how RNNs handle sequential and time-series data.,"machine-learning,rnn,deep-learning,advanced",Saravana Kumar,2026-02-22
 Transformers and Attention Mechanism,Understand how attention replaced recurrence in modern models.,"machine-learning,transformers,attention,advanced",Saravana Kumar,2026-02-23
 Model Deployment and Monitoring,Learn how to deploy ML models and monitor performance in production.,"machine-learning,mlops,production",Saravana Kumar,2026-02-24
+Concurrency Bugs in Java,Understand race conditions deadlocks and how to write thread-safe code.,"java,concurrency,threading,debugging",Saravana Kumar,2026-02-02
