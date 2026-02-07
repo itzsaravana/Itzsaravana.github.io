@@ -1,5 +1,20 @@
 const posts = [
     {
+        "id": "post-1770475811",
+        "title": "Bias Variance Tradeoff",
+        "author": "Saravana Kumar",
+        "date": "2026-02-07",
+        "tags": [
+            "machine-learning",
+            "model-evaluation",
+            "concepts"
+        ],
+        "image": "https://images.unsplash.com/photo-1770170389700-eb0f9b910ed8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzA0NzU4MTF8&ixlib=rb-4.1.0&q=80&w=1080",
+        "placeholder": "https://images.unsplash.com/photo-1770170389700-eb0f9b910ed8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzA0NzU4MTF8&ixlib=rb-4.1.0&q=80&w=200",
+        "excerpt": "Understand underfitting overfitting and how to balance bias and variance.",
+        "content": "<p>Welcome to the fascinating world of machine learning, where we strive for models that not only learn effectively but also generalize well. Today, we delve into a critical concept: Bias-Variance Tradeoff.</p>\n\n<h2>Understanding Bias and Variance</h2>\n<p>Bias and variance are two crucial components that determine the performance of a machine learning model. To clarify these terms:</p>\n\n<h3><strong>Bias:</strong></h3>\n<p>Represents the simplifying assumptions made by a model to make predictions easier. A low bias model is simple and makes fewer assumptions, but may fail to capture complex patterns in the data.</p>\n\n<h3><em>Variance:</em></h3>\n<p>Measures how much a model's performance fluctuates given different training data samples. A high variance model is sensitive to small changes in the input data, potentially leading to poor generalization ability.</p>\n\n<h2>Overfitting and Underfitting</h2>\n<p>Overfitting occurs when a model has high bias and low variance, resulting in excellent performance on training data but poor performance on unseen data. Conversely, underfitting is characterized by high variance and low bias, resulting in poor performance both on training and unseen data.</p>\n\n<h2>Balancing the Bias-Variance Tradeoff</h2>\n<p>To achieve a well-balanced model, we must find a compromise between bias and variance. Techniques to achieve this balance include:</p>\n\n<ul>\n<li><strong>Complexity Regularization:</strong> Techniques like L1 or L2 regularization can help reduce the complexity of a model by adding a penalty term for large weights, which in turn helps to control overfitting.</li>\n<li><em>Ensemble Methods:</em> These methods combine multiple models to improve generalization performance. Examples include Random Forests and Gradient Boosting Machines.</li>\n<li><strong>Cross-Validation:</strong> This technique helps evaluate the model's performance on unseen data by splitting the dataset into training and validation sets.</li>\n</ul>\n\n<h2>Case Study: Balancing Bias-Variance in a Regression Model</h2>\n<p>Consider a simple linear regression model to predict house prices based on attributes like area, number of bedrooms, etc. Initially, we might observe overfitting due to high bias and low variance. To address this, we could:</p>\n\n<ul>\n<li>Increase the degree of the polynomial in the polynomial regression model (higher order terms capture more complex relationships but can lead to overfitting)</li>\n<li>Add additional features like location or age of the house to reduce the number of degrees of freedom</li>\n<li>Use regularization techniques, such as Lasso or Ridge Regression, to penalize large coefficients and avoid overfitting.</li>\n</ul>\n\n<h2>Conclusion</h2>\n<p>Understanding the Bias-Variance Tradeoff is crucial for building effective machine learning models. By balancing these components, we can create models that generalize well and make accurate predictions on unseen data. Keep exploring, experimenting, and refining your models to unlock the true potential of machine learning!</p>\n\n<p>Happy learning, fellow enthusiasts!</p>"
+    },
+    {
         "id": "post-1770348997",
         "title": "Logistic Regression for Classification",
         "author": "Saravana Kumar",
