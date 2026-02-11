@@ -1,5 +1,20 @@
 const posts = [
     {
+        "id": "post-1770831377",
+        "title": "Ensemble Learning Concepts",
+        "author": "Saravana Kumar",
+        "date": "2026-02-11",
+        "tags": [
+            "machine-learning",
+            "ensemble-learning",
+            "intermediate"
+        ],
+        "image": "https://images.unsplash.com/photo-1761223976272-0d6d4bc38636?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzA4MzEzNzh8&ixlib=rb-4.1.0&q=80&w=1080",
+        "placeholder": "https://images.unsplash.com/photo-1761223976272-0d6d4bc38636?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzA4MzEzNzh8&ixlib=rb-4.1.0&q=80&w=200",
+        "excerpt": "Learn how combining multiple models improves performance.",
+        "content": "<h2>Embracing the Power of Ensemble Learning</h2>\n<p>In the captivating realm of machine learning, ensemble methods have emerged as a potent strategy to enhance predictive performance. By combining multiple models, we can leverage their collective strengths while minimizing weaknesses, thereby creating more robust and accurate predictive models.</p>\n\n<h3>The Foundation: Multiple Model Combinations</h3>\n<p>Ensemble learning is rooted in the synergy of multiple models. These models are usually trained on the same dataset but can differ in terms of their structure, algorithms, or even training parameters.</p>\n<ul>\n  <li><strong>Bagging:</strong> This technique creates multiple bootstrap samples from the original dataset and trains a unique model on each sample.</li>\n  <li><strong>Boosting:</strong> In contrast, boosting sequentially trains models to correct the mistakes made by previous ones.</li>\n</ul>\n\n<h3>The Fusion: Combining Model Outputs</h3>\n<p>Once trained, these ensemble models are fused together in one of two ways:</p>\n<ul>\n  <li><strong>Voting:</strong> Each model votes on the predicted class or value. The most popular vote determines the final prediction.</li>\n  <li><strong>Stacking:</strong> Multiple levels of models are created, with each level learning to combine the predictions of lower-level models.</li>\n</ul>\n\n<h3>The Reward: Improved Performance and Reduced Overfitting</h3>\n<p>Ensemble methods offer several compelling benefits. By averaging the predictions of individual models, we can reduce the variance and improve the generalization ability of our predictive model.</p>\n<p>Moreover, ensemble learning helps mitigate overfitting by preventing any single model from dominating the final prediction. This results in a more robust model that performs well on unseen data.</p>\n\n<h2>Conclusion</h2>\n<p>Ensemble learning is an indispensable tool for machine learning practitioners seeking to improve model performance and reduce overfitting. By combining multiple models, we can capitalize on their individual strengths while minimizing weaknesses, ultimately leading to more accurate and robust predictive models.</p>\n<p>Whether it's through bagging, boosting, or stacking, the possibilities for creating powerful ensemble models are endless.</p>"
+    },
+    {
         "id": "post-1770830023",
         "title": "Bagging vs Boosting",
         "author": "Saravana Kumar",
