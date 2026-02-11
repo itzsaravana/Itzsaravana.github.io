@@ -1,5 +1,20 @@
 const posts = [
     {
+        "id": "post-1770830023",
+        "title": "Bagging vs Boosting",
+        "author": "Saravana Kumar",
+        "date": "2026-02-11",
+        "tags": [
+            "machine-learning",
+            "ensemble-learning",
+            "intermediate"
+        ],
+        "image": "https://images.unsplash.com/photo-1655890954744-32aefd2e7bbd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzA4MzAwMjR8&ixlib=rb-4.1.0&q=80&w=1080",
+        "placeholder": "https://images.unsplash.com/photo-1655890954744-32aefd2e7bbd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzA4MzAwMjR8&ixlib=rb-4.1.0&q=80&w=200",
+        "excerpt": "Understand the core differences between bagging and boosting techniques.",
+        "content": "<p>Dive into the captivating world of ensemble learning, where Bagging and Boosting reign supreme as two powerful techniques to elevate predictive accuracy in machine learning.</p>\n\n<h2>Bagging: The Bunch of Backpacks</h2>\n<p>Boasting a unique approach, Bagging, or Bootstrap Aggregating, creates multiple subsets of the original dataset using random sampling with replacement. Each subset is then used to train a separate model, and their outputs are averaged for the final prediction.</p>\n<h3>Random Forest: A Practical Example</h3>\n<p>Take Random Forest, one of Bagging's most popular applications. This decision tree ensemble method constructs multiple decision trees on various subsets of the data. Each tree casts a vote for the class label it predicts, and the final class is decided by the tree with the most votes.</p>\n<h3>Advantages</h3>\n<ul>\n<li>Reduces overfitting due to averaging diverse models</li>\n<li>Improves robustness by minimizing the impact of outliers</li>\n</ul>\n<h2>Boosting: The Powerful Combination</h2>\n<p>Unlike Bagging, Boosting trains multiple models sequentially, with each subsequent model focusing on correcting the errors made by its predecessors. It assigns more weight to misclassified examples in the previous model's training set, ensuring that future models pay special attention to these instances.</p>\n<h3>Gradient Boosting Machine (GBM): A Case Study</h3>\n<p>Gradient Boosting Machine (GBM) is a popular boosting algorithm. GBM builds decision trees iteratively, with each tree focusing on correcting the mistakes made by the previous one. The final prediction is the sum of the predictions from all individual trees.</p>\n<h3>Advantages</h3>\n<ul>\n<li>Can achieve high predictive accuracy compared to a single decision tree</li>\n<li>Effective handling of non-linear relationships and outliers in data</li>\n</ul>\n\n<h2>When to Choose Bagging or Boosting?</h2>\n<p>Both Bagging and Boosting have their strengths and weaknesses. Choosing between the two depends on your specific use case, dataset, and desired performance metrics.</p>\n\n<h2>Conclusion</h2>\n<p>Bagging and Boosting are essential ensemble learning techniques that bring unique advantages to machine learning models by combining multiple weak learners into a powerful predictive tool. Familiarize yourself with these methods, and harness their combined potential to tackle challenging data analysis problems.</p>\n<p>Remember, the key lies in understanding your dataset and choosing the right ensemble method based on your goals, as both Bagging and Boosting have their own unique ways of boosting predictive accuracy in machine learning models.</p>\n<p>Stay curious, experiment, and learn from your results to unlock the true potential of these powerful ensemble techniques!</p>"
+    },
+    {
         "id": "post-1770656590",
         "title": "Decision Trees Explained",
         "author": "Saravana Kumar",
