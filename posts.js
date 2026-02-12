@@ -1,5 +1,20 @@
 const posts = [
     {
+        "id": "post-1770913351",
+        "title": "Random Forest Algorithm",
+        "author": "Saravana Kumar",
+        "date": "2026-02-12",
+        "tags": [
+            "machine-learning",
+            "random-forest",
+            "intermediate"
+        ],
+        "image": "https://images.unsplash.com/photo-1761223976379-04c361d3068a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzA5MTMzNTJ8&ixlib=rb-4.1.0&q=80&w=1080",
+        "placeholder": "https://images.unsplash.com/photo-1761223976379-04c361d3068a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzA5MTMzNTJ8&ixlib=rb-4.1.0&q=80&w=200",
+        "excerpt": "Learn how random forests reduce variance using bagging.",
+        "content": "<h2>Understanding the Random Forest Algorithm</h2>\n<p>Welcome to a deep dive into one of the most powerful machine learning algorithms: Random Forest. This technique, based on the concept of ensemble learning, has revolutionized numerous fields by reducing variance and improving prediction accuracy.</p>\n\n<h3>The Basics of Random Forest</h3>\n<p>Random Forest is a meta-algorithm that uses the bagging (Bootstrap AGGregatING) method to create multiple decision trees. Each tree in the forest votes on the final outcome, with the class or value that receives the majority vote being the one predicted by the Random Forest algorithm.</p>\n\n<h3>Why Random Forest Reduces Variance</h3>\n<p>The key to variance reduction lies in bagging. When creating each tree, Random Forest uses a different subset of data and features, reducing the correlation between trees and minimizing overfitting.</p>\n\n<ul>\n<li><strong>Different subsets of data:</li> Bagging selects different samples with replacement from the original dataset for each tree, thus reducing the dependence on any specific observation.</li>\n<li><strong>Different features:</li> Each decision tree is built using a random subset of features. This helps to average out the errors made by individual trees that rely too heavily on certain features.</li>\n</ul>\n\n<h3>Practical Applications and Tips</h3>\n<p>Random Forest has shown remarkable performance in various domains such as image recognition, text classification, and credit scoring. It's particularly useful when dealing with high-dimensional data where other algorithms may struggle.</p>\n\n<h3>Conclusion</h3>\n<p>The Random Forest algorithm is a versatile tool in the machine learning arsenal. By leveraging the power of ensemble learning, it reduces variance and improves prediction accuracy, making it an essential technique for any data scientist's toolkit.</p>\n\n<h2>Exploring Advanced Random Forest Techniques</h2>\n<p>Once you've mastered the basics, it's time to delve into advanced techniques like random forest parameter tuning, using ensemble methods to improve performance, and integrating Random Forest with other machine learning algorithms. Stay tuned for more on these exciting topics!</p>\n\n<h3>Further Reading</h3>\n<p><em>For a deeper understanding of Random Forest and its applications, we recommend:</em></p>\n<ul>\n<li><a href=\"https://www.kaggle.com/c/titanic/forums/t/1420\">Kaggle's Titanic Competition: A Comprehensive Guide to Random Forest</a></li>\n<li><a href=\"https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html\">Scikit-Learn Documentation on Random Forest Classifier</a></li>\n</ul>"
+    },
+    {
         "id": "post-1770831377",
         "title": "Ensemble Learning Concepts",
         "author": "Saravana Kumar",
