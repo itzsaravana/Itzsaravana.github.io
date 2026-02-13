@@ -1,5 +1,20 @@
 const posts = [
     {
+        "id": "post-1770989069",
+        "title": "Gradient Boosting Explained",
+        "author": "Saravana Kumar",
+        "date": "2026-02-13",
+        "tags": [
+            "machine-learning",
+            "boosting",
+            "intermediate"
+        ],
+        "image": "https://images.unsplash.com/photo-1561144257-e32e8efc6c4f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzA5ODkwNzB8&ixlib=rb-4.1.0&q=80&w=1080",
+        "placeholder": "https://images.unsplash.com/photo-1561144257-e32e8efc6c4f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzA5ODkwNzB8&ixlib=rb-4.1.0&q=80&w=200",
+        "excerpt": "Understand how models learn sequentially from errors.",
+        "content": "<p>Dive into the captivating world of Gradient Boosting, a powerful machine learning technique that allows models to learn sequentially from errors. This approach revolutionizes the way we build predictive models and enhances their performance.</p>\n\n<h2>What is Gradient Boosting?</h2>\n<p>Gradient Boosting is an ensemble learning method that combines multiple weak learners to create a strong model. Each learner, or tree, is trained to correct the errors made by its predecessor.</p>\n\n<h3>Components of Gradient Boosting</h3>\n<ul>\n<li><strong>Multiple Trees:</strong> A series of decision trees are built one after another.</li>\n<li><strong>Sequential Learning:</strong> Each tree is trained to correct the errors made by the previous ones, focusing on regions with high residual errors.</li>\n</ul>\n\n<h3>Benefits of Gradient Boosting</h3>\n<p>Gradient Boosting offers several advantages over traditional machine learning algorithms:</p>\n<ul>\n<li><strong>Improved Performance:</strong> By correcting errors iteratively, gradient boosting yields more accurate predictions compared to standalone decision trees.</li>\n<li><strong>Flexibility:</strong> It can handle a wide variety of response variables and is effective for both regression and classification tasks.</li>\n</ul>\n\n<h2>Practical Application of Gradient Boosting</h2>\n<p>Gradient boosting has been applied in numerous fields to solve complex problems, such as:</p>\n<ul>\n<li><strong>Fraud Detection:</strong> In banking and insurance industries, gradient boosting can identify patterns indicative of fraudulent activities.</li>\n<li><strong>Image Recognition:</strong> It is used in computer vision applications for object detection and classification.</li>\n</ul>\n\n<h2>Conclusion</h2>\n<p>Gradient Boosting has emerged as a popular machine learning technique due to its ability to learn sequentially from errors, resulting in improved model performance. As you delve deeper into this topic, explore the various gradient boosting algorithms and their applications to unlock the full potential of this powerful tool.</p>\n<em>Remember, practice makes perfect \u2013 experiment with different datasets and settings to master Gradient Boosting.</em>"
+    },
+    {
         "id": "post-1770913351",
         "title": "Random Forest Algorithm",
         "author": "Saravana Kumar",
