@@ -1,5 +1,21 @@
 const posts = [
     {
+        "id": "post-1771076942",
+        "title": "XGBoost and LightGBM",
+        "author": "Saravana Kumar",
+        "date": "2026-02-14",
+        "tags": [
+            "machine-learning",
+            "xgboost",
+            "lightgbm",
+            "advanced"
+        ],
+        "image": "https://images.unsplash.com/photo-1758626099012-2904337e9c60?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzEwNzY5NDJ8&ixlib=rb-4.1.0&q=80&w=1080",
+        "placeholder": "https://images.unsplash.com/photo-1758626099012-2904337e9c60?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzEwNzY5NDJ8&ixlib=rb-4.1.0&q=80&w=200",
+        "excerpt": "Learn why tree-based boosting models dominate tabular data problems.",
+        "content": "<p>Dive into the captivating world of tree-based boosting models, specifically focusing on XGBoost and LightGBM, two powerhouse algorithms that have taken the machine learning community by storm. These models have proven to be outstanding in solving tabular data problems.</p>\n<h2>Understanding Tree-Based Boosting Models</h2>\n<p>Tree-based boosting models are an ensemble method that combines multiple weak learners to form a strong learner. The idea is to correct the errors made by previous trees in the model, leading to improved predictive performance.</p>\n<h3>Key Features of Tree-Based Boosting</h3>\n<ul>\n<li><strong>Error Reduction:</strong> Each new tree in the ensemble tries to correct the mistakes made by the previous ones.</li>\n<li><strong>Flexibility:</strong> These models can handle different types of data and are not limited to linear or quadratic relationships, making them versatile for various applications.</li>\n</ul>\n\n<h2>Enter XGBoost: A Powerful Extension of Gradient Boosting Decision Trees</h2>\n<p>XGBoost, short for eXtreme Gradient Boosting, is an optimized distributed gradient boosting library that provides parallel processing capabilities and scalability to handle large datasets. Some of its unique features include:</p>\n<h3>Special Features of XGBoost</h3>\n<ul>\n<li><strong>Regularization:</strong> It helps prevent overfitting by adding a penalty term to the loss function.</li>\n<li><strong>Built-in Cross-Validation:</strong> This feature allows for better hyperparameter tuning and model validation within XGBoost itself.</li>\n</ul>\n\n<h2>LightGBM: A Highly Efficient Gradient Boosting Framework</h2>\n<p>LightGBM is another tree-based boosting algorithm that focuses on efficiency and speed. Its key features include:</p>\n<h3>Unique Features of LightGBM</h3>\n<ul>\n<li><strong>Histogram-Based Gradient Boosting:</strong> LightGBM uses histograms to process data more efficiently, especially when dealing with large datasets.</li>\n<li><strong>Parallel Learning:</strong> LightGBM leverages parallel computing and reduces the memory usage per tree, making it faster and suitable for handling larger datasets.</li>\n</ul>\n\n<h2>Case Study: The Power of XGBoost and LightGBM in Action</h2>\n<p>Both XGBoost and LightGBM have shown impressive results in various case studies. For instance, a study by Chen et al. (2016) demonstrated that both models outperformed other popular machine learning algorithms on multiple datasets.</p>\n\n<h2>Conclusion</h2>\n<p>Tree-based boosting models, specifically XGBoost and LightGBM, have proven to be exceptional in addressing tabular data problems due to their flexibility, efficiency, and error-reducing nature. By understanding these models and utilizing them effectively, data scientists can achieve optimal results in machine learning applications.</p>\n<h2>References</h2>\n<p><strong>Chen, T., Meng, Q., Rockt\u00e4schel, M., and Guestrin, C. (2016). XGBoost: A Scalable Tree Boosting System.</strong> Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining, 785\u2013794.</p>"
+    },
+    {
         "id": "post-1770989069",
         "title": "Gradient Boosting Explained",
         "author": "Saravana Kumar",
