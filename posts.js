@@ -1,5 +1,20 @@
 const posts = [
     {
+        "id": "post-1771254885",
+        "title": "Support Vector Machines",
+        "author": "Saravana Kumar",
+        "date": "2026-02-16",
+        "tags": [
+            "machine-learning",
+            "svm",
+            "intermediate"
+        ],
+        "image": "https://images.unsplash.com/photo-1569396116180-210c182bedb8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzEyNTQ4ODV8&ixlib=rb-4.1.0&q=80&w=1080",
+        "placeholder": "https://images.unsplash.com/photo-1569396116180-210c182bedb8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzEyNTQ4ODV8&ixlib=rb-4.1.0&q=80&w=200",
+        "excerpt": "Understand margins kernels and hyperplanes in SVM.",
+        "content": "<h2>Understanding Support Vector Machines (SVM) in Machine Learning</h2>\n<p>Support Vector Machines, or SVM, is a popular machine learning algorithm used for classification and regression tasks. It's known for its ability to handle high-dimensional data and solve complex problems with ease.</p>\n\n<h3>Margins in SVM</h3>\n<p>The margin is the distance between the hyperplane and the closest data points (support vectors) from different classes. A larger margin indicates a better separation between classes, which leads to improved performance. The trade-off here is that increasing the margin reduces the model's ability to learn complex patterns, leading to potential underfitting.</p>\n\n<h3>Kernels in SVM</h3>\n<p>Kernels are functions used to transform data from high dimensions into a lower dimension space where linear separation can be achieved. The most common kernel function is the radial basis function (RBF), which maps the data points to a higher-dimensional space using a Gaussian function. Other kernels include linear, polynomial, and sigmoid.</p>\n<ul>\n<li><strong>Linear Kernel:</li> It's a simple kernel that performs well when the data is linearly separable. However, it may not perform well for non-linear datasets.</li>\n<li><strong>Polynomial Kernel:</li> This kernel transforms the data using higher-degree polynomials to improve performance on non-linearly separable datasets.</li>\n<li><strong>RBF (Gaussian) Kernel:</li> The RBF kernel is widely used due to its ability to handle both linearly and non-linearly separable data effectively. It's a versatile choice for most machine learning problems.</li>\n</ul>\n\n<h3>Hyperplanes in SVM</h3>\n<p>A hyperplane is a linear boundary that separates the data points of different classes in higher dimensions. In SVM, the optimal hyperplane is determined by maximizing the margin while minimizing errors. This leads to a solution that generalizes well to new, unseen data.</p>\n\n<h3>Practical Example and Tips</h3>\n<p>Consider a simple classification problem where we want to separate blue and red dots in a 2D space. A linear kernel SVM may fail to find a hyperplane that separates the two classes perfectly due to overlapping data points (Fig. 1). In such cases, using a polynomial or RBF kernel can help achieve better separation (Fig. 2).</p>\n<ol>\n<li><strong>Tip 1:</strong> Experiment with different kernels and tune their parameters (e.g., degree for polynomial, gamma for RBF) to find the best configuration for your data.</li>\n<li><strong>Tip 2:</strong> Cross-validation is essential when training SVMs to avoid overfitting and ensure that the model performs well on unseen data.</li>\n</ol>\n\n<h2>Conclusion</h2>\n<p>Support Vector Machines (SVM) is an effective machine learning algorithm for classification and regression tasks, offering a way to handle high-dimensional data with ease. By understanding the concepts of margins, kernels, and hyperplanes in SVM, you can develop powerful models that generalize well to new data.</p>\n<p>Remember to experiment with different kernels, tune parameters, and use cross-validation techniques to optimize your SVM performance. Happy learning!</p>"
+    },
+    {
         "id": "post-1771254778",
         "title": "K-Nearest Neighbors Algorithm",
         "author": "Saravana Kumar",
