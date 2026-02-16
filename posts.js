@@ -1,5 +1,20 @@
 const posts = [
     {
+        "id": "post-1771254778",
+        "title": "K-Nearest Neighbors Algorithm",
+        "author": "Saravana Kumar",
+        "date": "2026-02-16",
+        "tags": [
+            "machine-learning",
+            "knn",
+            "basics"
+        ],
+        "image": "https://images.unsplash.com/photo-1717501217753-94b8e7cf7f2f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzEyNTQ3Nzl8&ixlib=rb-4.1.0&q=80&w=1080",
+        "placeholder": "https://images.unsplash.com/photo-1717501217753-94b8e7cf7f2f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzEyNTQ3Nzl8&ixlib=rb-4.1.0&q=80&w=200",
+        "excerpt": "Learn how instance-based learning works in KNN.",
+        "content": "<p>Dive into the captivating world of Machine Learning with a focus on the K-Nearest Neighbors Algorithm (KNN). This versatile method is an integral part of instance-based learning, making it a must-know for any data scientist or machine learning enthusiast.</p>\n\n<h2>Understanding Instance-Based Learning</h3>\n<p>Instance-based learning, also known as 'lazy learning', is a subset of Machine Learning where solutions to new problems are found by finding similarities to previously stored solutions. It's all about recognizing patterns in data and making predictions based on those patterns.</p>\n\n<h2>Enter K-Nearest Neighbors Algorithm</h3>\n<p>KNN is a popular instance-based learning algorithm that uses a distance measure, such as Euclidean distance, to classify new examples by finding the 'k' most similar training examples and predicting the class majority among them.</p>\n\n<h3>The Workings of KNN</h3>\n<p>When presented with a new data point, KNN identifies its k-nearest neighbors in the training dataset. Each neighbor contributes a vote for its class, and the data point is classified by the most common class among these votes.</p>\n\n<h3>Parameters and Choices</h3>\n<ol>\n  <li><strong>K:</strong> The number of neighbors to consider when making a prediction. A larger 'k' can lead to more accurate predictions but increases computation time.</li>\n  <li><strong>Distance Metric:</strong> Euclidean distance is most commonly used, but other metrics like Manhattan or Minkowski distances can be employed depending on the specific problem and data distribution.</li>\n</ol>\n\n<h3>Practical Application and Tips</h3>\n<p>KNN's simplicity makes it a popular choice for both beginner and advanced machine learning practitioners. It works well with high-dimensional datasets and can handle both continuous and categorical variables. However, its performance may degrade as the dimensionality increases, making techniques like dimensionality reduction necessary.</p>\n\n<h2>Conclusion</h2>\n<p>With KNN in your arsenal, you'll be well-equipped to tackle a wide range of machine learning problems. Understanding instance-based learning and the KNN algorithm will enable you to make accurate predictions by finding patterns within data, opening up a world of possibilities for data-driven decision making.</p>\n\n<p>Happy coding!</p>"
+    },
+    {
         "id": "post-1771076942",
         "title": "XGBoost and LightGBM",
         "author": "Saravana Kumar",
