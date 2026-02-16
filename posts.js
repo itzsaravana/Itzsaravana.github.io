@@ -1,5 +1,21 @@
 const posts = [
     {
+        "id": "post-1771256804",
+        "title": "REST API Design Best Practices",
+        "author": "Saravana Kumar",
+        "date": "2026-02-16",
+        "tags": [
+            "java",
+            "spring-boot",
+            "rest",
+            "api-design"
+        ],
+        "image": "https://images.unsplash.com/photo-1555021875-25c96de97220?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzEyNTY4MDV8&ixlib=rb-4.1.0&q=80&w=1080",
+        "placeholder": "https://images.unsplash.com/photo-1555021875-25c96de97220?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzEyNTY4MDV8&ixlib=rb-4.1.0&q=80&w=200",
+        "excerpt": "How to design clean scalable REST APIs with proper resource modeling",
+        "content": "<h2>Embracing Best Practices for Designing Scalable REST APIs</h2>\n<p>Welcome to our exploration of designing clean and scalable REST APIs using proper resource modeling, with a focus on Java and Spring Boot. In this article, we delve into crucial best practices that ensure efficient, maintainable, and flexible API designs.</p>\n\n<h3>Proper Resource Modeling</h2>\n<p>Effective resource modeling is the foundation of any robust REST API. Each resource should have a unique identifier (URI) and expose relevant actions through HTTP methods like GET, POST, PUT, and DELETE.</p>\n<ul>\n  <li><strong>Use nouns for resource names:</strong> Resources should be represented using nouns rather than verbs. For instance, /users instead of /getUsers.</li>\n  <li><strong>Limit nested resources:</strong> Nested resources can lead to complex URL structures. Keep the hierarchy shallow and use collections where possible (e.g., /users/1/posts as opposed to /user/1/post).</li>\n</ul>\n\n<h3>HTTP Methods and Error Handling</h2>\n<p>REST APIs should adhere strictly to HTTP methods for resource actions: GET for retrieval, POST for creation, PUT for updates, and DELETE for deletions. Consistent error handling is also essential:</p>\n<ul>\n  <li><strong>Use standard HTTP status codes:</strong> HTTP status codes such as 200 (OK), 400 (Bad Request), 401 (Unauthorized), and 500 (Internal Server Error) should be used consistently.</li>\n  <li><strong>Include detailed error messages:</strong> Clear and informative error messages help developers debug issues more efficiently.</li>\n</ul>\n\n<h3>Versioning APIs</h2>\n<p>Versioning APIs ensures backward compatibility while introducing new features or changes. Common strategies for API versioning include URI, Media Type, and Header-based approaches.</p>\n<ul>\n  <li><strong>URI Versioning:</strong> Each resource includes the API version in its URI (e.g., /api/v1/users).</li>\n  <li><strong>Media Type Versioning:</strong> The request or response content-type header includes the API version (e.g., 'application/vnd.company.api+json;version=1').</li>\n</ul>\n\n<h3>API Documentation and Testing</h2>\n<p>Comprehensive documentation is vital for developers to understand your APIs effectively. Automated testing also helps maintain API quality:</p>\n<ul>\n  <li><strong>Use tools like Swagger or Postman:</strong> These tools provide interactive documentation, API testing, and code generation capabilities.</li>\n  <li><strong>Implement test coverage:</strong> Unit tests ensure that API changes don't break existing functionality.</li>\n</ul>\n\n<h2>Conclusion</h2>\n<p>Designing scalable REST APIs requires careful planning, adherence to best practices, and a focus on resource modeling. By following these guidelines, you can create efficient, maintainable, and flexible APIs that are easy for developers to understand and work with.</p>\n<h2>Recommended Reading</h2>\n<p><em>For further exploration of REST API design best practices, we recommend the following resources:</em></p>\n<ul>\n  <li><strong><a href=\"https://restfulapi.net/\">RESTful API Design Guide</a></strong></li>\n  <li><strong><a href=\"https://swagger.io/docs/open-api/\">OpenAPI Specification (Swagger)</a></strong></li>\n  <li><strong><a href=\"https://spring.io/guides/gs/rest-service/\">Creating a RESTful Service with Spring Boot</a></strong></li>\n</ul>"
+    },
+    {
         "id": "post-1771254885",
         "title": "Support Vector Machines",
         "author": "Saravana Kumar",
