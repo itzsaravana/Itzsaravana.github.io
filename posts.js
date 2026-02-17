@@ -1,5 +1,20 @@
 const posts = [
     {
+        "id": "post-1771345859",
+        "title": "Clustering with K-Means",
+        "author": "Saravana Kumar",
+        "date": "2026-02-17",
+        "tags": [
+            "machine-learning",
+            "clustering",
+            "kmeans"
+        ],
+        "image": "https://images.unsplash.com/photo-1567641091594-71640a68f847?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzEzNDU4NjB8&ixlib=rb-4.1.0&q=80&w=1080",
+        "placeholder": "https://images.unsplash.com/photo-1567641091594-71640a68f847?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzEzNDU4NjB8&ixlib=rb-4.1.0&q=80&w=200",
+        "excerpt": "Understand how unsupervised clustering groups similar data points.",
+        "content": "<p>Delve into the fascinating world of unsupervised machine learning, focusing on a renowned technique known as K-Means Clustering.</p>\n\n<h2>Understanding K-Means Clustering</h2>\n<p>K-Means Clustering is an algorithm used for grouping similar data points in a dataset. It aims to partition the data into K distinct, non-overlapping subsets (or clusters), where each data point belongs to the cluster with the nearest mean.</p>\n\n<h3>How it works</h3>\n<p>The algorithm starts by randomly initializing K points as cluster centers. Then, it iteratively assigns each data point to the closest cluster center and recalculates the new centroid for that cluster based on the assigned data points. This process continues until no significant changes occur in cluster assignments or centroids.</p>\n\n<h3>Choosing the optimal K</h3>\n<p>Selecting the optimal number of clusters (K) is crucial to achieving good results with K-Means Clustering. Techniques such as Elbow Method, Silhouette Analysis, and Calinski-Harabasz Index can help in determining the appropriate value for K.</p>\n\n<h2>Practical Application of K-Means Clustering</h2>\n<p>K-Means Clustering has numerous applications across various domains. For instance:</p>\n\n<ul>\n<li><strong>Market Segmentation:</strong> It helps businesses categorize customers based on their common characteristics, enabling targeted marketing strategies.</li>\n<li><strong>Image and Speech Recognition:</strong> K-Means Clustering is used to group pixels or spectrograms in images and speeches respectively for pattern recognition.</li>\n<li><strong>Recommendation Systems:</strong> In recommendation systems, it's employed to identify patterns in user preferences and suggest relevant items.</li>\n</ul>\n\n<h2>Tips and Best Practices</h2>\n<p><strong>Normalize your data:</strong> Normalization is essential as K-Means Clustering performs poorly with data of varying scales. Centering and scaling your data ensures equal importance for all features.</p>\n\n<p><strong>Choose appropriate initial centroids:</strong> Using an effective method such as k-means++ can lead to better initialization of centroids, resulting in a more optimal solution.</p>\n\n<h2>Conclusion</h2>\n<p>K-Means Clustering is a powerful and widely used unsupervised learning technique for data grouping. By understanding its inner workings and best practices, you can effectively utilize this algorithm for various applications such as market segmentation, image recognition, and recommendation systems.</p>\n\n<p>Dive deeper into K-Means Clustering and explore other clustering algorithms to enhance your machine learning skills and uncover hidden patterns in data!</p>"
+    },
+    {
         "id": "post-1771256804",
         "title": "REST API Design Best Practices",
         "author": "Saravana Kumar",
