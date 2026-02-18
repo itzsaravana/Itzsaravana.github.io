@@ -1,5 +1,20 @@
 const posts = [
     {
+        "id": "post-1771424753",
+        "title": "Dimensionality Reduction with PCA",
+        "author": "Saravana Kumar",
+        "date": "2026-02-18",
+        "tags": [
+            "machine-learning",
+            "pca",
+            "dimensionality-reduction"
+        ],
+        "image": "https://images.unsplash.com/photo-1717501217900-da3e127098a4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE0MjQ3NTR8&ixlib=rb-4.1.0&q=80&w=1080",
+        "placeholder": "https://images.unsplash.com/photo-1717501217900-da3e127098a4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE0MjQ3NTR8&ixlib=rb-4.1.0&q=80&w=200",
+        "excerpt": "Learn how PCA reduces features while preserving variance.",
+        "content": "<h2>Dimensionality Reduction with Principal Component Analysis (PCA)</h2>\n<p>In the realm of machine learning, dimensionality reduction plays a crucial role in handling high-dimensional data while preserving valuable information. One such popular technique is Principal Component Analysis (PCA). This blog post will delve into the workings of PCA and demonstrate its effectiveness in reducing features while preserving variance.</p>\n\n<h3>Understanding Dimensionality Reduction</h3>\n<p>Dimensionality reduction techniques aim to convert high-dimensional data into a lower-dimensional representation, making it easier to visualize, analyze, and store. PCA is a linear dimensionality reduction method that transforms the original dataset into a new feature space where the transformed features are uncorrelated.</p>\n<ul>\n<li>Each transformed feature (principal component) represents a linear combination of the original features, with the first principal component explaining the maximum variance in the data.</li>\n<li>Subsequent components capture progressively less variance but remain orthogonal to each other and the previous components.</li>\n</ul>\n\n<h3>The Process of PCA</h3>\n<p>PCA operates on the covariance matrix of the data, which encapsulates the relationships between variables. The steps involved in applying PCA are as follows:</p>\n<ol>\n<li><strong>Centering:</strong> Subtracting the mean from each data point to ensure that the newly obtained features have a zero mean.</li>\n<li><strong>Covariance Matrix Calculation:</strong> Computing the covariance matrix of the centered data to understand the relationships between variables.</li>\n<li><strong>Eigenvectors and Eigenvalues:</strong> Finding the eigenvectors and eigenvalues of the covariance matrix. The eigenvectors are the principal components, while their corresponding eigenvalues represent the amount of variance explained by each component.</li>\n<li><strong>Sorting and Selection:</strong> Sorting the eigenvectors (principal components) based on their eigenvalues (variance) in descending order and selecting the top k components to reduce the dimensionality.</li>\n</ol>\n\n<h3>Practical Applications of PCA</h3>\n<p>PCA is widely used in various machine learning applications, such as image compression, face recognition, and anomaly detection. In these scenarios, PCA helps in reducing the computational complexity and improving the interpretability of the data while preserving the essential information.</p>\n\n<h2>Conclusion</h2>\n<p>Dimensionality reduction with Principal Component Analysis offers a powerful approach to handling high-dimensional data by transforming it into a lower-dimensional representation while preserving valuable variance. By understanding PCA's workings and practical applications, machine learning practitioners can effectively deal with complex datasets and enhance their models' performance.</p>"
+    },
+    {
         "id": "post-1771345859",
         "title": "Clustering with K-Means",
         "author": "Saravana Kumar",
