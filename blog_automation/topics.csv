@@ -23,3 +23,62 @@ Convolutional Neural Networks (CNN),Understand how CNNs process images using con
 Recurrent Neural Networks (RNN),Learn how RNNs handle sequential and time-series data.,"machine-learning,rnn,deep-learning,advanced",Saravana Kumar,2026-02-22
 Transformers and Attention Mechanism,Understand how attention replaced recurrence in modern models.,"machine-learning,transformers,attention,advanced",Saravana Kumar,2026-02-23
 Model Deployment and Monitoring,Learn how to deploy ML models and monitor performance in production.,"machine-learning,mlops,production",Saravana Kumar,2026-02-24
+Spring Boot Architecture Deep Dive,Internal flow of Spring Boot from HTTP request to response lifecycle,"java,spring-boot,architecture",Saravana Kumar,2026-02-24
+REST API Design Best Practices,How to design clean scalable REST APIs with proper resource modeling,"java,spring-boot,rest,api-design",Saravana Kumar,2026-02-25
+Spring Boot Project Structure,Structuring enterprise-grade Spring Boot applications for long-term maintainability,"java,spring-boot,best-practices",Saravana Kumar,2026-02-26
+Dependency Injection in Spring,Understanding IoC and dependency injection with practical production examples,"spring,di,ioc,java",Saravana Kumar,2026-02-27
+Spring Boot Profiles & Environments,Managing dev test and production configurations using Spring profiles,"spring-boot,profiles,config",Saravana Kumar,2026-02-28
+Exception Handling in Spring Boot,Designing global error handling using ControllerAdvice and custom exceptions,"spring-boot,exception-handling",Saravana Kumar,2026-03-01
+Validation in Spring Boot,Using Bean Validation to enforce API contracts consistently,"spring-boot,validation",Saravana Kumar,2026-03-02
+Spring Boot Security Basics,Core authentication and authorization concepts every backend engineer must know,"spring-security,auth",Saravana Kumar,2026-03-03
+JWT Authentication in Microservices,Implementing stateless authentication across microservices using JWT tokens,"jwt,spring-security,microservices",Saravana Kumar,2026-03-04
+OAuth2 and OpenID Connect,Securing distributed systems using OAuth2 flows and OpenID Connect,"oauth2,security",Saravana Kumar,2026-03-05
+Microservices Architecture Basics,Understanding monolith versus microservices trade-offs in real systems,"microservices,architecture",Saravana Kumar,2026-03-06
+Service Discovery with Eureka,Dynamic service registration and discovery in cloud-native architectures,"spring-cloud,eureka",Saravana Kumar,2026-03-07
+API Gateway Pattern,Centralized routing authentication and throttling using API Gateway,"api-gateway,microservices",Saravana Kumar,2026-03-08
+Circuit Breaker with Resilience4j,Preventing cascading failures using circuit breaker patterns,"resilience4j,fault-tolerance",Saravana Kumar,2026-03-09
+Config Server in Microservices,Centralized externalized configuration management for distributed systems,"spring-cloud,config",Saravana Kumar,2026-03-10
+Inter-Service Communication,Choosing between synchronous REST and asynchronous messaging patterns,"microservices,communication",Saravana Kumar,2026-03-11
+Kafka Basics for Microservices,Introduction to event-driven architecture using Apache Kafka,"kafka,event-driven",Saravana Kumar,2026-03-12
+Kafka Consumer & Producer Design,Designing reliable Kafka producers consumers and message processing,"kafka,streaming",Saravana Kumar,2026-03-13
+Idempotency in Distributed Systems,Handling duplicate requests safely in distributed environments,"distributed-systems,design",Saravana Kumar,2026-03-14
+Database Design for Microservices,Applying database-per-service pattern with isolation guarantees,"database,microservices",Saravana Kumar,2026-03-15
+Transactional Boundaries,Comparing Saga pattern versus two-phase commit approaches,"saga,distributed-transactions",Saravana Kumar,2026-03-16
+Caching Strategies,Designing effective Redis caching strategies for high performance,"redis,caching,performance",Saravana Kumar,2026-03-17
+Rate Limiting in APIs,Protecting backend services from abuse and traffic spikes,"rate-limiting,api",Saravana Kumar,2026-03-18
+Pagination & Filtering at Scale,Efficient pagination filtering and sorting for large datasets,"pagination,performance",Saravana Kumar,2026-03-19
+Logging in Distributed Systems,Centralized logging architecture using ELK stack principles,"logging,elk",Saravana Kumar,2026-03-20
+Monitoring with Micrometer & Prometheus,Collecting metrics and monitoring system health proactively,"monitoring,metrics",Saravana Kumar,2026-03-21
+Health Checks & Readiness Probes,Designing health endpoints for resilient production deployments,"health-checks,devops",Saravana Kumar,2026-03-22
+Dockerizing Spring Boot Apps,Building optimized Docker images for Spring Boot applications,"docker,spring-boot",Saravana Kumar,2026-03-23
+Kubernetes Basics for Developers,Understanding pods services deployments and cluster fundamentals,"kubernetes,containers",Saravana Kumar,2026-03-24
+Deploying Microservices on Kubernetes,End-to-end workflow for deploying microservices on Kubernetes,"kubernetes,microservices",Saravana Kumar,2026-03-25
+AWS Basics for Backend Engineers,Essential AWS services every backend engineer should understand,"aws,cloud",Saravana Kumar,2026-03-26
+AWS EC2 Deep Dive,Instance types pricing and scaling strategies explained clearly,"aws,ec2",Saravana Kumar,2026-03-27
+AWS Load Balancers Explained,Comparing ALB NLB and CLB with real use cases,"aws,load-balancer",Saravana Kumar,2026-03-28
+Auto Scaling in AWS,Designing self-healing systems using auto scaling groups,"aws,autoscaling",Saravana Kumar,2026-03-29
+AWS VPC Fundamentals,Understanding networking concepts subnets routing and security,"aws,vpc,networking",Saravana Kumar,2026-03-30
+AWS IAM Best Practices,Designing secure fine-grained access control policies,"aws,iam,security",Saravana Kumar,2026-03-31
+AWS RDS vs DynamoDB,Choosing relational or NoSQL databases based on workload,"aws,database",Saravana Kumar,2026-04-01
+Designing Highly Available Systems,Multi-AZ fault tolerance and failover design strategies,"system-design,availability",Saravana Kumar,2026-04-02
+Scalability Patterns,Comparing horizontal vertical and elastic scaling approaches,"system-design,scalability",Saravana Kumar,2026-04-03
+CAP Theorem Explained,Understanding trade-offs between consistency availability and partition tolerance,"distributed-systems,cap",Saravana Kumar,2026-04-04
+Load Balancing Algorithms,Exploring round-robin least connections and hashing techniques,"system-design,load-balancing",Saravana Kumar,2026-04-05
+Database Indexing Internals,How indexes work internally to improve query performance,"database,indexing",Saravana Kumar,2026-04-06
+Low-Level Design Principles,Applying SOLID principles with practical object-oriented examples,"lld,solid,design",Saravana Kumar,2026-04-07
+Designing a URL Shortener,Low-level and high-level design walkthrough end-to-end,"system-design,case-study",Saravana Kumar,2026-04-08
+Designing a Rate Limiter,System design of distributed rate limiting solutions,"system-design,rate-limiter",Saravana Kumar,2026-04-09
+Designing Notification System,Architecting scalable email SMS and push notification systems,"system-design,notifications",Saravana Kumar,2026-04-10
+Designing File Storage System,Understanding internals of scalable object storage systems,"system-design,storage",Saravana Kumar,2026-04-11
+Designing Payment Systems,Handling consistency security and failure scenarios in payments,"system-design,payments",Saravana Kumar,2026-04-12
+Eventual Consistency Patterns,Design patterns for handling delayed consistency gracefully,"distributed-systems",Saravana Kumar,2026-04-13
+API Versioning Strategies,Managing backward compatibility without breaking existing clients,"api-design,versioning",Saravana Kumar,2026-04-14
+Backward Compatibility in Microservices,Designing zero-downtime deployments with backward compatibility,"microservices,deployments",Saravana Kumar,2026-04-15
+Blue-Green Deployments,Reducing deployment risk using blue-green strategies,"devops,deployment",Saravana Kumar,2026-04-16
+Canary Releases Explained,Gradually rolling out changes to minimize production impact,"devops,canary",Saravana Kumar,2026-04-17
+Feature Flags in Backend Systems,Controlling feature rollout without redeploying applications,"feature-flags,backend",Saravana Kumar,2026-04-18
+System Design Interview Framework,Structured approach to solving system design interview questions,"system-design,interviews",Saravana Kumar,2026-04-19
+Common System Design Mistakes,Frequent pitfalls engineers make during system design interviews,"system-design,anti-patterns",Saravana Kumar,2026-04-20
+Designing for Observability,Building systems with logs metrics and traces in mind,"observability,monitoring",Saravana Kumar,2026-04-21
+Designing Secure Systems,Applying threat modeling and secure-by-design principles,"security,system-design",Saravana Kumar,2026-04-22
+Final System Design Checklist,Comprehensive checklist for reviewing production-ready architectures,"system-design,checklist",Saravana Kumar,2026-04-23
