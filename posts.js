@@ -1,5 +1,19 @@
 const posts = [
     {
+        "id": "post-1771515674",
+        "title": "System Design Interview Framework",
+        "author": "Saravana Kumar",
+        "date": "2026-02-19",
+        "tags": [
+            "system-design",
+            "interviews"
+        ],
+        "image": "https://images.unsplash.com/photo-1586780807983-950860a50ece?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE1MTU2NzR8&ixlib=rb-4.1.0&q=80&w=1080",
+        "placeholder": "https://images.unsplash.com/photo-1586780807983-950860a50ece?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE1MTU2NzR8&ixlib=rb-4.1.0&q=80&w=200",
+        "excerpt": "Structured approach to solving system design interview questions",
+        "content": "<p>Welcome to the System Design Interview Framework, a comprehensive guide designed to help you navigate and excel in system design interviews.</p>\n\n<h2><strong>Understanding System Design Interviews</strong></h2>\n<p>System design interviews are a crucial part of the software engineering interview process. They evaluate your ability to design large-scale systems, think algorithmically, and make trade-offs when solving complex problems.</p>\n\n<h3><em>Common Scenarios</em></h3>\n<p>Typical scenarios may involve designing a social network, a recommendation system, or a search engine. These questions often require you to explain your thought process, design decisions, and trade-offs in detail.</p>\n\n<h2><strong>Preparation Strategy</strong></h2>\n<p>Success in system design interviews relies on a solid understanding of fundamental concepts and practical experience. Here's how you can prepare:</p>\n\n<h3><em>Learn the Basics</em></h3>\n<p>Brush up on data structures, algorithms, distributed systems, and networking. These foundational topics will provide a strong base for system design questions.</p>\n\n<h3><em>Practice Designing Systems</em></h3>\n<p>Solve real-world problem statements from platforms like LeetCode, HackerRank, or Pramp. This hands-on experience will help you develop the skills needed for system design interviews.</p>\n\n<h3><em>Review Case Studies</em></h3>\n<p>Study case studies of popular systems like Google, Amazon, and Facebook. Analyze their architecture, scaling strategies, and trade-offs to learn from industry best practices.</p>\n\n<h2><strong>Tackling System Design Interview Questions</strong></h2>\n<p>When faced with a system design question, follow these steps:</p>\n\n<ol>\n<li><strong>Understand the problem:</strong> Break down the problem into smaller components and clarify any uncertainties.</li>\n<li><strong>Define requirements:</strong> Identify key functionalities, non-functional requirements, constraints, and edge cases.</li>\n<li><strong>Design high-level architecture:</strong> Outline the system's major components, their responsibilities, and interactions.</li>\n<li><strong>Design detailed components:</strong> Dive deeper into each component, discussing data structures, algorithms, and APIs.</li>\n<li><strong>Consider scaling strategies:</strong> Discuss potential bottlenecks and propose solutions for horizontal and vertical scaling.</li>\n</ol>\n\n<h2><strong>Conclusion</strong></h2>\n<p>With the System Design Interview Framework, you'll be well-equipped to tackle complex system design questions and demonstrate your problem-solving skills during interviews. Practice, learn from case studies, and master the art of designing large-scale systems.</p>\n\n<p>Good luck with your system design journey!</p>"
+    },
+    {
         "id": "post-1771506070",
         "title": "Neural Networks Fundamentals",
         "author": "Saravana Kumar",
