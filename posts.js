@@ -1,5 +1,20 @@
 const posts = [
     {
+        "id": "post-1771596459",
+        "title": "Deep Learning Basics",
+        "author": "Saravana Kumar",
+        "date": "2026-02-20",
+        "tags": [
+            "machine-learning",
+            "deep-learning",
+            "intermediate"
+        ],
+        "image": "https://images.unsplash.com/photo-1761223976379-04c361d3068a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE1OTY0NTl8&ixlib=rb-4.1.0&q=80&w=1080",
+        "placeholder": "https://images.unsplash.com/photo-1761223976379-04c361d3068a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE1OTY0NTl8&ixlib=rb-4.1.0&q=80&w=200",
+        "excerpt": "Learn how deep neural networks differ from traditional ML models.",
+        "content": "<h2>Delving into Deep Learning Basics</h2>\n<p>Welcome to the realm of deep learning! This blog post aims to shed light on how deep neural networks differ from traditional machine learning models. Let's embark on this journey together.</p>\n\n<h3>Understanding Traditional Machine Learning Models</h3>\n<p>Traditional machine learning (ML) models are based on algorithms that learn patterns from data, without being explicitly programmed to perform the task. These models are designed with a specific structure, and they rely on feature engineering for extracting relevant information.</p>\n\n<h3>Enter Deep Learning</h3>\n<p>Deep learning is a subset of ML that uses artificial neural networks with multiple layers to learn increasingly complex representations of data directly from raw inputs. This approach eliminates the need for explicit feature engineering, making it more efficient and effective in handling large datasets.</p>\n\n<h4>The Architecture of Deep Neural Networks</h4>\n<p>Deep neural networks consist of an input layer, hidden layers, and an output layer. Each node in a layer is connected to every node in the next layer through weights that are adjusted during training.</p>\n\n<h3>Why Deep Learning Excels Over Traditional ML</h3>\n<p>Deep learning excels due to its ability to learn hierarchical representations of data, allowing it to automatically extract meaningful features. This leads to improved performance on tasks such as image recognition, speech recognition, and natural language processing.</p>\n\n<h4>Case Study: Image Recognition</h4>\n<p>Consider a convolutional neural network (CNN), a popular deep learning model used for image recognition. A CNN learns to recognize low-level features such as edges and textures in the early layers, and progressively moves towards identifying complex patterns like objects or faces in deeper layers.</p>\n\n<h3>Getting Started with Deep Learning</h3>\n<p>To get started with deep learning, you'll need a solid understanding of linear algebra, calculus, and programming skills. Libraries such as TensorFlow and PyTorch provide user-friendly interfaces to build and train deep neural networks.</p>\n\n<h4>Tips for Success in Deep Learning</h4>\n<ul>\n<li>Choose the right dataset: Select a balanced, clean, and diverse dataset for better model performance.</li>\n<li>Preprocessing is key: Proper data preprocessing techniques can significantly improve model accuracy.</li>\n<li>Experimentation is crucial: Try various architectures, optimizers, and loss functions to find the best combination for your specific task.</li>\n</ul>\n\n<h2>Conclusion</h2>\n<p>Deep learning has revolutionized the field of machine learning by providing a powerful toolset for tackling complex tasks. By understanding the basics of deep neural networks, you can take advantage of this technology to build more efficient and effective models.</p>\n\n<p>Stay tuned for our upcoming posts as we delve deeper into the world of deep learning!</p>"
+    },
+    {
         "id": "post-1771515674",
         "title": "System Design Interview Framework",
         "author": "Saravana Kumar",
