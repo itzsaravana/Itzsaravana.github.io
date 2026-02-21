@@ -1,5 +1,21 @@
 const posts = [
     {
+        "id": "post-1771654806",
+        "title": "Convolutional Neural Networks (CNN)",
+        "author": "Saravana Kumar",
+        "date": "2026-02-21",
+        "tags": [
+            "machine-learning",
+            "cnn",
+            "deep-learning",
+            "advanced"
+        ],
+        "image": "https://images.unsplash.com/photo-1717501219074-943fc738e5a2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE2NTQ4MDd8&ixlib=rb-4.1.0&q=80&w=1080",
+        "placeholder": "https://images.unsplash.com/photo-1717501219074-943fc738e5a2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE2NTQ4MDd8&ixlib=rb-4.1.0&q=80&w=200",
+        "excerpt": "Understand how CNNs process images using convolution layers.",
+        "content": "<p>Dive into the captivating world of Convolutional Neural Networks (CNN), a significant innovation in the realm of deep learning, particularly for image processing tasks.</p>\n\n<h2>The Essence of CNN: A Brief Overview</h2>\n<p>Convolutional Neural Networks, often abbreviated as CNNs, are designed to recognize patterns within data that have spatial hierarchies, such as images. They have revolutionized the field of computer vision and are integral to numerous applications in the tech industry today.</p>\n\n<h2>Understanding the Architecture of a CNN</h2>\n<h3>Key Components</h3>\n<p>A typical CNN consists of three primary components: Convolution layers, Pooling layers, and Fully Connected layers. Each component plays a crucial role in processing and analyzing images.</p>\n<ul>\n<li><strong>Convolution Layers:</strong> These layers apply filters to the input image, sliding them across the image for feature extraction.</li>\n<li><strong>Pooling Layers:</strong> Pooling layers help reduce dimensionality by taking the maximum or average value within a defined window, thereby increasing invariance to small translations of an object in an image.</li>\n<li><strong>Fully Connected Layers:</strong> These layers are similar to those found in traditional neural networks, allowing for the final classification and interpretation of features extracted by the previous layers.</li>\n</ul>\n\n<h3>Stride and Padding</h3>\n<p>Two crucial parameters that affect the CNN's output size are stride and padding. The <em>stride</em> specifies how many pixels a filter moves over when performing convolution, while <em>padding</em> adds extra pixels around the input image to maintain its size throughout the layers.</p>\n\n<h2>Practical Application: CNN in Image Classification</h2>\n<p>CNNs have demonstrated impressive performance in various image classification tasks. For instance, in 2012, AlexNet, a CNN architecture, won the prestigious ImageNet Large Scale Visual Recognition Challenge (ILSVRC), setting new standards for the future of deep learning.</p>\n\n<h2>Conclusion</h2>\n<p>Convolutional Neural Networks have significantly advanced the field of machine learning and computer vision, enabling machines to recognize patterns in images with remarkable accuracy. As we continue to refine these models, we can expect even more impressive achievements in the near future.</p>\n\n<p>Stay tuned as we delve deeper into the intricacies of CNN architectures, exploring their potential for breakthroughs in image recognition and beyond.</p>"
+    },
+    {
         "id": "post-1771596459",
         "title": "Deep Learning Basics",
         "author": "Saravana Kumar",
