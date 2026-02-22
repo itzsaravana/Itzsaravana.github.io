@@ -1,5 +1,21 @@
 const posts = [
     {
+        "id": "post-1771732125",
+        "title": "Recurrent Neural Networks (RNN)",
+        "author": "Saravana Kumar",
+        "date": "2026-02-22",
+        "tags": [
+            "machine-learning",
+            "rnn",
+            "deep-learning",
+            "advanced"
+        ],
+        "image": "https://images.unsplash.com/photo-1495592822108-9e6261896da8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE3MzIxMjZ8&ixlib=rb-4.1.0&q=80&w=1080",
+        "placeholder": "https://images.unsplash.com/photo-1495592822108-9e6261896da8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE3MzIxMjZ8&ixlib=rb-4.1.0&q=80&w=200",
+        "excerpt": "Learn how RNNs handle sequential and time-series data.",
+        "content": "<p>Delve into the captivating world of Recurrent Neural Networks (RNN), a fundamental component in the realm of machine learning and deep learning.</p>\n\n<h2>Understanding Recurrent Neural Networks</h2>\n<p>Recurrent Neural Networks, or RNNs, are a class of artificial neural networks that handle sequential data or data with a temporal component. They have the unique ability to maintain an internal state and use it across time steps, enabling them to recognize patterns in sequences of data.</p>\n\n<h3>Key Features of Recurrent Neural Networks</h3>\n<ul>\n<li><strong>Hidden Layers with Feedback Connections:</strong> Unlike traditional feedforward neural networks, RNNs have loops that connect hidden layers to themselves, allowing information to flow in both directions.</li>\n<li><strong>Internal State (Memory):</strong> Each neuron in an RNN maintains a state between time steps. This internal memory helps the network remember previous inputs, making it suitable for processing sequential data.</li>\n</ul>\n\n<h2>Handling Sequential and Time-Series Data with RNNs</h2>\n<p>RNNs are particularly useful when dealing with sequential data such as time-series data, text data (like sentences or documents), music, speech, and bioinformatics sequences.</p>\n\n<h3>Practical Examples of RNN Applications</h3>\n<ul>\n<li><strong>Text Generation:</strong> RNNs can be used to generate new sentences that are similar in style and content to a given set of sentences. For instance, Google's Neural Machine Translation uses RNNs to translate languages.</li>\n<li><strong>Speech Recognition:</strong> Speech recognition systems employ RNNs to convert spoken words into written text. The long short-term memory (LSTM) variant of RNN is commonly used in this application due to its ability to capture long-range dependencies in speech signals.</li>\n</ul>\n\n<h2>Challenges and Future Directions for Recurrent Neural Networks</h2>\n<p>While RNNs have shown remarkable success, they still face challenges such as the vanishing gradient problem, which can hinder their training process. Ongoing research aims to address these issues and explore new architectures like LSTMs and gated recurrent units (GRUs) that offer improved performance and stability.</p>\n\n<h3>Conclusion</h3>\n<p>Recurrent Neural Networks have revolutionized the way we process sequential and time-series data, enabling breakthroughs in various domains. As research continues to advance, RNNs are poised to play a significant role in shaping the future of artificial intelligence.</p>\n\n<p>By understanding RNNs' unique features and applications, you can prepare yourself for the exciting opportunities that lie ahead in this dynamic field.</p>"
+    },
+    {
         "id": "post-1771654806",
         "title": "Convolutional Neural Networks (CNN)",
         "author": "Saravana Kumar",
