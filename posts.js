@@ -1,5 +1,21 @@
 const posts = [
     {
+        "id": "post-1771809197",
+        "title": "Transformers and Attention Mechanism",
+        "author": "Saravana Kumar",
+        "date": "2026-02-23",
+        "tags": [
+            "machine-learning",
+            "transformers",
+            "attention",
+            "advanced"
+        ],
+        "image": "https://images.unsplash.com/photo-1717501219905-2711c58ab655?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE4MDkxOTh8&ixlib=rb-4.1.0&q=80&w=1080",
+        "placeholder": "https://images.unsplash.com/photo-1717501219905-2711c58ab655?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE4MDkxOTh8&ixlib=rb-4.1.0&q=80&w=200",
+        "excerpt": "Understand how attention replaced recurrence in modern models.",
+        "content": "<p>Delve into the intriguing world of Transformers and Attention Mechanisms, two revolutionary concepts that have significantly reshaped modern machine learning models.</p>\n\n<h2>Transformers: A Revolution in Sequence Modeling</h2>\n<p>Initially proposed by Vaswani et al. (2017), the Transformer model revolutionized sequence modeling tasks such as translation, summarization, and more.</p>\n\n<h3>Key Features of Transformers</h3>\n<ul>\n<li><strong>Self-Attention:</strong> Unlike recurrent neural networks (RNNs) that process data sequentially, Transformers use self-attention mechanisms to compute relationships between all positions in the sequence at once.</li>\n<li><strong>Positional Encoding:</strong> To account for the order of inputs, Transformers incorporate positional encodings into the model architecture.</li>\n</ul>\n\n<h3>Comparison with RNNs and LSTMs</h3>\n<p>Compared to traditional recurrent networks like RNNs or Long Short-Term Memory (LSTM) networks, Transformers are more efficient in handling longer sequences and exhibit better performance on tasks requiring understanding of the context.</p>\n\n<h2>Attention Mechanism: The Magic Ingredient</h2>\n<p>The Attention Mechanism is a fundamental component within Transformer models. It assigns importance weights to different parts of input sequences, allowing the model to focus on relevant information and filter out noise.</p>\n\n<h3>Types of Attention Mechanisms</h3>\n<ul>\n<li><strong>Scaled Dot-Product Attention:</strong> This attention mechanism measures compatibility between queries, keys, and values by computing the dot product, followed by a softmax operation for normalization.</li>\n<li><strong>Multi-Head Attention:</strong> Multi-head attention enables the model to attend to different parts of the input simultaneously by creating multiple independent attention heads.</li>\n</ul>\n\n<h2>Practical Applications and Future Directions</h2>\n<p>Transformers and their attention mechanisms have opened doors to a wide range of applications, including natural language processing tasks such as machine translation, sentiment analysis, and text summarization. As research continues to advance, we can expect further improvements in the efficiency and performance of these powerful models.</p>\n\n<h3>Case Study: BERT (Bidirectional Encoder Representations from Transformers)</h3>\n<p>A notable example is BERT (Devlin et al., 2019), a pre-trained Transformer model that has achieved state-of-the-art results on various natural language processing tasks. The ability of BERT to effectively capture contextual information and handle long sequences has made it an essential tool for many machine learning practitioners.</p>\n\n<h3>Conclusion</h3>\n<p>The advent of Transformers and Attention Mechanisms has profoundly impacted the field of machine learning, offering a more efficient and effective approach to sequence modeling tasks. As researchers continue to explore new developments in these areas, we can look forward to even more impressive advancements in natural language processing and beyond.</p>\n\n<h2>References</h2>\n<ul>\n<li><a href=\"https://arxiv.org/abs/1706.03762\">Attention is All You Need</a></li>\n<li><a href=\"https://arxiv.org/abs/1806.03045\">BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding</a></li>\n</ul>"
+    },
+    {
         "id": "post-1771732125",
         "title": "Recurrent Neural Networks (RNN)",
         "author": "Saravana Kumar",
