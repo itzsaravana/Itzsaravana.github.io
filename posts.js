@@ -1,5 +1,21 @@
 const posts = [
     {
+        "id": "post-1771912316",
+        "title": "Spring Boot Architecture Deep Dive",
+        "author": "Saravana Kumar",
+        "date": "2026-02-24",
+        "tags": [
+            "java",
+            "spring-boot",
+            "architecture"
+        ],
+        "image": "https://images.unsplash.com/photo-1617299905562-538200e9d197?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE5MTIzMTZ8&ixlib=rb-4.1.0&q=80&w=1080",
+        "placeholder": "https://images.unsplash.com/photo-1617299905562-538200e9d197?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE5MTIzMTZ8&ixlib=rb-4.1.0&q=80&w=200",
+        "excerpt": "Internal flow of Spring Boot from HTTP request to response lifecycle",
+        "content": "<p>Dive into the intricate workings of Spring Boot, focusing on its lifecycle from HTTP request to response.</p>\n\n<h2>Overview of Spring Boot Architecture</h2>\n<p>Spring Boot simplifies the development of Java applications by providing an easy-to-use foundation built upon the Spring Framework. It automates configuration and removes boilerplate code, allowing developers to focus on business logic.</p>\n\n<h3>Key Components</h3>\n<ul>\n<li><strong>Embedded Servers:</strong> Spring Boot offers built-in support for various web servers such as Tomcat and Jetty, making it easy to create standalone applications.</li>\n<li><strong>Spring MVC:</strong> This component handles HTTP requests and responses in a manner similar to traditional web frameworks like Struts or JSF.</li>\n</ul>\n\n<h2>HTTP Request Lifecycle</h2>\n<p>The lifecycle of an HTTP request within Spring Boot consists of several stages, each involving various components:</p>\n\n<h3>1. Dispatcher Servlet</h3>\n<p>The front-line component that receives incoming HTTP requests and dispatches them to the appropriate Handler.</p>\n\n<h3>2. Handler Method</h3>\n<p><strong>em>Controller methods:</strong> Handle individual HTTP requests, executing business logic and preparing data for rendering a view or creating an HTTP response.</p>\n\n<h3>3. View Resolution</h3>\n<p>Based on the controller's method return type, Spring Boot determines the appropriate view to render, which could be Thymeleaf, Freemarker, or another templating engine.</p>\n\n<h2>HTTP Response Lifecycle</h2>\n<p>Upon processing a request, the application creates an HTTP response and passes it back through various components to return it to the client:</p>\n\n<h3>1. Model Attributes</h3>\n<p><strong>Model:</strong> Contains data that's shared between the controller, view, and service layers. Developers can add attributes to the model for use in views.</p>\n\n<h3>2. View Resolution</h3>\n<p>The resolved view is responsible for rendering the response, with the data from the model being displayed within the template.</p>\n\n<h2>Conclusion</h2>\n<p>Spring Boot's internal flow from HTTP request to response involves a well-orchestrated series of components and processes. Understanding this architecture enables developers to create efficient and effective Java applications with minimal fuss.</p>\n\n<p>By using Spring Boot, you can streamline your development process, allowing you to focus on creating exceptional software experiences for users.</p>"
+
+  },
+  {
         "id": "post-1771912281",
         "title": "Model Deployment and Monitoring",
         "author": "Saravana Kumar",
