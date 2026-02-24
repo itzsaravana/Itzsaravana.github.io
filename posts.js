@@ -1,5 +1,20 @@
 const posts = [
     {
+        "id": "post-1771912281",
+        "title": "Model Deployment and Monitoring",
+        "author": "Saravana Kumar",
+        "date": "2026-02-24",
+        "tags": [
+            "machine-learning",
+            "mlops",
+            "production"
+        ],
+        "image": "https://images.unsplash.com/photo-1717501220374-9f4b2a3a60c9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE5MTIyODJ8&ixlib=rb-4.1.0&q=80&w=1080",
+        "placeholder": "https://images.unsplash.com/photo-1717501220374-9f4b2a3a60c9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE5MTIyODJ8&ixlib=rb-4.1.0&q=80&w=200",
+        "excerpt": "Learn how to deploy ML models and monitor performance in production.",
+        "content": "<h2>Mastering Model Deployment and Monitoring in Production</h2>\n<p>In the realm of Machine Learning (ML), the journey doesn't end with model training. The real challenge lies in deploying these models effectively and monitoring their performance in production. In this blog, we delve into best practices for model deployment and monitoring.</p>\n\n<h3>Deployment Strategies</h2>\n<p>Deploying ML models can be a complex task, but it's essential to ensure that your model is available for real-world applications. Here are some popular deployment strategies:</p>\n<ul>\n<li><strong>On-Premise Deployment:</strong> This involves setting up the infrastructure within your own data center.</li>\n<li><strong>Cloud Deployment:</strong> Cloud service providers like AWS, Google Cloud, and Azure offer managed ML services for seamless deployment.</li>\n<li><strong>Serverless Deployment:</strong> Serverless functions, such as AWS Lambda or Google Cloud Functions, allow you to run your code without worrying about the infrastructure.</li>\n</ul>\n\n<h3>Monitoring Performance</h2>\n<p>Once deployed, it's crucial to keep an eye on your model's performance. This includes evaluating key metrics like accuracy, precision, recall, and F1-score. Additionally, monitoring the drift in data distribution and model performance can help you proactively address issues.</p>\n\n<h3>Tips for Effective Monitoring</h2>\n<p>Effective monitoring involves setting up alerts for important events and periodically reviewing model logs. Here are some tips:</p>\n<ul>\n<li><strong>Set Up Alerts:</strong> Configure your system to send notifications when performance drops below a certain threshold.</li>\n<li><strong>Regular Log Review:</strong> Regularly review logs to identify trends and anomalies that may require intervention.</li>\n<li><strong>A/B Testing:</strong> Implement A/B testing to compare the performance of your model with alternative versions or baseline models.</li>\n</ul>\n\n<h3>Case Study: Improving Predictive Maintenance</h2>\n<p>Consider a predictive maintenance use case where an ML model is deployed to predict equipment failures. By continuously monitoring the model's performance, the organization could proactively schedule maintenance, reducing downtime and costs.</p>\n\n<h2>Wrapping Up</h2>\n<p>Deploying and monitoring ML models in production can be a game-changer for businesses. By adopting best practices and tools, you can ensure that your models remain accurate and effective, driving better business outcomes.</p>\n<em>Stay tuned for more insights on Machine Learning Operations (MLOps)!</em>"
+    },
+    {
         "id": "post-1771809197",
         "title": "Transformers and Attention Mechanism",
         "author": "Saravana Kumar",
