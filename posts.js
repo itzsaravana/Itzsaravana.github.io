@@ -1,4 +1,20 @@
 const posts = [
+    {
+        "id": "post-1772041576",
+        "title": "REST API Design Best Practices",
+        "author": "Saravana Kumar",
+        "date": "2026-02-25",
+        "tags": [
+            "java",
+            "spring-boot",
+            "rest",
+            "api-design"
+        ],
+        "image": "https://images.unsplash.com/photo-1699581913560-e53181650bf2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzIwNDE1NzZ8&ixlib=rb-4.1.0&q=80&w=1080",
+        "placeholder": "https://images.unsplash.com/photo-1699581913560-e53181650bf2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzIwNDE1NzZ8&ixlib=rb-4.1.0&q=80&w=200",
+        "excerpt": "How to design clean scalable REST APIs with proper resource modeling",
+        "content": "<h2>Embracing Best Practices for Scalable REST API Design in Java and Spring Boot</h2>\n<p>In today's dynamic digital landscape, designing clean and scalable REST APIs is crucial for ensuring seamless communication between clients and servers. This post delves into the essential best practices for creating such APIs using Java and Spring Boot. Let's dive in!</p>\n\n<h3>Resource Modeling: The Foundation of Your API</h3>\n<p>A well-structured resource model serves as the backbone of your REST API. Each resource should represent a distinct, self-contained entity that can be independently accessed and managed via CRUD operations (Create, Read, Update, Delete).</p>\n<ul>\n<li>Use plural nouns for resources, e.g., <strong>books</strong> instead of <em>book</em></li>\n<li>Adhere to a consistent naming convention throughout your API</li>\n<li>Design resources to be highly cohesive and loosely coupled</li>\n</ul>\n\n<h3>Designing Resource Endpoints</h3>\n<p>Crafting meaningful and intuitive resource endpoints is essential for easy client navigation. Follow these guidelines:</p>\n<ul>\n<li><strong>Use lowercase letters and hyphens</strong> for resource URLs, e.g., <em>/books</em></li>\n<li>Designate individual resources using unique identifiers (IDs), e.g., <em>/books/123</em></li>\n<li>Implement collection-oriented endpoints (e.g., <em>/books</em>) for listing and creating resources, while using instance-specific endpoints (e.g., <em>/books/123</em>) for retrieving, updating, or deleting individual resources</li>\n</ul>\n\n<h3>Implementing HTTP Verbs: CRUD Operations Made Simple</h3>\n<p>HTTP verbs provide a standardized approach to performing CRUD operations. Ensure your API adheres to the following:</p>\n<ul>\n<li><strong>GET</strong>: Retrieve a resource, e.g., <em>/books/123</em></li>\n<li><strong>POST</strong>: Create a new resource, e.g., <em>/books</em></li>\n<li><strong>PUT</strong>: Update an existing resource, e.g., <em>/books/123</em></li>\n<li><strong>PATCH</strong>: Partially update an existing resource</li>\n<li><strong>DELETE</strong>: Remove a resource, e.g., <em>/books/123</em></li>\n</ul>\n\n<h2>Conclusion</h2>\n<p>Adopting these REST API design best practices in Java and Spring Boot will enable you to create scalable APIs that deliver superior performance, maintainability, and extensibility. By focusing on resource modeling, designing intuitive endpoints, and implementing HTTP verbs effectively, your API will cater to a wide range of client needs while fostering efficient development and integration.</p>\n<p>Happy coding!</p>"
+    },
         {
       "id": "post-1771913398",
       "title": "From If-Else to AI Agents: System Evolution",
