@@ -5,11 +5,9 @@ const posts = [
     "author": "Saravana Kumar",
     "date": "2026-02-26",
     "tags": [
-        "software-engineering",
         "design-patterns",
         "system-design",
         "architecture",
-        "backend-development",
         "object-oriented-design"
     ],
     "image": "https://images.unsplash.com/photo-1518779578993-ec3579fee39f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
