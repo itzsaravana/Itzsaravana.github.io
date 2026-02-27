@@ -1,7 +1,23 @@
 const posts = [
     {
+        "id": "post-1772162772",
+        "title": "Dependency Injection in Spring",
+        "author": "Saravana Kumar",
+        "date": "2026-02-27",
+        "tags": [
+            "spring",
+            "di",
+            "ioc",
+            "java"
+        ],
+        "image": "https://images.unsplash.com/photo-1542224566-1afa7596a738?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzIxNjI3NzJ8&ixlib=rb-4.1.0&q=80&w=1080",
+        "placeholder": "https://images.unsplash.com/photo-1542224566-1afa7596a738?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzIxNjI3NzJ8&ixlib=rb-4.1.0&q=80&w=200",
+        "excerpt": "Understanding IoC and dependency injection with practical production examples",
+        "content": "<p>Dive into the world of Java-based application development with Spring Framework, and explore its essential aspect - Dependency Injection (DI) and Inversion of Control (IoC). This blog post will illuminate practical production examples that demonstrate how these concepts elevate your coding prowess.</p>\n<h2>Understanding IoC and Dependency Injection</h2>\n<p>The Inversion of Control (IoC) principle revolutionizes the way developers manage application dependencies. Instead of explicitly creating and managing objects, the application container handles the object lifecycle. This leads to loosely coupled code and easier testing.</p>\n<h3>Components of IoC Container</h3>\n<ul>\n<li>BeanFactory - Loads, manages, and provides beans (objects) required for the application.</li>\n<li>ApplicationContext - Extends BeanFactory with additional functionalities like support for AOP, Message Source, and Event &amp; Listeners.</li>\n</ul>\n\n<h2>Implementing Dependency Injection in Spring</h2>\n<p>Spring offers three DI techniques: constructor-based, setter-based, and field injection. Here's an example using constructor-based DI:</p>\n\n```java\n@Component\npublic class GreetingService {\n    private final MessageSource messageSource;\n\n    public GreetingService(MessageSource messageSource) {\n        this.messageSource = messageSource;\n    }\n\n    // Service methods here...\n}\n```\n<h3>Benefits of Dependency Injection</h3>\n<ul>\n<li><strong>Improved Modularity and Testability</strong>: With loose coupling, components can be easily swapped or tested in isolation.</li>\n<li><strong>Elimination of Singleton Pattern Pitfalls</strong>: Spring manages singletons internally, preventing issues like over-eager instantiation.</li>\n<li><strong>Simplified Configuration and Maintenance</strong>: Bean configurations become more readable and manageable.</li>\n</ul>\n\n<h2>Wrapping Up</h2>\n<p>With a solid understanding of IoC and Dependency Injection in Spring, you'll elevate your development game by creating modular, testable, and maintainable applications. As you continue to explore this powerful framework, you will uncover more best practices that empower efficient coding.</p>"
+    },
+    {
     "id": "post-1772109908",
-    "title": "12 Design Patterns Every Software Engineer Should Know (Explained with Real-World Examples)",
+    "title": "12 Design Patterns Software Engineer Should Know (with Real-World Examples)",
     "author": "Saravana Kumar",
     "date": "2026-02-26",
     "tags": [
