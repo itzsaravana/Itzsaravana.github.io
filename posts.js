@@ -1,9 +1,23 @@
 const posts = [
     {
+        "id": "post-1772472126",
+        "title": "Validation in Spring Boot",
+        "author": "Saravana Kumar",
+        "date": "2026-03-02",
+        "tags": [
+            "spring-boot",
+            "validation"
+        ],
+        "image": "https://images.unsplash.com/photo-1642081927380-89bd85d7a697?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI0NzIxMjd8&ixlib=rb-4.1.0&q=80&w=1080",
+        "placeholder": "https://images.unsplash.com/photo-1642081927380-89bd85d7a697?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI0NzIxMjd8&ixlib=rb-4.1.0&q=80&w=200",
+        "excerpt": "Using Bean Validation to enforce API contracts consistently",
+        "content": "<p>Welcome to the realm of Spring Boot, where we leverage powerful tools for building efficient and robust applications. Today, let's delve into an essential aspect: <strong>Validation</strong>, focusing on <em>Bean Validation</em> to enforce API contracts consistently.</p>\n\n<h2>Understanding Bean Validation</h2>\n<p>Bean Validation, also known as JSR-303, is a Java specification for annotation-based property validation. Spring Boot embraces this standard, making it easier to validate input data and enforce business rules.</p>\n\n<h3>Key Annotations in Bean Validation</h3>\n<ul>\n<li><strong>@NotNull:</strong> Verifies that the annotated element is not null.</li>\n<li><strong>@Size:</strong> Ensures that the size of the annotated element (array, collection, String) matches the specified range.</li>\n<li><strong>@Min</strong> and <strong>@Max:</strong> Validate numerical values against minimum or maximum bounds, respectively.</li>\n</ul>\n\n<h3>Custom Validators in Spring Boot</h3>\n<p>For more complex validation scenarios, Spring Boot offers the ability to create custom validators. This empowers you to create reusable validations tailored to your application's needs.</p>\n\n<h2>Applying Bean Validation in Spring Boot</h2>\n<p>To use Bean Validation in a Spring Boot project, you need to include the appropriate dependencies in your build configuration (Maven or Gradle). Here's an example with Maven:</p>\n\n```xml\n<dependency>\n    <groupId>javax.validation</groupId>\n    <artifactId>validation-api</artifactId>\n    <version>2.0.1.Final</version>\n</dependency>\n\n<dependency>\n    <groupId>org.hibernate</groupId>\n    <artifactId>hibernate-validator</artifactId>\n    <version>6.1.6.Final</version>\n</dependency>\n```\n\n<p>Once configured, annotate your model classes with the validation annotations. Spring Boot will handle the rest during application startup.</p>\n\n<h2>Leveraging Bean Validation for API Contracts</h2>\n<p>Enforcing consistent API contracts is vital in microservices-based architectures. With Bean Validation, you can ensure that requests adhere to the defined contract. By validating incoming request data, you minimize potential issues and improve overall application stability.</p>\n\n<h3>Practical Example</h3>\n<p>Let's consider a simple model class for a User:</p>\n\n```java\nimport javax.validation.constraints.*;\n\npublic class User {\n\n    @NotNull\n    private String name;\n\n    @Size(min = 10, max = 50)\n    private String email;\n\n    // Getters and setters...\n}\n```\n\n<p>With this model, Spring Boot will validate any incoming User objects based on the specified constraints. If validation fails, it throws a ValidationException.</p>\n\n<h3>Tips for Effective Bean Validation</h3>\n<ul>\n<li><strong>Keep validations simple and focused:</strong> Complex validations should be extracted into custom validators or business logic methods.</li>\n<li><strong>Use meaningful error messages:</strong> Customize validation messages to improve developer experience during debugging.</li>\n</ul>\n\n<h2>Conclusion</h2>\n<p>Bean Validation is a powerful tool in the Spring Boot arsenal, offering an easy and efficient way to enforce API contracts consistently. By embracing it, you can build robust applications with validated data, ensuring smooth operation even under varying conditions.</p>\n\n<p>Remember, Bean Validation is just one aspect of Spring Boot's validation capabilities. Explore further to unlock its full potential and create truly resilient applications!</p>"
+    },
+    {
     "id": "post-1772461897",
     "title": "Advanced Re-Ranking Strategies for High-Precision RAG Systems",
     "author": "Saravana Kumar",
-    "date": "2026-04-29",
+    "date": "2026-03-01",
     "tags": [
         "rag",
         "reranking",
@@ -21,7 +35,7 @@ const posts = [
     "id": "post-1772461042",
     "title": "Building Production-Grade RAG Evaluation Pipelines",
     "author": "Saravana Kumar",
-    "date": "2026-04-28",
+    "date": "2026-03-01",
     "tags": [
         "rag",
         "evaluation",
@@ -39,7 +53,7 @@ const posts = [
     "id": "post-1772459821",
     "title": "End-to-End Production Deployment of RAG Systems",
     "author": "Saravana Kumar",
-    "date": "2026-04-27",
+    "date": "2026-03-01",
     "tags": [
         "rag",
         "fastapi",
