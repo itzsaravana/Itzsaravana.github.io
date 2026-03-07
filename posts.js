@@ -1,5 +1,21 @@
 const posts = [
     {
+        "id": "post-1772876023",
+        "title": "Introduction to LangChain",
+        "author": "Saravana Kumar",
+        "date": "2026-03-07",
+        "tags": [
+            "langchain",
+            "llm",
+            "ai",
+            "beginner"
+        ],
+        "image": "https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=1600&auto=format&fit=crop&crop=entropy",
+        "placeholder": "https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=10&w=40&auto=format&fit=crop",
+        "excerpt": "Understand what LangChain is and how it helps developers build applications powered by Large Language Models (LLMs).",
+        "content": "<h2>Welcome to the World of LangChain</h2>\n<p>Embark on a journey as we delve into the exciting realm of LangChain, a groundbreaking tool designed to empower developers with Large Language Models (LLMs).</p>\n\n<h3>What Exactly is LangChain?</h3>\n<p>LangChain, in essence, is a platform that simplifies the process of integrating advanced AI technologies, particularly LLMs, into applications. It serves as a bridge between the complexities of AI and the practicalities of application development.</p>\n\n<h3>Why Choose LangChain?</h3>\n<p>LangChain offers a plethora of benefits. Firstly, it democratizes AI, making it accessible to developers of all skill levels. Secondly, it streamlines the integration of AI, saving developers valuable time and resources. Lastly, it enables the creation of more intuitive, user-friendly applications powered by cutting-edge AI technologies.</p>\n\n<ul>\n<li><strong>Democratization of AI:</strong> LangChain makes AI technology accessible to a wider audience, breaking down barriers and fostering innovation.</li>\n<li><strong>Time-saving:</strong> By simplifying the integration of AI, LangChain significantly reduces the time developers spend on this process, allowing them to focus on other aspects of their applications.</li>\n<li><strong>Innovation:</strong> LangChain enables developers to create more advanced, user-friendly applications powered by AI, driving innovation in the tech industry.</li>\n</ul>\n\n<h3>Getting Started with LangChain</h3>\n<p>Getting started with LangChain is a breeze. Developers can easily integrate LangChain into their existing applications or start from scratch with pre-built templates. A comprehensive documentation and support system ensure a smooth onboarding experience.</p>\n\n<h4>Integrating into Existing Applications</h4>\n<p>For developers working on existing projects, LangChain offers seamless integration. Simply follow the step-by-step guide provided in the documentation to incorporate LangChain into your application.</p>\n\n<h4>Using Pre-built Templates</h4>\n<p>For those starting from scratch, LangChain offers pre-built templates. These templates provide a solid foundation for creating applications powered by AI, reducing the time and effort required to build from the ground up.</p>\n\n<h2>Conclusion</h2>\n<p>LangChain is a powerful tool that simplifies the integration of Large Language Models into applications. Whether you're a seasoned developer or just starting out, LangChain offers a world of opportunities to create innovative, AI-powered applications.</p>\n\n<p>Dive into LangChain today and join the ranks of developers pushing the boundaries of what's possible with AI technology.</p>"
+    },
+    {
         "id": "post-1772875906",
         "title": "Final System Design Checklist",
         "author": "Saravana Kumar",
