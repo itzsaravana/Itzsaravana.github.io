@@ -1,5 +1,19 @@
 const posts = [
     {
+        "id": "post-1772866701",
+        "title": "Service Discovery with Eureka",
+        "author": "Saravana Kumar",
+        "date": "2026-03-07",
+        "tags": [
+            "spring-cloud",
+            "eureka"
+        ],
+        "image": "https://images.unsplash.com/photo-1769087836035-7066f79bdcd6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI4NjY3MDJ8&ixlib=rb-4.1.0&q=80&w=1080",
+        "placeholder": "https://images.unsplash.com/photo-1769087836035-7066f79bdcd6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI4NjY3MDJ8&ixlib=rb-4.1.0&q=80&w=200",
+        "excerpt": "Dynamic service registration and discovery in cloud-native architectures",
+        "content": "<p>Embark on a journey through the realm of dynamic service registration and discovery in cloud-native architectures, as we delve into the intricacies of Service Discovery with Eureka.</p>\n\n<h2>Understanding Service Discovery</h2>\n<p>Service Discovery is a crucial component in modern microservice-oriented architectures. It allows services to locate each other dynamically, eliminating the need for hard-coded dependencies.</p>\n\n<h3>Importance of Service Discovery</h3>\n<p>Service Discovery enables services to scale up or down independently, enhancing the overall resilience and flexibility of the system. It simplifies the process of service registration, discovery, and communication, making it easier to manage large-scale distributed systems.</p>\n\n<h2>Eureka: A Powerful Service Registry</h2>\n<p>Eureka, a service registry from Netflix, is a popular choice for Service Discovery in cloud-native applications built with Spring Cloud.</p>\n\n<h3>Key Features of Eureka</h3>\n<ul>\n<li><strong>Client-Side Service Registration:</strong> Eureka clients automatically register their availability with the Eureka server upon startup and deregister when shutdown.</li>\n<li><strong>Service Health Checks:</strong> Eureka performs periodic health checks on registered services, ensuring the system always maintains a list of healthy services.</li>\n<li><strong>Configurable Lease Renewal and Expiration:</strong> Eureka uses a lease mechanism to manage service registration and automatically removes services that have been inactive for a certain period.</li>\n</ul>\n\n<h2>Integrating Eureka into Your Application</h2>\n<p>To integrate Eureka into your Spring Boot application, follow these steps:</p>\n\n<h3>Step 1: Add Spring Cloud and Eureka Dependencies</h3>\n<p>Add the following dependencies to your project's pom.xml:</p>\n\n<pre>\n<dependency>\n  <groupId>org.springframework.cloud</groupId>\n  <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>\n</dependency>\n</pre>\n\n<h3>Step 2: Configure Eureka Client</h3>\n<p>Update your application properties to point to the Eureka server:</p>\n\n<pre>\neureka.client.serviceUrl.defaultZone=http://localhost:8761/eureka/\n</pre>\n\n<h3>Step 3: Enable DiscoveryClient and Register Eureka Bean</h3>\n<p>Enable DiscoveryClient and register EurekaDiscoveryClient as a bean in your Spring configuration:</p>\n\n<pre>\n@EnableDiscoveryClient\n</pre>\n\n<p>In a nutshell, Service Discovery with Eureka offers a robust solution for managing microservice architectures in a dynamic and scalable manner. By automating service registration and discovery, Eureka streamlines the process of building and maintaining distributed systems.</p>\n\n<h2>Conclusion</h2>\n<p>In today's fast-paced digital landscape, it's essential to embrace technologies that simplify the management of complex systems. Service Discovery with Eureka empowers developers to build resilient, scalable, and maintainable cloud-native applications, making it a vital skill for any modern software engineer.</p>"
+    },
+    {
         "id": "post-1772509800",
         "title": "Spring Boot Security Basics",
         "author": "Saravana Kumar",
