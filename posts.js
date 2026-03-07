@@ -1,5 +1,19 @@
 const posts = [
     {
+        "id": "post-1772875906",
+        "title": "Final System Design Checklist",
+        "author": "Saravana Kumar",
+        "date": "2026-03-07",
+        "tags": [
+            "system-design",
+            "checklist"
+        ],
+        "image": "https://images.unsplash.com/photo-1753162657634-454a046ea091?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI4NzU5MDh8&ixlib=rb-4.1.0&q=80&w=1080",
+        "placeholder": "https://images.unsplash.com/photo-1753162657634-454a046ea091?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI4NzU5MDh8&ixlib=rb-4.1.0&q=80&w=200",
+        "excerpt": "Comprehensive checklist for reviewing production-ready architectures",
+        "content": "<h2>Final System Design Checklist: Ensuring Production-Ready Architectures</h2>\n<p>As we near the final stages of system design, it's essential to conduct a thorough review to ensure production-readiness. This checklist provides a comprehensive guide to reviewing your system architecture, promoting robustness, scalability, and efficiency.</p>\n\n<h3>1. Architectural Components and Interfaces</h3>\n<p>Examine the design of each component, including the choice of technologies and libraries. Ensure they are production-ready and well-documented. Verify that interfaces between components are well-defined and clearly stated, promoting smooth data flow and minimal errors.</p>\n<ul>\n<li>Ensure each component's scalability and performance are optimized.</li>\n<li>Validate that interfaces use standard protocols and APIs.</li>\n</ul>\n\n<h3>2. System Integration and Compatibility</h3>\n<p>Verify that your system integrates seamlessly with other components within the organization, such as databases, network infrastructure, and other applications. Ensure compatibility with existing standards and third-party services.</p>\n<ul>\n<li>Test system compatibility with various platforms, browsers, and devices.</li>\n<li>Investigate potential dependencies and ensure that they are well-managed and compatible with the system.</li>\n</ul>\n\n<h3>3. Security and Privacy</h3>\n<p>Ensure that your system is secure and meets industry-standard security practices. Pay special attention to data privacy and protection, user authentication, and authorization mechanisms.</p>\n<ul>\n<li>Implement encryption and secure communication protocols where necessary.</li>\n<li>Perform regular security audits and vulnerability assessments.</li>\n</ul>\n\n<h3>4. Performance and Scalability</h3>\n<p>Optimize your system for performance, ensuring it can handle increased workloads and scale as needed. Monitor key performance indicators (KPIs) and set up alerting mechanisms for any issues.</p>\n<ul>\n<li>Profile your system to identify bottlenecks and areas for optimization.</li>\n<li>Implement load balancing and caching strategies to improve performance.</li>\n</ul>\n\n<h2>Conclusion</h2>\n<p>Following this comprehensive checklist will help you achieve a robust, scalable, and secure system design. Keep in mind that this is not an exhaustive list, and it's essential to adapt to the specific requirements of your project. Happy designing!</p>"
+    },
+    {
         "id": "post-1772868437",
         "title": "OAuth2 and OpenID Connect",
         "author": "Saravana Kumar",
