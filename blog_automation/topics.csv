@@ -31,10 +31,10 @@ Spring Boot Profiles & Environments,Managing dev test and production configurati
 Exception Handling in Spring Boot,Designing global error handling using ControllerAdvice and custom exceptions,"spring-boot,exception-handling",Saravana Kumar,2026-03-01
 Validation in Spring Boot,Using Bean Validation to enforce API contracts consistently,"spring-boot,validation",Saravana Kumar,2026-03-02
 Spring Boot Security Basics,Core authentication and authorization concepts every backend engineer must know,"spring-security,auth",Saravana Kumar,2026-03-03
-JWT Authentication in Microservices,Implementing stateless authentication across microservices using JWT tokens,"jwt,spring-security,microservices",Saravana Kumar,2026-03-04
-OAuth2 and OpenID Connect,Securing distributed systems using OAuth2 flows and OpenID Connect,"oauth2,security",Saravana Kumar,2026-03-05
-Microservices Architecture Basics,Understanding monolith versus microservices trade-offs in real systems,"microservices,architecture",Saravana Kumar,2026-03-06
-Service Discovery with Eureka,Dynamic service registration and discovery in cloud-native architectures,"spring-cloud,eureka",Saravana Kumar,2026-03-07
+JWT Authentication in Microservices,Implementing stateless authentication across microservices using JWT tokens,"jwt,spring-security,microservices",Saravana Kumar,2026-03-07
+OAuth2 and OpenID Connect,Securing distributed systems using OAuth2 flows and OpenID Connect,"oauth2,security",Saravana Kumar,2026-03-07
+Microservices Architecture Basics,Understanding monolith versus microservices trade-offs in real systems,"microservices,architecture",Saravana Kumar,2026-03-05
+Service Discovery with Eureka,Dynamic service registration and discovery in cloud-native architectures,"spring-cloud,eureka",Saravana Kumar,2026-03-05
 API Gateway Pattern,Centralized routing authentication and throttling using API Gateway,"api-gateway,microservices",Saravana Kumar,2026-03-08
 Circuit Breaker with Resilience4j,Preventing cascading failures using circuit breaker patterns,"resilience4j,fault-tolerance",Saravana Kumar,2026-03-09
 Config Server in Microservices,Centralized externalized configuration management for distributed systems,"spring-cloud,config",Saravana Kumar,2026-03-10
