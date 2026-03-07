@@ -1,5 +1,19 @@
 const posts = [
     {
+        "id": "post-1772868437",
+        "title": "OAuth2 and OpenID Connect",
+        "author": "Saravana Kumar",
+        "date": "2026-03-07",
+        "tags": [
+            "oauth2",
+            "security"
+        ],
+        "image": "https://images.unsplash.com/photo-1771153203889-b5153a558aa1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI4Njg0Mzd8&ixlib=rb-4.1.0&q=80&w=1080",
+        "placeholder": "https://images.unsplash.com/photo-1771153203889-b5153a558aa1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI4Njg0Mzd8&ixlib=rb-4.1.0&q=80&w=200",
+        "excerpt": "Securing distributed systems using OAuth2 flows and OpenID Connect",
+        "content": "<h2>Understanding OAuth2 and OpenID Connect</h2>\n<p>In the realm of modern web applications and distributed systems, the need for secure authentication and authorization mechanisms is paramount. Two such technologies that have gained significant traction are OAuth2 and OpenID Connect. This article delves into their functionalities, benefits, and practical applications.</p>\n\n<h3>OAuth2: Authorization Made Easy</h3>\n<p>OAuth2 is an authorization framework that enables third-party applications to access user resources without requiring the user's password. It allows users to grant access to their resources (e.g., files, emails, or calendar events) without sharing their credentials.</p>\n<ul>\n<li>Client-side applications: For web and mobile apps, clients request access tokens from the authorization server.</li>\n<li>Server-side applications: Backend servers request access tokens on behalf of the user, ideal for APIs.</li>\n<li>Native applications: For mobile apps, OAuth2 provides a more secure approach than basic authentication.</li>\n</ul>\n\n<h3>OpenID Connect: Simplifying Authentication</h3>\n<p>OpenID Connect is an extension of OAuth2, focusing on authentication. It provides user profile information and enables single sign-on capabilities. OpenID Connect simplifies the authentication process, making it more secure and user-friendly.</p>\n<ul>\n<li>Identity providers: Third-party services like Google, Facebook, and Microsoft allow users to authenticate using their existing accounts.</li>\n<li>User-centric: OpenID Connect puts users in control of their data, improving privacy and security.</li>\n<li>Single sign-on: Users can access multiple applications with a single set of credentials, reducing login fatigue.</li>\n</ul>\n\n<h2>Practical Examples and Best Practices</h2>\n<p>Some popular applications using OAuth2 and OpenID Connect include Google, Facebook, and Twitter. For instance, when logging into a third-party application using Google, the user is prompted to allow access to their Google account data. Once granted, the application receives an access token, allowing it to access the user's data securely.</p>\n<p>Some best practices for implementing OAuth2 and OpenID Connect include:</p>\n<ul>\n<li>Using secure, HTTPS-enabled connections</li>\n<li>Regularly updating and patching the authorization server</li>\n<li>Implementing rate limiting to prevent abuse</li>\n<li>Enforcing strong password policies and two-factor authentication</li>\n</ul>\n\n<h2>Conclusion</h2>\n<p>OAuth2 and OpenID Connect provide robust, secure, and user-friendly solutions for authentication and authorization in distributed systems. By understanding their functionalities and implementing best practices, developers can build secure and reliable web applications that meet modern security standards.</p>\n<p>Whether you're developing a client-side web application, a server-side API, or a native mobile app, OAuth2 and OpenID Connect offer valuable tools to enhance your application's security and user experience.</p>"
+    },
+    {
         "id": "post-1772867688",
         "title": "Microservices Architecture Basics",
         "author": "Saravana Kumar",
