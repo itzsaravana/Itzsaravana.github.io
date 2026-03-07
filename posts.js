@@ -1,5 +1,19 @@
 const posts = [
     {
+        "id": "post-1772867688",
+        "title": "Microservices Architecture Basics",
+        "author": "Saravana Kumar",
+        "date": "2026-03-07",
+        "tags": [
+            "microservices",
+            "architecture"
+        ],
+        "image": "https://images.unsplash.com/photo-1638734255280-8bae834f8297?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI4Njc2ODl8&ixlib=rb-4.1.0&q=80&w=1080",
+        "placeholder": "https://images.unsplash.com/photo-1638734255280-8bae834f8297?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjY1MTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI4Njc2ODl8&ixlib=rb-4.1.0&q=80&w=200",
+        "excerpt": "Understanding monolith versus microservices trade-offs in real systems",
+        "content": "<p>Delve into the world of Microservices Architecture, a modern approach to building large-scale applications. The trade-offs between monolithic and microservices structures become apparent when designing real-world systems.</p>\n\n<h2>Monolithic Architecture: A Single Unit</h2>\n<p>Monolithic architecture signifies a single, combined application that includes all components such as business logic, data access, and user interface. Although it is easier to develop and deploy, it exhibits challenges when scaling horizontally or making changes to individual features.</p>\n\n<h3>Scaling Challenges</h3>\n<p>Scaling a monolithic application means adding resources to the entire application, rather than specific components, which may lead to increased costs and inefficiencies.</p>\n\n<h3>Change Management Complexity</h3>\n<p>Modifying or adding new features to a monolithic application necessitates deploying the entire application, which can be time-consuming and risky due to the potential for introducing unintended consequences.</p>\n\n<h2>Microservices Architecture: Decoupling Components</h2>\n<p>Microservices architecture, on the other hand, decouples an application into smaller, independent components or services, each responsible for a specific business capability. This modularity enables better scalability, maintainability, and faster time-to-market.</p>\n\n<h3>Improved Scalability</h3>\n<p>With microservices, scaling becomes easier as services can be scaled individually based on their load requirements. This results in more efficient resource utilization and lower costs compared to scaling a monolithic application.</p>\n\n<h3>Faster Time-to-Market</h3>\n<p>Developing and deploying microservices in parallel allows teams to focus on specific components, reducing the overall development time and accelerating the time-to-market for new features or services.</p>\n\n<h2>Case Study: Netflix's Microservices Approach</h2>\n<p>Netflix, a global streaming platform, adopted microservices architecture to manage its rapidly growing user base. By decoupling services, Netflix improved scalability, reliability, and reduced downtime. The modular architecture allowed them to innovate and adapt quickly to changes in the market.</p>\n\n<h2>Conclusion</h2>\n<p>Understanding the trade-offs between monolithic and microservices architecture is crucial for building scalable, maintainable, and adaptable systems. While monolithic applications may be simpler to develop and deploy, microservices architecture offers improved scalability, faster time-to-market, and better change management for real-world systems.</p>\n\n<p>When considering a new project or updating an existing application, assessing the requirements and objectives is essential to determine the best architecture approach for your needs.</p>"
+    },
+    {
         "id": "post-1772866701",
         "title": "Service Discovery with Eureka",
         "author": "Saravana Kumar",
