@@ -1,5 +1,20 @@
 const posts = [
     {
+        "id": "post-1773330890",
+        "title": "Understanding LLM Prompts in LangChain",
+        "author": "Saravana Kumar",
+        "date": "2026-03-12",
+        "tags": [
+            "langchain",
+            "prompt-engineering",
+            "llm"
+        ],
+        "image": "https://images.unsplash.com/photo-1492724441997-5dc865305da7?q=80&w=1600&auto=format&fit=crop&crop=entropy",
+        "placeholder": "https://images.unsplash.com/photo-1492724441997-5dc865305da7?q=10&w=40&auto=format&fit=crop",
+        "excerpt": "Explore prompt engineering concepts including instruction prompts system prompts contextual prompts and prompt chaining Understand how prompts influence LLM behavior and learn techniques to improve response accuracy and reduce hallucinations.",
+        "content": "<h2>Understanding LLM Prompts in LangChain</h2>\n\n<p>Welcome to a deep dive into the world of prompt engineering within LangChain. This article aims to shed light on various types of prompts, their impact on LLM behavior, and strategies to enhance response accuracy while minimizing hallucinations.</p>\n\n<h3>Types of Prompts</h3>\n\n<p>Prompts play a pivotal role in guiding LangChain's Large Language Model (LLM). They can be categorized into three main types:</p>\n\n<ul>\n<li><strong>Instruction Prompts:</strong> These provide explicit guidance on the task to be performed by the LLM. For example, \"Write a short summary of this article.\"</li>\n<li><strong>System Prompts:</strong> These are predefined prompts that the model uses to generate responses. These prompts may include greetings, warnings, or specific response patterns.</li>\n<li><strong>Contextual Prompts:</strong> These refer to information provided to the model to help it better understand and respond to the user's request. For example, \"Assuming you are a content writer specializing in AI technology, write a brief explanation of prompt engineering in LangChain.\"</li>\n</ul>\n\n<h3>Prompt Chaining</h3>\n\n<p>Prompt chaining is a technique that involves combining multiple prompts to achieve complex tasks. For instance, to generate a question and then answer it, you might use a sequence like:</p>\n\n<ol>\n<li><strong>Prompt 1:</strong> \"Ask a question about the importance of prompt engineering in LangChain.\"</li>\n<li><strong>Prompt 2:</strong> \"Now, answer the question you just asked.\"</li>\n</ol>\n\n<h3>Influencing LLM Behavior</h3>\n\n<p>The way prompts are crafted significantly impacts the LLM's behavior. A well-structured prompt can lead to accurate, helpful responses, while a poorly crafted one may result in inaccurate or misleading responses, often referred to as hallucinations.</p>\n\n<h3>Improving Response Accuracy and Reducing Hallucinations</h3>\n\n<p>To enhance response accuracy and minimize hallucinations, consider the following strategies:</p>\n\n<ul>\n<li><strong>Clear and Concise Instructions:</strong> Provide clear, concise instructions to help the model understand the task at hand.</li>\n<li><strong>Relevant Context:</strong> Supply the model with pertinent context to help it generate accurate responses.</li>\n<li><strong>Specific Requests:</strong> Be specific in your requests to guide the model towards generating the desired response.</li>\n<li><strong>Testing and Iteration:</strong> Continuously test and iterate on your prompts to refine them and improve their effectiveness.</li>\n</ul>\n\n<h2>Conclusion</h2>\n\n<p>Understanding the intricacies of prompt engineering in LangChain can greatly enhance your interactions with the Large Language Model. By crafting well-structured prompts, you can guide the model towards generating accurate, helpful responses while minimizing the risk of hallucinations. Happy prompt engineering!</p>\n\n<p>Stay tuned for more insights on LangChain and its Large Language Model.</p>"
+    },
+    {
         "id": "post-1773323426",
         "title": "Setting Up LangChain with Python",
         "author": "Saravana Kumar",
