@@ -1,5 +1,20 @@
 const posts = [
     {
+        "id": "post-1773302734",
+        "title": "Building Your First LangChain Chatbot",
+        "author": "Saravana Kumar",
+        "date": "2026-03-12",
+        "tags": [
+            "langchain",
+            "chatbot",
+            "llm"
+        ],
+        "image": "https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=1600&auto=format&fit=crop&crop=entropy",
+        "placeholder": "https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=10&w=40&auto=format&fit=crop",
+        "excerpt": "Step-by-step guide to building a simple chatbot using LangChain and an LLM model.",
+        "content": "<h2>Getting Started with Building Your First LangChain Chatbot</h2>\n<p>Welcome to the exciting world of chatbot development! In this guide, we will walk you through the process of creating a simple chatbot using LangChain and an LLM model. Let's dive in!</p>\n\n<h3>Prerequisites</h3>\n<p>Before we begin, ensure you have Node.js and npm installed on your system. You'll also need a basic understanding of JavaScript. Let's start by installing LangChain:</p>\n<pre><code>npm install @langchain/core</code></pre>\n\n<h3>Setting Up Your Chatbot</h3>\n<p>First, import the necessary modules and create a new LangChain instance:</p>\n<pre><code>const { Chain } = require('@langchain/core');\nconst chain = new Chain();</code></pre>\n\n<h4>Defining the LLM Model</h4>\n<p>Next, let's define the LLM model you'll use for your chatbot. For this example, we'll use the simple LLM model:</p>\n<pre><code>chain.model.setSimpleLLM();</code></pre>\n\n<h3>Creating the Chatbot Function</h3>\n<p>Now, create a function to handle user input and generate responses:</p>\n<pre><code>function chatbot(userInput) {\n  // Add your chatbot logic here\n}</code></pre>\n\n<h4>Adding Chatbot Logic</h4>\n<p>Add your chatbot logic inside the chatbot function. This is where you'll define how your chatbot will respond to user input. For a simple chatbot, you might create a series of if-else statements based on specific keywords:</p>\n\n<h4>Integrating the Chatbot Function with LangChain</h4>\n<p>Finally, integrate the chatbot function with LangChain to allow users to interact with the chatbot:</p>\n<pre><code>chain.onInput(userInput, async (context) => {\n  // Call your chatbot function to generate a response\n  const response = await chatbot(userInput);\n\n  // Send the response back to the user\n  context.send(response);\n});</code></pre>\n\n<h3>Running Your Chatbot</h3>\n<p>Start your chatbot by running the LangChain instance:</p>\n<pre><code>chain.start();</code></pre>\n\n<h3>Conclusion</h3>\n<p>Congratulations! You've built your first LangChain chatbot. From here, you can continue to enhance your chatbot by adding more complex LLM models, improving the chatbot logic, or integrating it with other services. Happy coding!</p>\n\n<p>Remember, this is just a starting point. As you gain more experience, you'll discover new ways to make your chatbot more engaging and effective. Keep learning, experimenting, and pushing the boundaries of what your chatbot can do!</p>"
+    },
+    {
         "id": "post-1772876023",
         "title": "Introduction to LangChain",
         "author": "Saravana Kumar",
