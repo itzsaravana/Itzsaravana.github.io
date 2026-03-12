@@ -15,6 +15,9 @@ from dotenv import load_dotenv
 import requests
 from git import Repo
 from typing import List, Dict, Optional
+from apscheduler.schedulers.blocking import BlockingScheduler
+from apscheduler.triggers.cron import CronTrigger
+import time
 
 # Load environment variables
 load_dotenv()
@@ -302,7 +305,8 @@ Example format:
     def add_post_to_posts_js(self, post_content: str) -> bool:
         """Add generated post to posts.js file."""
         try:
-            posts_file = self.repo_path / 'posts.js'
+            posts_file = self.repo_path / 'blog_automation' / 'posts.js'
+            print(f"  Adding post to {posts_file}...")
             
             # Read existing posts.js
             with open(posts_file, 'r') as f:
@@ -430,22 +434,56 @@ Example format:
         except Exception as e:
             print(f"Error processing topics: {e}")
             return False
+        
+def run_daily_job(csv_file):
+    print(f"\n🚀 Running blog automation at {datetime.now()}")
 
-def main():
-    """Main entry point."""
-    if len(sys.argv) < 2:
-        print("Usage: python blog_automation.py <csv_file>")
-        print("Example: python blog_automation.py topics.csv")
-        sys.exit(1)
-    
-    csv_file = sys.argv[1]
-    
     try:
         automation = BlogAutomation()
         automation.process_topics(csv_file)
     except Exception as e:
-        print(f"Fatal error: {e}")
+        print(f"❌ Job failed: {e}")
+
+def main():
+    """
+    Usage:
+    python blog_automation.py topics.csv run        -> manual run
+    python blog_automation.py topics.csv schedule   -> run scheduler
+    """
+
+    if len(sys.argv) < 3:
+        print("Usage:")
+        print("Manual run     : python blog_automation.py topics.csv run")
+        print("Scheduler mode : python blog_automation.py topics.csv schedule")
         sys.exit(1)
+
+    csv_file = sys.argv[1]
+    mode = sys.argv[2]
+
+    if mode == "run":
+        print("Running manually...")
+        run_daily_job(csv_file)
+
+    elif mode == "schedule":
+        scheduler = BlockingScheduler()
+
+        scheduler.add_job(
+            run_daily_job,
+            CronTrigger(hour=7, minute=0),
+            args=[csv_file],
+            id="daily_blog_job",
+            replace_existing=True
+        )
+
+        print("Scheduler started. Job will run every day at 7:00 AM")
+
+        try:
+            scheduler.start()
+        except (KeyboardInterrupt, SystemExit):
+            print("Scheduler stopped")
+
+    else:
+        print("Invalid mode. Use 'run' or 'schedule'")
 
 if __name__ == '__main__':
     main()

@@ -1,0 +1,12 @@
+version: "3.9"
+
+services:
+  blog-automation:
+    build: .
+    container_name: blog-automation
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
