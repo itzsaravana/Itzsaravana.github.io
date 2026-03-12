@@ -5,6 +5,7 @@ Reads topics from Excel, generates blog posts, commits to feature branch, and cr
 """
 
 import os
+from random import random
 import sys
 import json
 import csv
@@ -18,7 +19,7 @@ from typing import List, Dict, Optional
 from apscheduler.schedulers.blocking import BlockingScheduler
 from apscheduler.triggers.cron import CronTrigger
 import time
-
+import random
 # Load environment variables
 load_dotenv()
 
@@ -141,6 +142,27 @@ class BlogAutomation:
         except Exception as e:
             print(f"  ✗ Error calling LLM: {e}")
             return ""
+    def get_random_unsplash_image(self):
+    # List of Unsplash image IDs
+        UNSPLASH_IMAGES = [
+            "1496307042754-b4aa456c4a2d",
+            "1500530855697-b586d89ba3ee",
+            "1519389950473-47ba0277781c",
+            "1522202176988-66273c2fd55f",
+            "1507525428034-b723cf961d3e",
+            "1492724441997-5dc865305da7",
+            "1484417894907-623942c8ee29",
+            "1500534314209-a25ddb2bd429",
+            "1504384308090-c894fdcc538d",
+            "1515879218367-8466d910aaa4"
+        ]
+
+        image_id = random.choice(UNSPLASH_IMAGES)
+
+        return (
+            f"https://images.unsplash.com/photo-{image_id}?q=80&w=1600&auto=format&fit=crop&crop=entropy",
+            f"https://images.unsplash.com/photo-{image_id}?q=10&w=40&auto=format&fit=crop"
+        )
     
     def get_fallback_image_url(self, tags: str) -> tuple:
         """
@@ -206,10 +228,13 @@ class BlogAutomation:
         keyword = keyword.lower().replace(' ', '-').strip()
         
         # Use Unsplash search with parameters
-        full_image_url = f"https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=1600&auto=format&fit=crop&crop=entropy"
-        placeholder_url = f"https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=10&w=40&auto=format&fit=crop"
+        # full_image_url = f"https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=1600&auto=format&fit=crop&crop=entropy"
+        # placeholder_url = f"https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=10&w=40&auto=format&fit=crop"
+
+        full_image_url, placeholder_url = self.get_random_unsplash_image()
         
         return (full_image_url, placeholder_url)
+    
     
     def generate_blog_post_with_llm(self, topic: Dict) -> str:
         """Generate blog post content using local LLM."""
