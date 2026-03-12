@@ -333,7 +333,7 @@ Example format:
     def commit_changes(self, post_title: str) -> bool:
         """Commit changes to the feature branch."""
         try:
-            self.repo.index.add(['posts.js'])
+            self.repo.index.add(['blog_automation/posts.js'])
             commit_message = f"feat: Add blog post - {post_title}"
             self.repo.index.commit(commit_message)
             print(f"✓ Committed changes: {commit_message}")
