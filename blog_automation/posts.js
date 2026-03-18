@@ -1,5 +1,20 @@
 const posts = [
     {
+        "id": "post-1773850418",
+        "title": "LangChain Chains Explained",
+        "author": "Saravana Kumar",
+        "date": "2026-03-18",
+        "tags": [
+            "langchain",
+            "chains",
+            "llm"
+        ],
+        "image": "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?q=80&w=1600&auto=format&fit=crop&crop=entropy",
+        "placeholder": "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?q=10&w=40&auto=format&fit=crop",
+        "excerpt": "Understand how chains orchestrate multiple LLM operations together Explore SequentialChains RouterChains and custom chains to build complex AI workflows that integrate reasoning data processing and external APIs.",
+        "content": "<p>Delve into the intricacies of LangChain Chains, a powerful feature that enables the seamless orchestration of multiple Language Model (LLM) operations. These chains are the backbone of complex AI workflows, integrating reasoning, data processing, and external APIs.</p>\n\n<h2>Understanding Chains</h2>\n<p>Chains in LangChain are sequence-based structures, linking multiple LLMs together. They allow for the execution of multiple operations in a predefined order, making it easier to build complex workflows with minimal coding.</p>\n\n<h3>SequentialChains</h3>\n<p>SequentialChains, as the name suggests, execute operations one after the other. They are ideal for workflows where each operation relies on the output of the previous one.</p>\n\n<h3>RouterChains</h3>\n<p>RouterChains, on the other hand, provide a more flexible approach. They allow for conditional execution of operations based on the input or output. This makes them suitable for handling branching logic in your workflows.</p>\n\n<h2>Custom Chains</h2>\n<p>LangChain also allows for the creation of custom chains, giving developers the freedom to design workflows tailored to their specific needs. This opens up a world of possibilities, from creating unique reasoning patterns to integrating external APIs seamlessly.</p>\n\n<h3>Practical Example</h3>\n<p>Imagine a chatbot that needs to perform a series of tasks: greet the user, understand their query, and provide a relevant response. This can be achieved by creating a SequentialChain where the first LLM greets the user, the second understands the query, and the third generates a response based on the query.</p>\n\n<h3>Tips and Best Practices</h3>\n<ul>\n<li>Keep chains as simple as possible. Complex chains can lead to confusion and reduced performance.</li>\n<li>Use RouterChains for conditional logic to avoid creating overly complex SequentialChains.</li>\n<li>Test your chains thoroughly to ensure they work as intended.</li>\n</ul>\n\n<h2>Conclusion</h2>\n<p>LangChain Chains offer a powerful way to orchestrate multiple LLM operations, making it easier to build complex AI workflows. Whether you're working with SequentialChains, RouterChains, or custom chains, the key is to keep things simple and test thoroughly to ensure your workflows run smoothly.</p>\n\n<p>Happy chain building!</p>"
+    },
+    {
         "id": "post-1773330890",
         "title": "Understanding LLM Prompts in LangChain",
         "author": "Saravana Kumar",
