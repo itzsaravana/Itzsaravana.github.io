@@ -1,5 +1,20 @@
 const posts = [
     {
+        "id": "post-1773944991",
+        "title": "Working with Memory in LangChain",
+        "author": "Saravana Kumar",
+        "date": "2026-03-19",
+        "tags": [
+            "langchain",
+            "memory",
+            "chatbot"
+        ],
+        "image": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1600&auto=format&fit=crop&crop=entropy",
+        "placeholder": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=10&w=40&auto=format&fit=crop",
+        "excerpt": "Learn how conversational memory works in LangChain including buffer memory summary memory and vector memory Build AI applications capable of maintaining context across long conversations.",
+        "content": "<p>Delve into the intriguing realm of LangChain, where the art of maintaining context across long conversations becomes a reality. In this post, we'll explore how conversational memory functions within LangChain, focusing on buffer memory, summary memory, and vector memory.</p>\n\n<h2>Buffer Memory: The Backbone of Conversational Context</h2>\n<p>Buffer memory serves as the primary mechanism for retaining a finite number of previous user messages. This short-term storage enables the chatbot to understand the immediate context of the conversation, ensuring a more coherent and responsive interaction.</p>\n<ul>\n<li><strong>Example:</strong> Suppose a user asks about the weather in New York and then follows up with a question about the timezone. With buffer memory in play, the chatbot can connect these questions since they were asked in quick succession.</li>\n</ul>\n\n<h2>Summary Memory: Expanding Contextual Awareness</h2>\n<p>While buffer memory is essential for handling immediate context, it has its limitations. Summary memory overcomes these by storing a condensed summary of the conversation's topics and key points. This long-term storage allows the chatbot to maintain context even when pauses or multiple turns are involved.</p>\n<ul>\n<li><strong>Example:</strong> In a discussion about planning a trip, buffer memory would store the specific cities mentioned, while summary memory might note that the conversation revolves around travel plans.</li>\n</ul>\n\n<h2>Vector Memory: The Frontier of AI Conversations</h2>\n<p>The latest advancement in LangChain's conversational memory is vector memory. By encoding conversations into vectors, this technique enables a more profound understanding of user intent and broader contextual awareness. This cutting-edge technology opens up possibilities for highly engaging and sophisticated AI applications.</p>\n<ul>\n<li><strong>Example:</strong> With vector memory, a chatbot could provide personalized recommendations based on past conversations, making the interaction feel more like speaking with a human assistant.</li>\n</ul>\n\n<h2>Conclusion: The Power of Conversational Memory in LangChain</h2>\n<p>The intricate interplay between buffer memory, summary memory, and vector memory in LangChain paves the way for building AI applications that can maintain context across long conversations. By understanding these mechanisms, developers can create chatbots capable of engaging users in more natural and meaningful interactions.</p>\n\n<p><strong>Note:</strong> As you delve deeper into LangChain's conversational memory, don't hesitate to experiment and innovate. The possibilities are endless, and the potential for groundbreaking AI applications is ripe for those who dare to explore.</p>"
+    },
+    {
         "id": "post-1773850418",
         "title": "LangChain Chains Explained",
         "author": "Saravana Kumar",
