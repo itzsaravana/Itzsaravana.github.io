@@ -1,5 +1,20 @@
 const posts = [
     {
+        "id": "post-1774053088",
+        "title": "Understanding Embeddings in LangChain",
+        "author": "Saravana Kumar",
+        "date": "2026-03-21",
+        "tags": [
+            "langchain",
+            "embeddings",
+            "ai"
+        ],
+        "image": "https://images.unsplash.com/photo-1484417894907-623942c8ee29?q=80&w=1600&auto=format&fit=crop&crop=entropy",
+        "placeholder": "https://images.unsplash.com/photo-1484417894907-623942c8ee29?q=10&w=40&auto=format&fit=crop",
+        "excerpt": "Explore the mathematics and intuition behind embeddings and vector representations Understand how embeddings enable semantic search clustering similarity search and retrieval systems in modern AI applications.",
+        "content": "<h2>Understanding Embeddings in LangChain</h2>\n<p>Embeddings, a fundamental concept in modern AI applications, play a pivotal role in enabling semantic search, clustering, and similarity-based retrieval systems within LangChain. This article delves into the mathematics behind embeddings, their intuition, and practical applications.</p>\n\n<h3>What are Embeddings?</h3>\n<p>Embeddings are a way of representing data in a low-dimensional space while preserving the relationships between data points. In simpler terms, they allow machines to understand the semantic meaning of words and phrases by converting them into vectors of numbers.</p>\n\n<h3>Mathematics Behind Embeddings</h3>\n<p>Embeddings are typically learned through neural networks during the training process. The goal is to find a mapping function that transforms high-dimensional sparse data (like words or images) into lower-dimensional dense vectors, while preserving similarities between related data points.</p>\n\n<ul>\n<li>For example, in word embeddings like Word2Vec and GloVe, similar words are mapped to nearby vectors in the embedded space.</li>\n</ul>\n\n<h3>Intuition Behind Embeddings</h3>\n<p>The intuitive aspect of embeddings lies in their ability to capture the context and semantic meaning of words. By analyzing large amounts of text data, these models can learn that words with similar meanings tend to appear in similar contexts, and thus, they are placed close together in the embedded space.</p>\n\n<h3>Applications of Embeddings in Modern AI</h3>\n<p>Embeddings have numerous practical applications in modern AI, especially in natural language processing (NLP) tasks. Some key examples include:</p>\n\n<ul>\n<li><strong>Semantic Search:</strong> Instead of searching for exact keyword matches, search engines can understand the semantic meaning of user queries and deliver more relevant results.</li>\n<li><strong>Clustering:</strong> Embeddings can be used to group similar data points together, facilitating easier analysis and discovery of patterns in large datasets.</li>\n<li><strong>Similarity-based Retrieval Systems:</strong> By measuring the distance between vectors in an embedded space, AI systems can quickly identify similar items, improving recommendation engines and personalized content delivery.</li>\n</ul>\n\n<h2>Conclusion</h2>\n<p>Embeddings are a powerful tool in modern AI applications, allowing machines to understand the semantic meaning of words and phrases. By learning these low-dimensional representations through neural networks, we can unlock new possibilities for semantic search, clustering, and similarity-based retrieval systems, transforming the way we interact with information.</p>\n\n<p>In LangChain, understanding embeddings is essential for building intelligent applications that can process and analyze large amounts of text data effectively. As AI continues to evolve, the role of embeddings will only grow in importance, opening up new possibilities for natural language processing and beyond.</p>"
+    },
+    {
         "id": "post-1773944991",
         "title": "Working with Memory in LangChain",
         "author": "Saravana Kumar",
