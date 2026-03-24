@@ -1,5 +1,20 @@
 const posts = [
     {
+        "id": "post-1774368593",
+        "title": "Using Chroma Vector Database with LangChain",
+        "author": "Saravana Kumar",
+        "date": "2026-03-24",
+        "tags": [
+            "langchain",
+            "chroma",
+            "rag"
+        ],
+        "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1600&auto=format&fit=crop&crop=entropy",
+        "placeholder": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=10&w=40&auto=format&fit=crop",
+        "excerpt": "Build a document retrieval pipeline using Chroma Learn how to index documents perform similarity search and integrate vector search into RAG pipelines using LangChain.",
+        "content": "<p>Dive into the realm of efficient document retrieval with a focus on integrating Chroma and LangChain for a powerful pipeline. This guide will walk you through indexing documents, performing similarity searches, and seamlessly incorporating vector search into RAG pipelines.</p>\n\n<h2>Understanding Chroma</h2>\n<p>Chroma is an open-source vector database designed to handle text data. Its key features include fast similarity search and the ability to efficiently store and retrieve documents.</p>\n\n<h3>Features of Chroma</h3>\n<ul>\n<li><strong>Vectorization:</strong> Chroma converts text data into vectors for efficient storage and retrieval.</li>\n<li><strong>Similarity Search:</strong> Quickly find documents that are similar to a given query.</li>\n</ul>\n\n<h2>Introducing LangChain</h2>\n<p>LangChain is an open-source framework for building and deploying large language models. It's designed to provide developers with tools to create applications powered by artificial intelligence.</p>\n\n<h3>Integrating Chroma and LangChain</h3>\n<p>By combining Chroma's vector database capabilities with LangChain, you can build powerful document retrieval pipelines. Here's a practical example:</p>\n\n<ol>\n<li><strong>Indexing Documents:</strong> Use Chroma to index your documents and convert them into vectors.</li>\n<li><strong>Performing Similarity Searches:</strong> Utilize Chroma's vector search functionality to find documents similar to a given query.</li>\n<li><strong>Incorporating Vector Search into RAG Pipelines:</strong> Integrate the vector search results into your Rank, Grade (RAG) pipelines for efficient document management and retrieval.</li>\n</ol>\n\n<h2>Tips and Best Practices</h2>\n<p><em>To maximize performance and accuracy in your Chroma-LangChain pipeline, consider the following tips:</em></p>\n<ul>\n<li><strong>Optimizing Vectors:</strong> Use techniques such as cosine similarity or Euclidean distance to optimize vector comparison.</li>\n<li><strong>Scaling with Sharding:</strong> Shard your data across multiple servers for improved scalability and performance.</li>\n</ul>\n\n<h2>Conclusion</h2>\n<p>With Chroma's robust vector database and LangChain's powerful language model capabilities, you can build a document retrieval pipeline that outperforms traditional methods. By following the steps outlined in this guide, you'll be well on your way to creating efficient and effective text-based applications.</p>\n\n<p>Explore the vast potential of Chroma and LangChain today and take your document management to new heights.</p>"
+    },
+    {
         "id": "post-1774053088",
         "title": "Understanding Embeddings in LangChain",
         "author": "Saravana Kumar",
