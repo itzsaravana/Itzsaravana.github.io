@@ -1,5 +1,20 @@
 const posts = [
     {
+        "id": "post-1774451675",
+        "title": "Using FAISS with LangChain for Semantic Search",
+        "author": "Saravana Kumar",
+        "date": "2026-03-25",
+        "tags": [
+            "langchain",
+            "faiss",
+            "rag"
+        ],
+        "image": "https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=1600&auto=format&fit=crop&crop=entropy",
+        "placeholder": "https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=10&w=40&auto=format&fit=crop",
+        "excerpt": "Explore high-performance similarity search using FAISS Learn indexing techniques distance metrics and how FAISS powers large-scale semantic search applications.",
+        "content": "<p>Dive into the world of high-performance similarity search with FAISS and LangChain, a powerful combination that unlocks new possibilities for semantic search applications.</p>\n\n<h2>Understanding FAISS</h2>\n<p>FAISS (Facebook AI Similarity Search) is an open-source library developed by Facebook's AI Research lab. It provides efficient solutions for building similarity search and clustering libraries. FAISS offers various indexing techniques, distance metrics, and data structure algorithms designed to handle large-scale datasets.</p>\n\n<h3>Indexing Techniques</h3>\n<p>FAISS uses several indexing techniques such as IVF (Inverted File) and ANN (Approximate Nearest Neighbors), enabling users to choose the most suitable method based on their specific use-case requirements.</p>\n\n<h3>Distance Metrics</h3>\n<p>FAISS supports various distance metrics, including Cosine, Euclidean, and Hamming distances. These metrics help in measuring the similarity between data points in high-dimensional spaces.</p>\n\n<h2>Integrating FAISS with LangChain</h2>\n<p>LangChain is an open-source language model that can generate text based on given inputs. By integrating FAISS with LangChain, we can perform semantic search by finding the most relevant answers to user queries among large datasets.</p>\n\n<h3>Real-world Applications</h3>\n<p>The combination of FAISS and LangChain has numerous practical applications, such as search engines, recommendation systems, and question-answering platforms. For instance, a semantic search engine could use this technology to understand user queries more accurately and provide highly relevant results.</p>\n\n<h2>Getting Started with FAISS and LangChain</h2>\n<p>To start using FAISS with LangChain, you can follow the official documentation available on GitHub. There, you'll find step-by-step instructions for setting up the environment, building indexes, and integrating the models to achieve high-performance semantic search capabilities.</p>\n\n<ul>\n<li>GitHub Repository: <a href=\"https://github.com/facebookresearch/faiss\">Facebook Research - FAISS</a></li>\n<li>LangChain Documentation: <a href=\"https://huggingface.co/docs/langchain/main/index\">Hugging Face - LangChain</a></li>\n</ul>\n\n<p>In conclusion, FAISS and LangChain offer a potent combination for building high-performance semantic search applications. By mastering the indexing techniques, distance metrics, and integration methods of these technologies, you can create powerful search engines, recommendation systems, and question-answering platforms that cater to your specific needs.</p>\n\n<p>Start exploring the world of high-dimensional similarity search today with FAISS and LangChain!</p>"
+    },
+    {
         "id": "post-1774368593",
         "title": "Using Chroma Vector Database with LangChain",
         "author": "Saravana Kumar",
