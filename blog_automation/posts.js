@@ -1,5 +1,20 @@
 const posts = [
     {
+        "id": "post-1774541219",
+        "title": "Document Loading and Processing in LangChain",
+        "author": "Saravana Kumar",
+        "date": "2026-03-26",
+        "tags": [
+            "langchain",
+            "document-processing",
+            "ai"
+        ],
+        "image": "https://images.unsplash.com/photo-1484417894907-623942c8ee29?q=80&w=1600&auto=format&fit=crop&crop=entropy",
+        "placeholder": "https://images.unsplash.com/photo-1484417894907-623942c8ee29?q=10&w=40&auto=format&fit=crop",
+        "excerpt": "Understand document ingestion pipelines in LangChain including loading PDFs websites and text files Learn chunking strategies metadata management and preprocessing pipelines.",
+        "content": "<h2>Unraveling Document Loading and Processing in LangChain</h2>\n<p>Dive into the intricate world of document ingestion pipelines within LangChain, a robust AI-driven platform. This comprehensive guide will elucidate the strategies employed for loading PDFs, websites, and text files, while delving into chunking techniques, metadata management, and preprocessing pipelines.</p>\n\n<h3>PDF Loading and Chunking</h3>\n<p>LangChain streamlines PDF processing by breaking down complex documents into manageable chunks. This technique, known as chunking, allows for efficient handling of large PDF files. For instance, a lengthy legal contract can be parsed and converted into bite-sized pieces, facilitating easier analysis.</p>\n<ul>\n<li>Text extraction: LangChain utilizes Optical Character Recognition (OCR) to convert scanned images of text into editable and searchable data.</li>\n<li>Chunk size optimization: The platform offers various chunk sizes, allowing users to balance processing speed against the level of detail required for their specific task.</li>\n</ul>\n\n<h3>Website Scraping and Processing</h3>\n<p>LangChain can efficiently scrape data from websites, transforming raw HTML into structured, actionable insights. This capability empowers users to gather data from diverse sources effortlessly.</p>\n<ul>\n<li>HTML parsing: LangChain extracts structured data from HTML markup using advanced parsing techniques.</li>\n<li>Page rendering: The platform ensures that web pages are rendered accurately, even when JavaScript is required for proper display.</li>\n</ul>\n\n<h3>Text File Handling and Metadata Management</h3>\n<p>LangChain simplifies the handling of text files such as .txt or .csv. Additionally, it offers robust metadata management features, making it easier to organize and retrieve information efficiently.</p>\n<ul>\n<li>Data normalization: LangChain standardizes data formats across various text files for seamless processing.</li>\n<li>Metadata enrichment: The platform allows users to tag, categorize, and annotate text files with relevant metadata, enhancing their discoverability and usability.</li>\n</ul>\n\n<h3>Preprocessing Pipelines and Practical Applications</h3>\n<p>LangChain's preprocessing pipelines allow users to clean and prepare data for analysis. Here's a practical example of its use:</p>\n<p><em>Suppose a researcher is analyzing a dataset of scientific articles. By using LangChain, they can automatically extract relevant metadata (e.g., author, title, publication date), perform text summarization to condense article content, and clean the data by removing unnecessary formatting or errors.</em></p>\n\n<h2>Conclusion</h2>\n<p>LangChain offers a powerful set of tools for document loading, processing, and preprocessing. By leveraging its capabilities in PDF chunking, website scraping, text file handling, and metadata management, users can unlock valuable insights from diverse sources efficiently.</p>\n<p>Whether you're working on legal contracts, scientific research, or web data analysis, LangChain provides a versatile solution to streamline your document processing workflows.</p>"
+    },
+    {
         "id": "post-1774451675",
         "title": "Using FAISS with LangChain for Semantic Search",
         "author": "Saravana Kumar",
