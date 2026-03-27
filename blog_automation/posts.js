@@ -1,5 +1,20 @@
 const posts = [
     {
+        "id": "post-1774626774",
+        "title": "Building a Document Q&A AI System",
+        "author": "Saravana Kumar",
+        "date": "2026-03-27",
+        "tags": [
+            "langchain",
+            "rag",
+            "document-ai"
+        ],
+        "image": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1600&auto=format&fit=crop&crop=entropy",
+        "placeholder": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=10&w=40&auto=format&fit=crop",
+        "excerpt": "Build a production-grade document question-answering system using LangChain and RAG Learn document indexing query processing retrieval ranking and answer synthesis.",
+        "content": "<h2>Dive into Building a Document Q&A AI System with LangChain and RAG</h2>\n<p>Welcome to the realm of cutting-edge AI development! Today, we're embarking on an exciting journey to build a production-grade document question-answering system using LangChain and RAG. This blog post will guide you through the essential processes of document indexing, query processing, retrieval, ranking, and answer synthesis.</p>\n\n<h3>Understanding the Components</h3>\n<p>Before we delve into the build process, let's briefly introduce our key tools: LangChain and RAG. LangChain is an open-source AI toolkit for building language applications, while RAG (Ranking and Answering Generation) provides document indexing, query processing, and answer synthesis capabilities.</p>\n<ul>\n<li><strong>LangChain:</strong> Offers a wide range of language understanding models and APIs for text generation, translation, summarization, and more.</li>\n<li><strong>RAG:</strong> A powerful tool that indexes documents to enable efficient query processing, retrieval, ranking, and answer synthesis.</li>\n</ul>\n\n<h2>Setting Up the Environment</h2>\n<p>To get started, you'll need to install both LangChain and RAG. Follow the instructions provided in their respective official documentation to set up your environment. Once that's done, you can start building your document Q&A AI system.</p>\n\n<h3>Document Indexing</h3>\n<p>First, index your documents using RAG. This process involves breaking down the text into smaller segments (tokens), analyzing the context, and storing the information in a way that enables efficient search. RAG offers various indexing strategies to suit different use cases.</p>\n\n<h3>Query Processing and Retrieval</h3>\n<p>With your documents indexed, you can now process user queries and retrieve relevant passages. RAG's query processing capabilities allow it to understand user questions, while its retrieval algorithms pull out the most relevant documents or document segments.</p>\n\n<h3>Ranking and Answer Synthesis</h3>\n<p>After retrieving potential answers, RAG ranks them based on their relevance and quality. The top-ranked answer is then passed through LangChain for further processing and final answer synthesis.</p>\n\n<h2>Case Study: Real-World Application</h2>\n<p>Imagine a law firm using this system to quickly find answers to legal questions within their vast collection of documents. This could drastically reduce research time, enhance productivity, and improve client service.</p>\n\n<h2>Conclusion</h2>\n<p>Building a document Q&A AI system with LangChain and RAG offers numerous benefits for businesses seeking to streamline information access. By leveraging these tools, you can create powerful solutions that transform the way we interact with data.</p>\n<p>Stay tuned for more blogs on advanced AI topics!</p>"
+    },
+    {
         "id": "post-1774541219",
         "title": "Document Loading and Processing in LangChain",
         "author": "Saravana Kumar",
